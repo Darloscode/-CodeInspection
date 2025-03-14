@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Sidebar from "./components/Sidebar"; // Cambia Navbar por Sidebar
 
 function App() {
   const [message, setMessage] = useState("");
@@ -11,9 +12,17 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Mi Aplicación React con Laravel</h1>
-      <p>{message}</p>
+    <div className="flex">
+      <Sidebar />
+      <div className="flex-1">
+        <header>
+          <h1>My React App with Laravel</h1>
+        </header>
+        <hr />
+        <h2>Message from Laravel API:</h2>
+        <hr />
+        <p>{message}</p>
+      </div>
     </div>
   );
 }
