@@ -13,6 +13,11 @@ function App() {
     age: 30
   };
 
+  const handleImageClick = () => {
+    alert("Edicion!");
+  };
+  
+
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/test") // Asegúrate de que Laravel use esta ruta
       .then((response) => response.json())
@@ -25,7 +30,7 @@ function App() {
       <h1>Mi Aplicación React con Laravel</h1>
       <p>{message}</p>
       <div>
-        <ProfileView {...sample_data} />
+        <ProfileView user_info={sample_data} onEdit={handleImageClick} isRowPosition={true}/>
       </div>
     </div>
   );
