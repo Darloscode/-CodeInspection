@@ -13,9 +13,11 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
-import AppTheme from '../shared-theme/AppTheme';
-import ColorModeSelect from '../shared-theme/ColorModeSelect';
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from './components/CustomIcons2';
+import AppTheme from '../../shared-theme/AppTheme';
+import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons2';
+import ColorModeSelect from '../../shared-theme/ColorModeSelect';
+import { useNavigate } from 'react-router-dom';
+
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -66,6 +68,7 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   const [nameError, setNameError] = React.useState(false);
   const [nameErrorMessage, setNameErrorMessage] = React.useState('');
+  const navigate = useNavigate();
 
   const validateInputs = () => {
     const email = document.getElementById('email') as HTMLInputElement;
@@ -217,12 +220,8 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
             </Button>
             <Typography sx={{ textAlign: 'center' }}>
               Already have an account?{' '}
-              <Link
-                href="/material-ui/getting-started/templates/sign-in/"
-                variant="body2"
-                sx={{ alignSelf: 'center' }}
-              >
-                Sign in
+              <Link onClick={() => navigate('/login')} component="button">
+              Sign in
               </Link>
             </Typography>
           </Box>

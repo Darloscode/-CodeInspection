@@ -1,24 +1,45 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom';
 
-import Dashboard from './Dashboard';
-import Login from './components/Login';
+import AppointmentCreation from './components/AppointmentCreation';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
+import SideMenu from './components/SideMenu';
+import AppTheme from "../shared-theme/AppTheme";
+import CssBaseline from '@mui/material/CssBaseline'; // Asegúrate de importar CssBaseline
+
+const xThemeComponents = {}; // Define tus componentes de tema aquí
+
+function SidebarLayout() {
+  return (
+    <div style={{ display: 'flex' }}>
+      <SideMenu />
+      <div style={{ flex: 1 }}>
+        {/* Renderiza las rutas hijas aquí */}
+        <Outlet />
+      </div>
+    </div>
+  );
+}
 
 function App() {
-  
   return (
-
-    <Router>
-    <div>
-      <Routes >
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-
-    </div>
-  </Router>
-
-    
+    <AppTheme themeComponents={xThemeComponents}>
+      <CssBaseline enableColorScheme />
+      <Router>
+        <div>
+          <Routes>
+            {/* Agrupación de rutas con Sidebar */}
+            <Route element={<SidebarLayout />}>
+              <Route path="/crear-cita" element={<AppointmentCreation />} />
+            </Route>
+            {/* Rutas sin Sidebar */}
+            <Route path="/login" element={<SignIn />} />
+            <Route path="/register" element={<SignUp />} />
+          </Routes>
+        </div>
+      </Router>
+    </AppTheme>
   );
 }
 

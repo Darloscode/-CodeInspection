@@ -13,10 +13,13 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
-import ForgotPassword from './components/ForgotPassword';
-import AppTheme from '../shared-theme/AppTheme';
-import ColorModeSelect from '../shared-theme/ColorModeSelect';
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from './components/CustomIcons';
+import ForgotPassword from './ForgotPassword';
+import AppTheme from '../../shared-theme/AppTheme';
+import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons';
+import ColorModeSelect from '../../shared-theme/ColorModeSelect';
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+
+
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -66,6 +69,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -80,11 +84,14 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
       event.preventDefault();
       return;
     }
-    const data = new FormData(event.currentTarget);
+    /* const data = new FormData(event.currentTarget);
     console.log({
       email: data.get('email'),
       password: data.get('password'),
-    });
+    }); */
+
+    navigate('/crear-cita');
+
   };
 
   const validateInputs = () => {
@@ -117,8 +124,8 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
+      <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
       <SignInContainer direction="column" justifyContent="space-between">
-        <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
         <Card variant="outlined">
           <SitemarkIcon />
           <Typography
@@ -216,12 +223,8 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
             </Button>
             <Typography sx={{ textAlign: 'center' }}>
               Don&apos;t have an account?{' '}
-              <Link
-                href="/material-ui/getting-started/templates/sign-in/"
-                variant="body2"
-                sx={{ alignSelf: 'center' }}
-              >
-                Sign up
+              <Link onClick={() => navigate('/register')} component="button">
+              Sign up
               </Link>
             </Typography>
           </Box>
