@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ProfileView from "./components/ProfileView";
+import NewUser from "./components/NewUser";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -31,6 +32,9 @@ function App() {
       <p>{message}</p>
       <div>
         <ProfileView user_info={sample_data} onEdit={handleImageClick} isRowPosition={true}/>
+      </div>
+      <div>
+        <NewUser />
       </div>
     </div>
   );
