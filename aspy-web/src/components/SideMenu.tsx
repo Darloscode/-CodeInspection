@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import SelectContent from './SelectContent';
 import MenuContent from './MenuContent';
-import CardAlert from './CardAlert';
+import ColorModeSelect from '@shared-theme/ColorModeSelect';
 import OptionsMenu from './OptionsMenu';
 
 const drawerWidth = 240;
@@ -54,7 +54,7 @@ export default function SideMenu() {
         }}
       >
         <MenuContent />
-        {/* <CardAlert /> */}
+        
       </Box>
       <Stack
         direction="row"
@@ -80,8 +80,11 @@ export default function SideMenu() {
             riley@email.com
           </Typography>
         </Box>
+        
         <OptionsMenu />
+        
       </Stack>
+      
     </Drawer>
   );
 }
