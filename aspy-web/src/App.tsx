@@ -9,6 +9,7 @@ import Profile from '@components/Profile';
 import AppTheme from "@shared-theme/AppTheme";
 import CssBaseline from '@mui/material/CssBaseline';
 import Checkout from '@components/Checkout';
+import Agenda from '@components/Agenda';
 
 const xThemeComponents = {}; // Define tus componentes de tema aquí
 
@@ -36,12 +37,14 @@ function App() {
               <Route path="/" element={ <h1> Pantalla de Inicio :) </h1> } />
               <Route path="/agendar-cita" element={<AppointmentCreation />} />
               <Route path="/perfil" element={<Profile />} />
+              <Route path="/agenda" element={< Agenda />} />
         
             </Route>
             {/* Rutas sin Sidebar */}
             <Route path="/login" element={<SignInSide />} />
             <Route path="/register" element={<SignUp />} />
             <Route path="/pago" element={<Checkout />} />
+            
           </Routes>
         </div>
       </Router>
