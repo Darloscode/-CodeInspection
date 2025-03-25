@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import SelectContent from './SelectContent';
 import MenuContent from './MenuContent';
 import OptionsMenu from './OptionsMenu';
+import ColorModeIconDropdown from '@shared-theme/ColorModeIconDropdown';
+
 
 const drawerWidth = 240;
 
@@ -81,8 +83,11 @@ export default function SideMenu() {
         </Box>
         
         <OptionsMenu />
+        <ColorModeIconDropdown />
         
+
       </Stack>
+      
       
     </Drawer>
   );

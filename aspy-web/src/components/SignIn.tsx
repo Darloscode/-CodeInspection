@@ -90,7 +90,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
       password: data.get('password'),
     }); */
 
-    navigate('/crear-cita');
+    navigate('/agendar-cita');
 
   };
 

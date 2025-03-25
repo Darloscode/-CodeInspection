@@ -8,6 +8,7 @@ import SideMenu from '@components/SideMenu';
 import Profile from '@components/Profile';
 import AppTheme from "@shared-theme/AppTheme";
 import CssBaseline from '@mui/material/CssBaseline';
+import Checkout from '@components/Checkout';
 
 const xThemeComponents = {}; // Define tus componentes de tema aquí
 
@@ -33,12 +34,14 @@ function App() {
             {/* Agrupación de rutas con Sidebar */}
             <Route element={<SidebarLayout />}>
               <Route path="/" element={ <h1> Pantalla de Inicio :) </h1> } />
-              <Route path="/crear-cita" element={<AppointmentCreation />} />
+              <Route path="/agendar-cita" element={<AppointmentCreation />} />
               <Route path="/perfil" element={<Profile />} />
+        
             </Route>
             {/* Rutas sin Sidebar */}
             <Route path="/login" element={<SignInSide />} />
             <Route path="/register" element={<SignUp />} />
+            <Route path="/pago" element={<Checkout />} />
           </Routes>
         </div>
       </Router>
