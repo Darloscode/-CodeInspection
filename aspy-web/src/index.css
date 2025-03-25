@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap");
 @tailwind utilities;
 @tailwind components;
 @tailwind base;
@@ -16,6 +16,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --color-seleccionado: red;
+  --color-seleccionado-hover: lightgray;
 }
 
 a {
@@ -70,4 +73,157 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Componente Panel_Control*/
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  color: #4f4f4f;
+  text-align: center;
+}
+
+h2 {
+  color: #4f4f4f;
+  text-align: center;
+}
+
+h3 {
+  color: #4f4f4f;
+}
+p {
+  color: black;
+}
+
+.class_id {
+  color: #424242;
+  text-align: center;
+  font-weight: 500;
+}
+
+.class_nombres {
+  color: #1a1a1a;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.class_titulo {
+  margin-top: 0px;
+  color: #a7a7a7;
+  text-align: center;
+}
+
+.class_sobremi {
+  margin-bottom: 0px;
+  font-weight: 600;
+}
+
+.class_descripcion {
+  color: #a7a7a7;
+  margin-top: 0px;
+}
+
+.class_genero {
+  text-align: right;
+  margin-top: 0px;
+}
+.class_edad {
+  text-align: left;
+  margin-top: 0px;
+}
+
+.class_edad_titulo {
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+
+.class_genero_titulo {
+  text-align: right;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+
+.box-panel-control {
+  width: 100%;
+}
+
+.boton-panelcontrol {
+  color: #13296a;
+}
+
+.box-citas {
+  width: 100%;
+}
+
+.card-citas {
+  margin-bottom: 2%;
+}
+
+.card-action-citas {
+  height: 100%;
+}
+
+/*
+.card-action-citas[data-active] {
+  background-color: var(--color-seleccionado-hover);
+}*/
+
+.card-action-citas:hover {
+  background-color: var(--color-seleccionado-hover);
+}
+
+.typography-citas {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 2%;
+  margin-left: 2%;
+}
+
+.card-content-citas {
+  height: 100%;
+}
+
+.divider-citas {
+  border-color: black !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+}
+
+.grid-citas-fecha {
+  margin-left: 3%;
+  margin-top: 2%;
+}
+
+.p-citas {
+  margin: 0px;
+  color: #6d6c6c;
+}
+
+.grid-botones-citas {
+  width: 15%;
+}
+
+.li-botones-citas {
+  padding: 10px;
+  width: 80% !important;
+}
+
+.ul-botones-citas {
+  color: #4f4f4f;
+  border-radius: 10px;
+}
+
+.li-icono-citas {
+  background-color: #eff3fa;
+  border-radius: 10%;
+  padding: 5px;
+  min-width: 5% !important;
+  margin-right: 10%;
+}
+
+.li-item-texto {
+  color: #4f4f4f;
 }
