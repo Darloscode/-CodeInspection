@@ -17,9 +17,6 @@ import PersonAddAltRoundedIcon from "@mui/icons-material/PersonAddAltRounded";
 import MedicalServicesRoundedIcon from "@mui/icons-material/MedicalServicesRounded";
 import EditCalendarRoundedIcon from "@mui/icons-material/EditCalendarRounded";
 import PermContactCalendarRoundedIcon from "@mui/icons-material/PermContactCalendarRounded";
-import EventNoteRoundedIcon from "@mui/icons-material/EventNoteRounded";
-import CreditScoreRoundedIcon from "@mui/icons-material/CreditScoreRounded";
-import RequestQuoteRoundedIcon from "@mui/icons-material/RequestQuoteRounded";
 
 type Cita = {
   fecha: string;
@@ -40,85 +37,12 @@ type Boton = {
   accion: () => void;
 };
 
-function crearBotones(tipo: string) {
-  let tipoModificado = "";
-  let botones: Boton[] = [];
-
-  if (tipo == "Secretario") {
-    tipoModificado = "Secr.";
-    botones = [
-      {
-        texto: "Agregar Profesional",
-        icono: <PersonAddAltRoundedIcon className="boton-panelcontrol" />,
-        accion: () => console.log("Agregar Profesional"),
-      },
-      {
-        texto: "Agregar Paciente",
-        icono: (
-          <PermContactCalendarRoundedIcon className="boton-panelcontrol" />
-        ),
-        accion: () => console.log("Agregar Paciente"),
-      },
-      {
-        texto: "Agregar Servicio",
-        icono: <MedicalServicesRoundedIcon className="boton-panelcontrol" />,
-        accion: () => console.log("Agregar Servicio"),
-      },
-      {
-        texto: "Agendar Nueva Cita",
-        icono: <EditCalendarRoundedIcon className="boton-panelcontrol" />,
-        accion: () => console.log("Agendar Nueva Cita"),
-      },
-    ];
-  } else if (tipo == "Profesional") {
-    tipoModificado = "Prof.";
-    botones = [
-      {
-        texto: "Agendar Nueva Cita",
-        icono: <MedicalServicesRoundedIcon className="boton-panelcontrol" />,
-        accion: () => console.log("Agendar Nueva Cita"),
-      },
-      {
-        texto: "Ver Próximas Citas",
-        icono: <EventNoteRoundedIcon className="boton-panelcontrol" />,
-        accion: () => console.log("Ver Próximas Citas"),
-      },
-      {
-        texto: "Ver mis pagos",
-        icono: <CreditScoreRoundedIcon className="boton-panelcontrol" />,
-        accion: () => console.log("Ver mis pagos"),
-      },
-    ];
-  } else if (tipo == "Paciente") {
-    tipoModificado = "Pac.";
-    botones = [
-      {
-        texto: "Agendar Nueva Cita",
-        icono: <MedicalServicesRoundedIcon className="boton-panelcontrol" />,
-        accion: () => console.log("Agendar Nueva Cita"),
-      },
-      {
-        texto: "Ver Próximas Citas",
-        icono: <EventNoteRoundedIcon className="boton-panelcontrol" />,
-        accion: () => console.log("Ver Próximas Citas"),
-      },
-      {
-        texto: "Ver Facturas",
-        icono: <RequestQuoteRoundedIcon className="boton-panelcontrol" />,
-        accion: () => console.log("Ver Facturas"),
-      },
-    ];
-  }
-  return { botones, tipoModificado };
-}
-
 export default  function ControlPanel() {
 
   const nombre = "Carlos Flores";
-  const tipo = "Profesional";
   const citas = [
     {
-      paciente: "Ana Garcia",
+      paciente: "Carlos Flores",
       profesional: "Dr. Luis Martinez",
       hora: "10:00 AM",
       fecha: "2025-03-15",
@@ -131,19 +55,19 @@ export default  function ControlPanel() {
     },
     {
       paciente: "Carlos Lopez",
-      profesional: "Dr. Maria Fernandez",
+      profesional: "Dr. Mario Perez",
       hora: "2:30 PM",
       fecha: "2025-03-15",
     },
     {
       paciente: "Carlos Lopez",
-      profesional: "Dr. Maria Fernandez",
+      profesional: "Dr. Juan Leon",
       hora: "2:30 PM",
       fecha: "2025-03-15",
     },
     {
       paciente: "Carlos Lopez",
-      profesional: "Dr. Maria Fernandez",
+      profesional: "Dr. Maria Quimis",
       hora: "2:30 PM",
       fecha: "2025-03-15",
     },
@@ -155,8 +79,13 @@ export default  function ControlPanel() {
     },
   ];
 
-  const { botones, tipoModificado } = crearBotones(tipo);
-  /*const [selectedCard, setSelectedCard] = useState(0);*/
+  const botones = [
+    {
+      texto: "Agendar Nueva Cita",
+      icono: <EditCalendarRoundedIcon className="boton-panelcontrol" />,
+      accion: () => console.log("Agendar Nueva Cita"),
+    },
+  ];
 
   return (
     <Box className="box-panel-control">
@@ -164,7 +93,7 @@ export default  function ControlPanel() {
         <Grid size={12}>
           <h1>Bienvenid@ al Panel de Control, ASPY</h1>
           <h2>
-            {tipoModificado} {nombre}
+            Estimado {nombre}
           </h2>
           <h3>Proximas citas:</h3>
         </Grid>

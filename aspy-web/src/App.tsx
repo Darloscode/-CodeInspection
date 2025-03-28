@@ -1,55 +1,34 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom';
-
-
-import AppointmentCreation from "@components/AppointmentCreation";
+import RoleBasedRoutes from "@routes/RoleBasedRoutes";
 import SignInSide from "@components/SignInSide";
 import SignUp from "@components/SignUp";
-import SideMenu from "@components/SideMenu";
-import Profile from "@components/Profile";
+import Checkout from "@components/Checkout";
+import NotFound from "@components/NotFound";
 import AppTheme from "@shared-theme/AppTheme";
 import CssBaseline from "@mui/material/CssBaseline";
-import Checkout from "@components/Checkout";
-import ControlPanel from "./components/ControlPanel";
-import Agenda from "./components/Agenda";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-const xThemeComponents = {}; // Define tus componentes de tema aquí
+const App = () => {
+  const xThemeComponents = {};
 
-function SidebarLayout() {
-  return (
-    <div style={{ display: "flex" }}>
-      <SideMenu />
-      <div style={{ flex: 1, marginLeft: 50 }}>
-        {/* Renderiza las rutas hijas aquí*/}
-        <Outlet />
-      </div>
-    </div>
-  );
-}
-
-function App() {
   return (
     <AppTheme themeComponents={xThemeComponents}>
       <CssBaseline enableColorScheme />
       <Router>
-        <div style={{}}>
-          <Routes>
-            {/* Agrupación de rutas con Sidebar */}
-            <Route element={<SidebarLayout />}>
-              <Route path="/" element={<ControlPanel />} />
-              <Route path="/agendar-cita" element={<AppointmentCreation />} />
-              <Route path="/perfil" element={<Profile />} />
-              <Route path="/agenda" element={<Agenda />} />
-            </Route>
-            {/* Rutas sin Sidebar */}
-            <Route path="/login" element={<SignInSide />} />
-            <Route path="/register" element={<SignUp />} />
-            <Route path="/pago" element={<Checkout />} />
-          </Routes>
-        </div>
+        <Routes>
+          {/* Rutas públicas sin layout */}
+          <Route path="/login" element={<SignInSide />} />
+          <Route path="/register" element={<SignUp />} />
+          <Route path="/pago" element={<Checkout />} />
+
+          {/* Rutas privadas basadas en el rol */}
+          {RoleBasedRoutes()}
+
+          {/* Rutas no encontradas */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </Router>
     </AppTheme>
   );
-}
+};
 
 export default App;
