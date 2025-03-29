@@ -2,8 +2,23 @@ import { FormProvider, useForm } from "react-hook-form";
 import UserInput from "./UserInput";
 import CancelButton from "../buttons/CancelButton";
 import CreationButton from "../buttons/CreationButton";
+import { useEffect, useState } from "react";
+import { UserData } from "../../types/UserDataCreation";
 
-function NewUser() {
+function NewUser(props: { isEditMode: boolean; userId?: string }) {
+  const [userData, setUserData] = useState<UserData | null>(null);
+
+  useEffect(() => {
+    if (props.isEditMode && props.userId) {
+      const fetchData = async () => {
+        const response = await fetch(`/api-endpoint/${props.userId}`);
+        const data = await response.json();
+        setUserData(data);
+      };
+      fetchData();
+    }
+  }, [props.isEditMode, props.userId]);
+
   const input_create_user = [
     { label: "Nombre", key: "name", type: "text" },
     { label: "Apellido", key: "surname", type: "text" },
@@ -23,7 +38,33 @@ function NewUser() {
     },
   ];
 
-  const methods = useForm();
+  const methods = useForm({
+    defaultValues: async () => {
+      if (props.isEditMode && userData) {
+        return {
+          name: userData.name,
+          surname: userData.surname,
+          email: userData.email,
+          phone: userData.phone,
+          address: userData.address,
+          identification_number: userData.identification_number,
+          password: "",
+          confirm_password: "",
+        };
+      } else {
+        return {
+          name: "",
+          surname: "",
+          email: "",
+          phone: "",
+          address: "",
+          identification_number: "",
+          password: "",
+          confirm_password: "",
+        };
+      }
+    },
+  });
   const onClickCreate = methods.handleSubmit((data) => {
     alert(data);
     console.log(data);
@@ -50,7 +91,7 @@ function NewUser() {
           <div className="grid grid-cols-2 gap-10">{list_inputs}</div>
         </div>
         <div className="gap-10 mt-4 flex flex-row justify-start">
-          <CancelButton onClick={onClickCancel}/>
+          <CancelButton onClick={onClickCancel} />
           <CreationButton onClick={onClickCreate} />
         </div>
       </form>

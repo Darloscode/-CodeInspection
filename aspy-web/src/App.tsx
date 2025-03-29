@@ -34,7 +34,7 @@ function App() {
         <ProfileView user_info={sample_data} onEdit={handleImageClick} isRowPosition={true}/>
       </div>
       <div>
-        <NewUser />
+        <NewUser isEditMode={false}/>
       </div>
     </div>
   );
