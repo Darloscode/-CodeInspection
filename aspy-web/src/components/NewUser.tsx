@@ -28,7 +28,7 @@ function NewUser() {
   });
 
   const list_inputs = input_create_user.map((input) => (
-    <UserInput label={input.label} key={input.key} type={input.type} />
+    <UserInput label={input.label} key={input.key} type={input.type} id={input.key} />
   ));
 
   return (

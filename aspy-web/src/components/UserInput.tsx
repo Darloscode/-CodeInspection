@@ -5,13 +5,13 @@ import { AnimatePresence } from "framer-motion";
 import { findInputError } from "../utils/findInputError";
 import { isFormInvalid } from "../utils/isFormInvalid";
 
-function UserInput(props: { label: string; key: string; type: string }) {
+function UserInput(props: { label: string; key: string; type: string; id: string }) {
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
-  const inputError = findInputError(errors, props.label);
+  const inputError = findInputError(errors, props.id);
   const isInvalid = isFormInvalid(inputError);
 
   return (
@@ -29,11 +29,11 @@ function UserInput(props: { label: string; key: string; type: string }) {
       </div>
       <TextField
         required
-        id={props.label}
+        id={props.id}
         type={props.type}
         variant="outlined"
         size="small"
-        {...register(props.label, {
+        {...register(props.id, {
           required: {
             value: true,
             message: "Campo requerido",

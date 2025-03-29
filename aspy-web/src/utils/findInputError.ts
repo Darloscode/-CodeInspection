@@ -1,12 +1,11 @@
-export function findInputError(
-  errors: Record<string, unknown>,
-  name: string
-) {
-    const filtered = Object.keys(errors)
-    .filter((key) => key.includes(name))
-    .reduce<{ error: { message: string }}>((cur, key) => {
-        return Object.assign(cur, {error: errors[key]})
-    }, { error: { message: "" } });
+import { FieldErrors, FieldError } from "react-hook-form";
 
-    return filtered;
+export function findInputError(errors: FieldErrors, name: string) {
+  const error = errors[name] as FieldError | undefined;
+
+  return {
+    error: {
+      message: error?.message || "",
+    },
+  };
 }
