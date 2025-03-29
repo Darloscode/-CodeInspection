@@ -1,5 +1,7 @@
 import { FormProvider, useForm } from "react-hook-form";
 import UserInput from "./UserInput";
+import CancelButton from "../buttons/CancelButton";
+import CreationButton from "../buttons/CreationButton";
 
 function NewUser() {
   const input_create_user = [
@@ -22,14 +24,23 @@ function NewUser() {
   ];
 
   const methods = useForm();
-  const onSubmit = methods.handleSubmit((data) => {
+  const onClickCreate = methods.handleSubmit((data) => {
     alert(data);
     console.log(data);
   });
 
   const list_inputs = input_create_user.map((input) => (
-    <UserInput label={input.label} key={input.key} type={input.type} id={input.key} />
+    <UserInput
+      label={input.label}
+      key={input.key}
+      type={input.type}
+      id={input.key}
+    />
   ));
+
+  const onClickCancel = () => {
+    alert("Cancel button clicked");
+  };
 
   return (
     <FormProvider {...methods}>
@@ -38,11 +49,10 @@ function NewUser() {
           <h1>New User</h1>
           <div className="grid grid-cols-2 gap-10">{list_inputs}</div>
         </div>
-        <button
-          onClick={onSubmit}
-        >
-          Submit Form
-        </button>
+        <div className="gap-10 mt-4 flex flex-row justify-start">
+          <CancelButton onClick={onClickCancel}/>
+          <CreationButton onClick={onClickCreate} />
+        </div>
       </form>
     </FormProvider>
   );

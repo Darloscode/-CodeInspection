@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ProfileView from "./components/ProfileView";
-import NewUser from "./components/NewUser";
+import NewUser from "./components/forms/NewUserForm";
 
 function App() {
   const [message, setMessage] = useState("");

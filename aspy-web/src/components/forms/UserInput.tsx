@@ -2,8 +2,8 @@ import TextField from "@mui/material/TextField";
 import { useFormContext } from "react-hook-form";
 import InputError from "./InputError";
 import { AnimatePresence } from "framer-motion";
-import { findInputError } from "../utils/findInputError";
-import { isFormInvalid } from "../utils/isFormInvalid";
+import { findInputError } from "../../utils/findInputError";
+import { isFormInvalid } from "../../utils/isFormInvalid";
 
 function UserInput(props: { label: string; key: string; type: string; id: string }) {
   const {
