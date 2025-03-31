@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+/*import { ReactNode } from "react";*/
 
 import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
@@ -10,17 +10,14 @@ import ListItemText from "@mui/material/ListItemText";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import CardActionArea from "@mui/material/CardActionArea";
 import Divider from "@mui/material/Divider";
+import { useTheme } from "@mui/material/";
 
-import PersonAddAltRoundedIcon from "@mui/icons-material/PersonAddAltRounded";
 import MedicalServicesRoundedIcon from "@mui/icons-material/MedicalServicesRounded";
-import EditCalendarRoundedIcon from "@mui/icons-material/EditCalendarRounded";
-import PermContactCalendarRoundedIcon from "@mui/icons-material/PermContactCalendarRounded";
 import EventNoteRoundedIcon from "@mui/icons-material/EventNoteRounded";
 import CreditScoreRoundedIcon from "@mui/icons-material/CreditScoreRounded";
-import RequestQuoteRoundedIcon from "@mui/icons-material/RequestQuoteRounded";
 
+/*
 type Cita = {
   fecha: string;
   paciente: string;
@@ -39,11 +36,14 @@ type Boton = {
   icono: ReactNode;
   accion: () => void;
 };
-
-
+*/
 
 export default function ControlPanel() {
+  const theme = useTheme();
   const nombre = "Luis Martinez";
+  const themeClass =
+    theme.palette.mode === "dark" ? "dark-theme" : "light-theme";
+
   const citas = [
     {
       paciente: "Ana Garcia",
@@ -101,57 +101,50 @@ export default function ControlPanel() {
     },
   ];
 
-   return (
+  return (
     <Box className="box-panel-control">
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }}>
         <Grid size={12}>
-          <h1>Bienvenid@ al Panel de Control, ASPY</h1>
-          <h2>
+          <Typography variant="h1" className="h1-panel">
+            Bienvenid@ al Panel de Control, ASPY
+          </Typography>
+          <Typography variant="h2" className="h2-panel">
             Dr. {nombre}
-          </h2>
-          <h3>Proximas citas:</h3>
+          </Typography>
+          <Typography variant="h3">Proximas citas:</Typography>
         </Grid>
 
         <Grid size={8}>
-          <Box className="box-citas">
-            {citas.map((cita /*, index*/) => (
-              <Card className="card-citas">
-                <CardActionArea
-                  /*onClick={() => setSelectedCard(index)}*/
-                  /*data-active={selectedCard === index ? "" : undefined}*/
-                  className="card-action-citas"
-                >
-                  <CardContent className="card-content-citas">
-                    <Typography>
-                      <p className="typography-citas">
-                        Paciente: {cita.paciente}
-                      </p>
-                    </Typography>
-                    <Typography>
-                      <p className="typography-citas">
-                        Profesional: {cita.profesional}
-                      </p>
-                    </Typography>
+          <Box className={themeClass}>
+            {citas.map((cita, index) => (
+              <Card key={index} className="card-citas">
+                <CardContent className="card-content-citas">
+                  {/*Quité CardActionArea*/}
+                  <Typography className="typography-citas" variant="body1">
+                    Paciente: {cita.paciente}
+                  </Typography>
+                  <Typography className="typography-citas" variant="body1">
+                    Profesional: {cita.profesional}
+                  </Typography>
 
-                    <Divider className="divider-citas" />
+                  <Divider className="divider-citas" />
 
-                    <Grid container spacing={1} className="grid-citas-fecha">
-                      <Grid size={{ xs: 10, md: 10 }}>
-                        <p className="p-citas">{cita.hora}</p>
-                      </Grid>
-                      <Grid size={{ xs: 2, md: 2 }}>
-                        <p className="p-citas">{cita.fecha}</p>
-                      </Grid>
+                  <Grid container spacing={1} className="grid-citas-fecha">
+                    <Grid size={{ xs: 10, md: 10 }}>
+                      <Typography className="p-citas">{cita.hora}</Typography>
                     </Grid>
-                  </CardContent>
-                </CardActionArea>
+                    <Grid size={{ xs: 2, md: 2 }}>
+                      <Typography className="p-citas">{cita.fecha}</Typography>
+                    </Grid>
+                  </Grid>
+                </CardContent>
               </Card>
             ))}
           </Box>
         </Grid>
 
         <Grid size={4} className="gird-botones-citas">
-          <List>
+          <List className={themeClass}>
             {botones.map((boton, index) => (
               <ListItem key={index} disablePadding className="li-botones-citas">
                 <ListItemButton

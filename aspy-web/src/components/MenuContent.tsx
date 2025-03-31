@@ -1,4 +1,6 @@
 import * as React from "react";
+import { ReactNode } from "react";
+
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -6,19 +8,30 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Stack from "@mui/material/Stack";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
-import AnalyticsRoundedIcon from "@mui/icons-material/AnalyticsRounded";
-import PeopleRoundedIcon from "@mui/icons-material/PeopleRounded";
 import AssignmentRoundedIcon from "@mui/icons-material/AssignmentRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import HelpRoundedIcon from "@mui/icons-material/HelpRounded";
+import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
+import ContactMailRoundedIcon from "@mui/icons-material/ContactMailRounded";
+import AssignmentIndRoundedIcon from "@mui/icons-material/AssignmentIndRounded";
+import SwitchAccountRoundedIcon from "@mui/icons-material/SwitchAccountRounded";
+import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
+import PaymentRoundedIcon from "@mui/icons-material/PaymentRounded";
+import ReceiptLongRoundedIcon from "@mui/icons-material/ReceiptLongRounded";
 import { getUserRole } from "@utils/auth";
 import { useNavigate } from "react-router-dom";
 
+type ListItem = {
+  text: string;
+  route: string;
+  icon: ReactNode;
+};
+
 const adminListItems = [
   { text: "Vista General", route: "/", icon: <HomeRoundedIcon /> },
-  { text: "Usuarios", route: "/usuarios", icon: <AnalyticsRoundedIcon /> },
-  { text: "Roles", route: "/roles", icon: <PeopleRoundedIcon /> },
+  { text: "Usuarios", route: "/usuarios", icon: <GroupRoundedIcon /> },
+  { text: "Roles", route: "/roles", icon: <ContactMailRoundedIcon /> },
   { text: "Servicios ", route: "/servicios", icon: <AssignmentRoundedIcon /> },
 ];
 
@@ -27,25 +40,33 @@ const staffListItems = [
   {
     text: "Profesionales",
     route: "/profesionales",
-    icon: <AnalyticsRoundedIcon />,
+    icon: <SwitchAccountRoundedIcon />,
   },
-  { text: "Pacientes", route: "/pacientes", icon: <PeopleRoundedIcon /> },
-  { text: "Citas", route: "/citas", icon: <AssignmentRoundedIcon /> },
-  { text: "Facturas", route: "/facturas", icon: <AssignmentRoundedIcon /> },
-  { text: "Pagos", route: "/pagos ", icon: <AssignmentRoundedIcon /> },
+  {
+    text: "Pacientes",
+    route: "/pacientes",
+    icon: <AssignmentIndRoundedIcon />,
+  },
+  { text: "Citas", route: "/citas", icon: <CalendarMonthRoundedIcon /> },
+  { text: "Facturas", route: "/facturas", icon: <ReceiptLongRoundedIcon /> },
+  { text: "Pagos", route: "/pagos ", icon: <PaymentRoundedIcon /> },
   { text: "Servicios ", route: "/servicios", icon: <AssignmentRoundedIcon /> },
 ];
 
 const professionalListItems = [
   { text: "Vista General", route: "/", icon: <HomeRoundedIcon /> },
-  { text: "Pacientes", route: "/pacientes", icon: <PeopleRoundedIcon /> },
-  { text: "Citas", route: "/citas", icon: <AssignmentRoundedIcon /> },
+  {
+    text: "Pacientes",
+    route: "/pacientes",
+    icon: <AssignmentIndRoundedIcon />,
+  },
+  { text: "Citas", route: "/citas", icon: <CalendarMonthRoundedIcon /> },
 ];
 
 const clientListItems = [
   { text: "Vista General", route: "/", icon: <HomeRoundedIcon /> },
-  { text: "Citas", route: "/citas", icon: <AssignmentRoundedIcon /> },
-  { text: "Facturas", route: "/facturas", icon: <AssignmentRoundedIcon /> },
+  { text: "Citas", route: "/citas", icon: <CalendarMonthRoundedIcon /> },
+  { text: "Facturas", route: "/facturas", icon: <ReceiptLongRoundedIcon /> },
 ];
 
 const secondaryListItems = [
@@ -61,7 +82,7 @@ const secondaryListItems = [
 export default function MenuContent() {
   const navigate = useNavigate();
   const userRole = getUserRole();
-  let mainListItems;
+  let mainListItems: ListItem[];
 
   if (userRole === "admin") {
     mainListItems = adminListItems;
