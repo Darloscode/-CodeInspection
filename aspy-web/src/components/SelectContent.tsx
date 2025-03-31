@@ -11,10 +11,10 @@ import { styled } from '@mui/material/styles';
 import { getUserRole, setUserRole } from '@utils/auth';
 
 const roleOptions = [
-  { value: 'admin', label: 'Admin', icon: <SupervisorAccountIcon fontSize="small" /> },
-  { value: 'staff', label: 'Staff', icon: <GroupsIcon fontSize="small" /> },
-  { value: 'professional', label: 'Professional', icon: <LocalHospitalIcon fontSize="small" /> },
-  { value: 'client', label: 'Client', icon: <PersonIcon fontSize="small" /> },
+  { value: 'admin', label: 'Administrador', icon: <SupervisorAccountIcon fontSize="small" /> },
+  { value: 'staff', label: 'Secretario', icon: <GroupsIcon fontSize="small" /> },
+  { value: 'professional', label: 'Profesional', icon: <LocalHospitalIcon fontSize="small" /> },
+  { value: 'client', label: 'Paciente', icon: <PersonIcon fontSize="small" /> },
 ];
 
 const StyledSelect = styled(Select)(({ theme }) => ({

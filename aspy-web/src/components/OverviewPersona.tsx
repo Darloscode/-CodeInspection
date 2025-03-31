@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
-import Data from "../types/Data";
+import Data from "@types/Data";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 

@@ -1,4 +1,4 @@
-import Data from "../types/Data";
+import Data from "@types/Data";
 
 import Paper from "@mui/material/Paper";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";

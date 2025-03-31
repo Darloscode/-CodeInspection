@@ -12,6 +12,10 @@
       "@assets/*": ["src/assets/*"],
       "@layouts/*": ["src/layouts/*"],
       "@routes/*": ["src/routes/*"],
+      "@styles/*": ["src/styles/*"],
+      "@shared/*": ["src/shared/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@types/*": ["src/types/*"],
     },
 
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",

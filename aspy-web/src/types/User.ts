@@ -1,8 +1,14 @@
 export interface User {
     name: string;
-    rol: string;
-    image: string;
+    fistName: string;
+    lastName: string;
+    rol?: string;
+    image?: string;
     aboutme: string;
     age: number;
     gender: string;
+    email: string;
+    identity?: number;
+    phone?: string;
+    address?: string;
 }

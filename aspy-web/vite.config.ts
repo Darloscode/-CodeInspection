@@ -16,7 +16,10 @@ export default defineConfig({
       '@shared-theme': '/src/shared-theme',
       '@layouts': '/src/layouts',
       '@routes': '/src/routes',
-
+      '@styles': '/src/styles',
+      '@shared': '/src/shared',
+      '@types': '/src/types',
+      '@hooks': '/src/hooks',
     }
   }
 });

@@ -48,14 +48,22 @@ export default function SideMenu() {
       <Divider />
       <Box
         sx={{
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <img src="src/assets/logo mediano.png" alt="" />       
+      </Box>
+      <Box
+        sx={{
           overflow: 'auto',
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
         }}
       >
-        <MenuContent />
-        
+{        <MenuContent />
+}        
       </Box>
       <Stack
         direction="row"

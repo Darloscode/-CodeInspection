@@ -14,7 +14,7 @@ import { GridColDef } from "@mui/x-data-grid";
 
 import OverviewPersona from "./OverviewPersona";
 import TablaDatos from "./TablaDatos";
-import Data from "../types/Data";
+import Data from "@types/Data";
 
 import SearchIcon from "@mui/icons-material/Search";
 
