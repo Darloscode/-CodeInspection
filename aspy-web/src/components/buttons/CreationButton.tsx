@@ -1,19 +1,11 @@
-import Button from "@mui/material/Button";
-
 function CreationButton({ onClick }: { onClick: () => void }) {
   return (
-    <Button
+    <button
       onClick={onClick}
-      variant="contained"
-      sx={{
-        backgroundColor: "#F1F1F1",
-        color: "#4F4F4F",
-        "&:hover": { backgroundColor: "#D1D5DB", color: "#1F2937" },
-        width: "140px",
-      }}
+      className="bg-gray-100 text-gray-700 hover:bg-gray-300 hover:text-gray-900 w-[140px] py-2 rounded"
     >
       Crear
-    </Button>
+    </button>
   );
 }
 export default CreationButton;

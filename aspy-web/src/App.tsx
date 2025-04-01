@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ProfileView from "./components/ProfileView";
-import NewUser from "./components/forms/NewUserForm";
+import UserForm from "./components/forms/UserForm";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -34,7 +34,7 @@ function App() {
         <ProfileView user_info={sample_data} onEdit={handleImageClick} isRowPosition={true}/>
       </div>
       <div>
-        <NewUser isEditMode={false}/>
+        <UserForm/>
       </div>
     </div>
   );
