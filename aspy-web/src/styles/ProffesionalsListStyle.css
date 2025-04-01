@@ -1,0 +1,8 @@
+.MuiDataGrid-columnHeaderTitleContainer {
+    justify-content: space-between;
+}
+
+.css-19q1xvo-MuiDataGrid-toolbarContainer {
+    flex-direction: row-reverse;
+    padding: 10px;
+}

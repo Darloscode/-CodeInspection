@@ -1,43 +1,67 @@
-import { useEffect, useState } from "react";
-import ProfileView from "./components/ProfileView";
-import UserForm from "./components/forms/UserForm";
+import RoleBasedRoutes from "@routes/RoleBasedRoutes";
+import SignInSide from "@components/SignInSide";
+import SignUp from "@components/SignUp";
+import Checkout from "@components/Checkout";
+import NotFound from "@components/NotFound";
+import AppTheme from "@shared-theme/AppTheme";
+import CssBaseline from "@mui/material/CssBaseline";
+import { useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes, useLocation  } from "react-router-dom";
 
-function App() {
-  const [message, setMessage] = useState("");
+// Mapeo de rutas y títulos
+const routeTitles: { [key: string]: string } = {
+  "/": "Inicio",
+  "/profesionales": "Profesionales",
+  "/pacientes": "Pacientes",
+  "/citas": "Citas",
+  "/facturas": "Facturas",
+  "/pagos": "Pagos",
+  "/servicios": "Servicios",
+  "/usuarios": "Usuarios",
+  "/roles": "Roles",
+  "/preferencias": "Preferencias",
+  "/servicios": "Servicios",
+  "/login": "Iniciar Sesión",
+  "/register": "Registrarse",
+  "/pago": "Pago",
+  "/404": "Página no encontrada",
+};
 
-  const sample_data = {
-    name: "John Doe",
-    rol: "Developer",
-    image: "https://media.licdn.com/dms/image/v2/D5603AQFU8Zdel1Zmmw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1697774168625?e=2147483647&v=beta&t=ebIAB2U72CObroPX95OXWeZhKzV81E4_b40S5TTBkzw",
-    aboutme: "I'm a developer",
-    gender: "Male",
-    age: 30
-  };
-
-  const handleImageClick = () => {
-    alert("Edicion!");
-  };
-  
+// Componente para actualizar el título
+const DocumentTitleUpdater = () => {
+  const location = useLocation();
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/test") // Asegúrate de que Laravel use esta ruta
-      .then((response) => response.json())
-      .then((data) => setMessage(data.message))
-      .catch((error) => console.error("Error:", error));
-  }, []);
+    const title = routeTitles[location.pathname] || "ASPY";
+    document.title = title;
+  }, [location.pathname]);
+
+  return null; // no renderiza nada
+};
+
+const App = () => {
+  const xThemeComponents = {};
 
   return (
-    <div>
-      <h1>Mi Aplicación React con Laravel</h1>
-      <p>{message}</p>
-      <div>
-        <ProfileView user_info={sample_data} onEdit={handleImageClick} isRowPosition={true}/>
-      </div>
-      <div>
-        <UserForm/>
-      </div>
-    </div>
+    <AppTheme themeComponents={xThemeComponents}>
+      <CssBaseline enableColorScheme />
+      <Router>
+      <DocumentTitleUpdater />
+        <Routes>
+          {/* Rutas públicas sin layout */}
+          <Route path="/login" element={<SignInSide />} />
+          <Route path="/register" element={<SignUp />} />
+          <Route path="/pago" element={<Checkout />} />
+
+          {/* Rutas privadas basadas en el rol */}
+          {RoleBasedRoutes()}
+
+          {/* Rutas no encontradas */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+    </AppTheme>
   );
-}
+};
 
 export default App;
