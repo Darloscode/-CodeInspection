@@ -11,6 +11,7 @@ import MenuContent from './MenuContent';
 import OptionsMenu from './OptionsMenu';
 import ColorModeToggle from '@shared-theme/ColorModeToggle';
 import ThemedLogo from '@shared-theme/ThemedLogo';
+import { getAuthenticatedUserName, getAuthenticatedUserEmail } from '@store';
 
 
 const drawerWidth = 240;
@@ -84,10 +85,10 @@ export default function SideMenu() {
         />
         <Box sx={{ mr: 'auto' }}>
           <Typography variant="body2" sx={{ fontWeight: 500, lineHeight: '16px' }}>
-            Riley Carter
+            {getAuthenticatedUserName()}
           </Typography>
           <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-            riley@email.com
+          {getAuthenticatedUserEmail()}
           </Typography>
         </Box>
         

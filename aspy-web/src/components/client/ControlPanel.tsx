@@ -12,6 +12,8 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import { useTheme } from "@mui/material";
+import { getAuthenticatedUserName, getAuthenticatedUserEmail } from '@store';
+
 
 import EditCalendarRoundedIcon from "@mui/icons-material/EditCalendarRounded";
 
@@ -97,7 +99,7 @@ export default function ControlPanel() {
             Bienvenid@ al Panel de Control, ASPY
           </Typography>
           <Typography variant="h3" className="h2-panel">
-            Estimado {nombre}
+            Estimado {getAuthenticatedUserName()}
           </Typography>
           <Typography variant="h3">Proximas citas:</Typography>
         </Grid>

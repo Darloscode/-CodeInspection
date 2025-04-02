@@ -20,6 +20,7 @@ export default defineConfig({
       '@shared': '/src/shared',
       '@types': '/src/types',
       '@hooks': '/src/hooks',
+      '@store': '/src/utils/store.ts',
     }
   }
 });
