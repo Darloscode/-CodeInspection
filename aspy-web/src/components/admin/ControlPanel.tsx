@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+/*import { ReactNode } from "react";*/
 
 import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
@@ -7,17 +7,14 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import CardActionArea from "@mui/material/CardActionArea";
-import Divider from "@mui/material/Divider";
+import { useTheme } from "@mui/material";
 
 import PersonAddAltRoundedIcon from "@mui/icons-material/PersonAddAltRounded";
 import MedicalServicesRoundedIcon from "@mui/icons-material/MedicalServicesRounded";
-import EditCalendarRoundedIcon from "@mui/icons-material/EditCalendarRounded";
 import PermContactCalendarRoundedIcon from "@mui/icons-material/PermContactCalendarRounded";
 
+/*
 type Datos = {
   nombre: string;
   citas: Cita[];
@@ -28,12 +25,13 @@ type Boton = {
   texto: string;
   icono: ReactNode;
   accion: () => void;
-};
+};*/
 
-export default  function ControlPanel() {
-
+export default function ControlPanel() {
+  const theme = useTheme();
   const nombre = "Carlos Flores";
-
+  const themeClass =
+    theme.palette.mode === "dark" ? "dark-theme" : "light-theme";
   const botones = [
     {
       texto: "Agregar Profesional",
@@ -42,9 +40,7 @@ export default  function ControlPanel() {
     },
     {
       texto: "Agregar Paciente",
-      icono: (
-        <PermContactCalendarRoundedIcon className="boton-panelcontrol" />
-      ),
+      icono: <PermContactCalendarRoundedIcon className="boton-panelcontrol" />,
       accion: () => console.log("Agregar Paciente"),
     },
     {
@@ -55,17 +51,20 @@ export default  function ControlPanel() {
   ];
 
   return (
-    <Box className="box-panel-control">
+    <Box className="box-panel-control" 
+    sx ={{padding: 2,}}>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }}>
-        <Grid size={12}>
-          <h1>Bienvenid@ al Panel de Control, ASPY</h1>
-          <h2>
+        <Grid size={12} sx ={{padding: 5}}>
+          <Typography variant="h3" className="h1-panel">
+            Bienvenid@ al Panel de Control, ASPY
+          </Typography>
+          <Typography variant="h3" className="h2-panel">
             Administrador {nombre}
-          </h2>
+          </Typography>
         </Grid>
 
         <Grid size={4} className="gird-botones-citas">
-          <List>
+          <List className={themeClass}>
             {botones.map((boton, index) => (
               <ListItem key={index} disablePadding className="li-botones-citas">
                 <ListItemButton
@@ -88,4 +87,3 @@ export default  function ControlPanel() {
     </Box>
   );
 }
-
