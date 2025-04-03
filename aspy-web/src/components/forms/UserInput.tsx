@@ -33,6 +33,7 @@ function UserInput(props: { label: string; key: string; type: string; id: string
         type={props.type}
         variant="outlined"
         size="small"
+        className="w-full md:w-[350px]"
         {...register(props.id, props.validation)}
       />
     </div>

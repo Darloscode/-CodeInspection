@@ -77,10 +77,10 @@ function UserForm(props: { isEditMode?: boolean; userId?: string }) {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={(e) => e.preventDefault()} noValidate>
-        <div>
+      <form  className="flex flex-col w-full h-full p-6" onSubmit={(e) => e.preventDefault()} noValidate>
+        <div className="items-center justify-center">
           <h1>Nuevo Usuario</h1>
-          <div className="grid grid-cols-2 gap-10">{list_inputs}</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">{list_inputs}</div>
         </div>
         <div className="gap-10 mt-4 flex flex-row justify-start">
           <CancelButton onClick={onClickCancel} />
