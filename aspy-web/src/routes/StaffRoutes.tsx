@@ -4,6 +4,7 @@ import AppointmentCreation from "@components/AppointmentCreation";
 import ProffesionalList from "@staff/ProffesionalList";
 import ClientList from "@staff/ClientList";
 import InvoiceList from "@staff/InvoiceList";
+import UserForm from "@/components/forms/UserForm";
 
 export const StaffRoutes = [
   { path: "/", element: <ControlPanel /> },
@@ -13,6 +14,8 @@ export const StaffRoutes = [
   { path: "/pacientes", element: <ClientList /> },
   { path: "/facturas", element: <InvoiceList /> },
   { path: "/facturas/2", element: <InvoiceList /> },
+  { path: "/crear-usuario", element: <UserForm /> },
+
 
 
 

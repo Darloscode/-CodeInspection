@@ -5,7 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import { findInputError } from "../../utils/findInputError";
 import { isFormInvalid } from "../../utils/isFormInvalid";
 
-function UserInput(props: { label: string; key: string; type: string; id: string }) {
+function UserInput(props: { label: string; key: string; type: string; id: string; validation: object }) {
   const {
     register,
     formState: { errors },
@@ -33,12 +33,7 @@ function UserInput(props: { label: string; key: string; type: string; id: string
         type={props.type}
         variant="outlined"
         size="small"
-        {...register(props.id, {
-          required: {
-            value: true,
-            message: "Campo requerido",
-          },
-        })}
+        {...register(props.id, props.validation)}
       />
     </div>
   );

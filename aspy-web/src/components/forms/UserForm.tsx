@@ -58,7 +58,10 @@ function UserForm(props: { isEditMode?: boolean; userId?: string }) {
       key={input.key}
       type={input.type}
       id={input.key}
-    />
+      validation={input.key === "confirm_password" ? {
+        ...input.validation,
+        validate: (value: string) => value === methods.getValues("password") || "Las contraseñas no coinciden",
+      } : input.validation}    />
   ));
 
   // TODO in a diff file
