@@ -1,10 +1,10 @@
-function CreationButton({ onClick }: { onClick: () => void }) {
+function CreationButton({ onClick, text }: { onClick: () => void; text: string }) {
   return (
     <button
       onClick={onClick}
-      className="bg-gray-100 text-gray-700 hover:bg-gray-300 hover:text-gray-900 w-[140px] py-2 rounded"
+      className="bg-gray-100 text-gray-700 hover:bg-gray-300 hover:text-gray-900 min-w-[140px] w-auto py-2  rounded "
     >
-      Crear
+      {text}
     </button>
   );
 }

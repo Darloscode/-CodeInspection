@@ -6,6 +6,7 @@ import ClientList from "@staff/ClientList";
 import InvoiceList from "@staff/InvoiceList";
 import UserForm from "@/components/forms/UserForm";
 import ServiceForm from "@/components/forms/ServiceForm";
+import ReceiptRevisionPage from "../pages/ReceiptRevisionPage"; // Adjust the path as needed
 
 export const StaffRoutes = [
   { path: "/", element: <ControlPanel /> },
@@ -17,9 +18,5 @@ export const StaffRoutes = [
   { path: "/facturas/2", element: <InvoiceList /> },
   { path: "/crear-usuario", element: <UserForm /> },
   { path: "/crear-servicio", element: <ServiceForm /> },
-
-
-
-
-
+  { path: "/revision-comprobante", element: <ReceiptRevisionPage /> },
 ];

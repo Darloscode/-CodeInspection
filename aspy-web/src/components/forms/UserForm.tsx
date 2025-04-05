@@ -84,7 +84,7 @@ function UserForm(props: { isEditMode?: boolean; userId?: string }) {
         </div>
         <div className="gap-10 mt-4 flex flex-row justify-start">
           <CancelButton onClick={onClickCancel} />
-          <CreationButton onClick={onClickCreate} />
+          <CreationButton onClick={onClickCreate} text="Crear" />
         </div>
       </form>
     </FormProvider>
