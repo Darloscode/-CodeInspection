@@ -5,15 +5,15 @@ import { FileData } from "@/types/FileData";
 
 function FileItem(data: FileData) {
   return (
-    <div className="flex flex-row gap-2 mt-4 justify-center align-center">
+    <div className="flex flex-row gap-2">
       <PictureAsPdfIcon className="text-red-700" />
       <div>
-        <h1 className="font-kumbh text-primaryAspy font-semibold text-base">
+        <p className="font-kumbh text-primaryAspy font-semibold text-base">
           {data.name}
-        </h1>
-        <h2 className="font-kumbh text-secondaryAspy text-sm">
+        </p>
+        <p className="font-kumbh text-secondaryAspy text-sm">
           {data.lastModified} 
-        </h2>
+        </p>
       </div>
       <a href="{data.fileUrl}">
         <span className="sr-only">Download file</span>

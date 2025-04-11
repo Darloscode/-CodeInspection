@@ -27,7 +27,7 @@ function UploadButton({ onFileSelected }: UploadButtonProps) {
     onFileSelected?.(fileData); // Envía todo al padre
   };
   return (
-    <div>
+    <div className="m-2 p-2">
       <input
         ref={fileInputRef}
         id="fileInput"

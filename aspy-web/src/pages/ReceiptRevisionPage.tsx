@@ -35,20 +35,20 @@ function ReceiptRevisionPage() {
   //TODO SAVE THE FILE
   return (
     <div>
-      <div className="">
-        <h1>Pendiente de revisión</h1>
+      <div className="m-4">
+        <h1 className="font-kumbh text-primaryAspy font-semibold text-base">Pendiente de revisión</h1>
         <ReceiptRevision pagoData={pagoData} />
       </div>
-      <div>
+      <div className="m-4">
         <h1 className="font-kumbh text-primaryAspy font-semibold text-base">
           Subir factura
         </h1>
         <h2 className="font-kumbh text-secondaryAspy text-sm">
-          Solo se acepta PDF, documento de respaldo de compra efectiva
+          Solo se acepta PDF, documento de respaldo de pago efectivo
         </h2>
         <UploadButton onFileSelected={handleFileSelected}/>
+        {archivoSeleccionado && <FileItem name={archivoSeleccionado.name} file={archivoSeleccionado.file} lastModified={archivoSeleccionado.lastModified}/>}
       </div>
-      {archivoSeleccionado && <FileItem name={archivoSeleccionado.name} file={archivoSeleccionado.file} lastModified={archivoSeleccionado.lastModified}/>}
       <div className="flex flex-row gap-4">
         <CancelButton onClick={() => alert("Cancel button clicked!")} />
         <CreationButton onClick={onClick} text="Aprobar comprobante" />
