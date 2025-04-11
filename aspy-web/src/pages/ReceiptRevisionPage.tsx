@@ -36,7 +36,9 @@ function ReceiptRevisionPage() {
   return (
     <div>
       <div className="m-4">
-        <h1 className="font-kumbh text-primaryAspy font-semibold text-base">Pendiente de revisión</h1>
+        <h1 className="font-kumbh text-primaryAspy font-semibold text-base">
+          Pendiente de revisión
+        </h1>
         <ReceiptRevision pagoData={pagoData} />
       </div>
       <div className="m-4">
@@ -46,8 +48,18 @@ function ReceiptRevisionPage() {
         <h2 className="font-kumbh text-secondaryAspy text-sm">
           Solo se acepta PDF, documento de respaldo de pago efectivo
         </h2>
-        <UploadButton onFileSelected={handleFileSelected}/>
-        {archivoSeleccionado && <FileItem name={archivoSeleccionado.name} file={archivoSeleccionado.file} lastModified={archivoSeleccionado.lastModified}/>}
+        <UploadButton
+          onFileSelected={handleFileSelected}
+          accept="application/pdf"
+          label="Subir documento"
+        />
+        {archivoSeleccionado && (
+          <FileItem
+            name={archivoSeleccionado.name}
+            file={archivoSeleccionado.file}
+            lastModified={archivoSeleccionado.lastModified}
+          />
+        )}
       </div>
       <div className="flex flex-row gap-4">
         <CancelButton onClick={() => alert("Cancel button clicked!")} />
