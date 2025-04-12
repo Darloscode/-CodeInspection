@@ -3,6 +3,12 @@
 @tailwind components;
 @tailwind base;
 
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -90,21 +96,28 @@ p {
   color: black;
 }*/
 
+.h3-panel {
+  text-align: left;
+}
+
 .h1-panel {
   text-align: center;
+  margin-top: 3% !important;
 }
+
 .h2-panel {
   text-align: center;
+  margin-top: 1% !important;
+  margin-bottom: 2% !important;
 }
+
 .class_id {
-  color: #424242;
   text-align: center;
   font-weight: 500;
 }
 
 .class_nombres {
-  color: #1a1a1a;
-  font-weight: bold;
+  font-weight: bold !important;
   text-align: center;
   margin-bottom: 0px;
 }
@@ -116,6 +129,7 @@ p {
 }
 
 .class_sobremi {
+  font-weight: bold !important;
   margin-bottom: 0px;
   font-weight: 600;
 }
@@ -135,22 +149,22 @@ p {
 }
 
 .class_edad_titulo {
+  font-weight: bold !important;
   font-weight: 600;
   margin-bottom: 0px;
 }
 
 .class_genero_titulo {
+  font-weight: bold !important;
   text-align: right;
   font-weight: 600;
   margin-bottom: 0px;
 }
 
+/* Panel de Control */
 .box-panel-control {
   width: 100%;
-}
-
-.boton-panelcontrol {
-  color: #13296a;
+  height: 100%;
 }
 
 .light-theme .boton-panelcontrol {
@@ -178,6 +192,7 @@ p {
 }
 
 .typography-citas {
+  text-align: left;
   font-weight: bold !important;
   margin-bottom: 2% !important;
   margin-left: 2% !important;
@@ -187,8 +202,10 @@ p {
   height: 100%;
 }
 
-.divider-citas {
+.divider-citas,
+.divider-pacientes {
   border: 1px solid !important;
+  margin-bottom: 2% !important;
 }
 
 .grid-citas-fecha {
@@ -198,6 +215,7 @@ p {
 
 .p-citas {
   margin: 0px;
+  text-align: left;
 }
 
 .grid-botones-citas {
@@ -238,4 +256,339 @@ p {
 
 .light-theme .li-item-texto {
   color: rgb(0, 0, 0);
+}
+
+/*Profesional*/
+.h3-patients {
+  text-align: center;
+  margin-top: 1% !important;
+  margin-bottom: 2% !important;
+}
+
+.box-p-patients {
+  width: 100%;
+  height: 100%;
+}
+
+.box-p-citas {
+  width: 100%;
+}
+
+/* Estilos personalizados para el DataGrid */
+.data-grid-custom {
+  border: 1px solid;
+}
+
+.light-theme .data-grid-custom .MuiDataGrid-row:nth-of-type(odd) {
+  background-color: #e3f2fd;
+}
+
+.light-theme .data-grid-custom .MuiDataGrid-row:nth-of-type(even) {
+  background-color: #ffffff;
+}
+
+.light-theme .data-grid-custom .Mui-selected {
+  background-color: #509cdb !important;
+  color: white !important;
+}
+
+.dark-theme .data-grid-custom .MuiDataGrid-row:nth-of-type(odd) {
+  background-color: #313131;
+}
+
+.dark-theme.data-grid-custom .MuiDataGrid-row:nth-of-type(even) {
+  background-color: #ffffff;
+}
+
+.dark-theme .data-grid-custom .Mui-selected {
+  background-color: #b2c7d7 !important;
+  color: rgb(0, 0, 0) !important;
+}
+
+.light-theme .button-info {
+  border: 0px !important;
+  background-color: #dee7f7 !important;
+  width: 80%;
+  outline: none !important;
+}
+
+.light-theme .button-info:hover {
+  background-color: #8796ae !important;
+}
+
+.light-theme .icon-info {
+  color: #1c3b96;
+}
+
+.dark-theme .button-info {
+  border: 0px !important;
+  background-color: #1c3b96 !important;
+  width: 80%;
+  outline: none !important;
+}
+
+.dark-theme .button-info:hover {
+  background-color: #324a71 !important;
+}
+
+.dark-theme .icon-info {
+  color: #dee7f7;
+}
+
+.divider-paciente-historial {
+  border: 1px solid !important;
+  margin-bottom: 2% !important;
+  margin-top: 1% !important;
+}
+
+.contenedor {
+  display: grid;
+  align-items: end;
+  border: 0px solid #ccc;
+}
+
+.contenedor-overview {
+  width: 100%;
+  margin-left: 0%;
+}
+
+.divider-overview-paciente {
+  width: 100%;
+  border: 1px solid !important;
+}
+
+.grid-button-overview {
+  text-align: center;
+}
+
+.light-theme .button-new-report {
+  background-color: #152259 !important;
+  color: white !important;
+  width: 70%;
+  outline: none !important;
+}
+
+.dark-theme .button-new-report {
+  background-color: #c6c9d7 !important;
+  color: black !important;
+  width: 70%;
+  outline: none !important;
+}
+
+.light-theme .button-ver-detalles {
+  color: #509cdb !important;
+  border-color: #509cdb !important;
+  outline: none !important;
+}
+
+.dark-theme .button-ver-detalles {
+  color: white !important;
+  border-color: white !important;
+  outline: none !important;
+}
+
+.dark-theme .button-ver-detalles:hover {
+  background-color: #343436 !important;
+}
+
+.MuiTimelineDot-root {
+  background-color: #509cdb !important;
+}
+
+.MuiTimelineConnector-root {
+  background-color: black !important;
+}
+
+.dark-theme .MuiTimelineConnector-root {
+  background-color: white !important;
+}
+
+.cerrar {
+  width: 60%;
+  background-color: white !important;
+  color: #2d88d4 !important;
+  border-color: #2d88d4 !important;
+  outline: none !important;
+}
+
+.guardar {
+  width: 60%;
+  background-color: #2d88d4 !important;
+  color: white !important;
+  outline: none !important;
+}
+
+.grid-botones-anadir {
+  margin-top: 3%;
+}
+
+.grid-logo {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.grid-empresa {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.negrita {
+  font-weight: bold !important;
+}
+
+.divider-report {
+  margin-top: 2% !important;
+  margin-bottom: 2% !important;
+  border: 1px solid !important;
+}
+
+.typo-report {
+  font-weight: bold !important;
+  margin-bottom: 5% !important;
+}
+
+.grid-detalles {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*Calendario*/
+/* Claro */
+.light-theme .css-onh7xc-MuiPaper-root {
+  background-color: #f1f1f1 !important;
+}
+/* Semana */
+.css-10vrmbu {
+  margin-top: 5px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.css-10vrmbu .rs__cell {
+  color: white;
+  background-color: #152259 !important;
+  border: none !important;
+}
+
+.css-13jcbao {
+  margin-top: 5px;
+  border: 0px solid black !important;
+  border-radius: 10px;
+}
+
+.css-13jcbao .rs__cell {
+  border: 0px solid black !important;
+}
+
+/*Mes*/
+.css-bkcy1h {
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+.MuiTypography-root.MuiTypography-body2.MuiTypography-alignCenter.rs__cell.rs__header.rs__header__center.css-1bvhhcn-MuiTypography-root {
+  background-color: #152259 !important;
+  border: none;
+  color: white;
+}
+
+.css-152flay {
+  margin-top: 5px;
+  border: 1px solid hsl(220, 20%, 80%) !important;
+  border-radius: 8px;
+}
+
+/*Dia*/
+.css-12aktbw {
+  margin-top: 5px;
+}
+
+.css-1xs1f4s {
+  border-radius: 8px;
+}
+
+.css-1xs1f4s .rs__cell {
+  background-color: #152259 !important;
+  border: none !important;
+  text-align: center;
+}
+
+.css-1czauyl {
+  margin-top: 5px;
+  border: 1px solid hsl(220, 20%, 80%) !important;
+  border-radius: 8px;
+}
+
+/*Oscuro*/
+.css-onh7xc-MuiPaper-root {
+  background-color: #181919 !important;
+}
+/*Semana*/
+.css-qeli4d {
+  margin-top: 5px;
+  border-radius: 8px;
+  text-align: center;
+  border-color: black !important;
+}
+
+.css-qeli4d .rs__cell {
+  color: white;
+  background-color: #10172a !important;
+  border: none !important;
+}
+
+.css-47nvf8 {
+  margin-top: 5px;
+  border: 0px solid black !important;
+  border-radius: 10px;
+}
+
+.css-47nvf8 .rs__cell {
+  border: 0px solid black !important;
+}
+
+/*Mes*/
+.css-1gwdr4p {
+  border-radius: 8px !important;
+  margin-top: 5px !important;
+  border-color: black !important;
+}
+
+.dark-theme
+  .MuiTypography-root.MuiTypography-body2.MuiTypography-alignCenter.rs__cell.rs__header.rs__header__center.css-1bvhhcn-MuiTypography-root {
+  background-color: #10172a !important;
+  border: none !important;
+  color: white !important;
+}
+
+.css-15o5vin {
+  margin-top: 5px !important;
+  border: 1px solid hsl(0, 0%, 100%) !important;
+  border-radius: 8px !important;
+}
+
+/*Dia*/
+.css-12aktbw {
+  margin-top: 5px;
+}
+
+.css-hr6g5a {
+  border-radius: 8px;
+  border-color: black !important;
+}
+
+.css-hr6g5a .rs__cell {
+  background-color: #10172a !important;
+  border: none !important;
+  text-align: center;
+}
+
+.css-15beo7e {
+  margin-top: 5px;
+  border: 1px solid white !important;
+  border-radius: 8px;
 }

@@ -102,16 +102,18 @@ export default function ControlPanel() {
   ];
 
   return (
-    <Box className="box-panel-control" sx ={{padding: 2}}>
+    <Box className="box-panel-control" sx={{ padding: 2 }}>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }}>
-        <Grid size={12} sx ={{padding: 5}}>
+        <Grid size={12} sx={{ padding: 0 }}>
           <Typography variant="h3" className="h1-panel">
             Bienvenid@ al Panel de Control, ASPY
           </Typography>
           <Typography variant="h3" className="h2-panel">
             Dr. {nombre}
           </Typography>
-          <Typography variant="h3">Proximas citas:</Typography>
+          <Typography variant="body1" className="h3-panel">
+            Proximas citas:
+          </Typography>
         </Grid>
 
         <Grid size={8}>
