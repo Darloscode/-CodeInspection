@@ -1,15 +1,14 @@
-import React from 'react';
-import { useColorScheme } from '@mui/material/styles';
+import React from "react";
+import { useColorScheme } from "@mui/material/styles";
+// Define las imágenes para los modos light y dark
+import LightImage from "../assets/logo mediano.png";
+import DarkImage from "../assets/logo aspy negativo mediano.png";
 
 const ThemedLogo = () => {
   const { mode } = useColorScheme();
 
-  // Define las imágenes para los modos light y dark
-  const lightImage = 'src/assets/logo mediano.png';
-  const darkImage = 'src/assets/logo aspy negativo mediano.png';
-
   // Selecciona la imagen según el modo actual
-  const imageSrc = mode === 'light' ? lightImage : darkImage;
+  const imageSrc = mode === "light" ? LightImage : DarkImage;
 
   return (
     <img

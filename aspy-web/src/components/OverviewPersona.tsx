@@ -1,28 +1,25 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
-import Data from "@types/Data";
+import { User } from "../types/User";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import InfoIcon from "@mui/icons-material/Info";
 
 interface OverviewPersonaProps {
-  selectedData: Data;
+  selectedData: User;
+  moreInfo: () => void;
 }
 
-function Overview_persona({ selectedData }: OverviewPersonaProps) {
-  const { id, nombre, foto, apellido, titulo, descripcion, edad, genero } =
-    selectedData;
+function Overview_persona({ selectedData, moreInfo }: OverviewPersonaProps) {
   return (
-    <Box
-      sx={{
-        width: "80%",
-        marginLeft: "0%",
-      }}
-    >
-      <Grid container rowSpacing={0} columnSpacing={{ xs: 1, sm: 1, md: 1 }}>
+    <Box className="contenedor-overview">
+      <Grid container rowSpacing={6} columnSpacing={{ xs: 1, sm: 1, md: 1 }}>
         <Grid size={12}>
-          <p className="class_id">{id}</p>
+          <Typography variant="body1" className="class_id">
+            {selectedData.id}
+          </Typography>
         </Grid>
         <Grid
           size={12}
@@ -34,17 +31,19 @@ function Overview_persona({ selectedData }: OverviewPersonaProps) {
         >
           <Avatar
             alt="Foto de perfil"
-            src={foto}
+            src={selectedData.image}
             sx={{ width: 150, height: 150 }}
           />
         </Grid>
         <Grid size={12}>
-          <p className="class_nombres">
-            {nombre} {apellido}
-          </p>
+          <Typography variant="body1" className="class_nombres">
+            {selectedData.firstName} {selectedData.lastName}
+          </Typography>
         </Grid>
         <Grid size={12}>
-          <p className="class_titulo">{titulo}</p>
+          <Typography variant="body1" className="class_titulo">
+            {selectedData.rol}
+          </Typography>
         </Grid>
         <Grid
           size={12}
@@ -55,33 +54,26 @@ function Overview_persona({ selectedData }: OverviewPersonaProps) {
           }}
         >
           <Button
-            variant="contained"
-            onClick={() => console.log("AGREGAR ACCIÓN")}
-            sx={{
-              borderRadius: "10px",
-              padding: "2%",
-              backgroundColor: "#EFF3FA",
-              color: "#4f4f4f",
-            }}
+            variant="outlined"
+            onClick={moreInfo}
+            className="button-info"
+            startIcon={<InfoIcon className="icon-info" />}
           >
-            <EditOutlinedIcon
-              sx={{
-                color: "#13296A",
-                backgroundColor: "#EFF3FA",
-                borderRadius: "25%",
-                padding: "3%",
-              }}
-            />
+            Información
           </Button>
         </Grid>
         <Grid size={12}>
           <Box sx={{ width: "100%" }}>
             <Grid container spacing={0}>
               <Grid size={12}>
-                <p className="class_sobremi">Sobre mi</p>
+                <Typography variant="body1" className="class_sobremi">
+                  Sobre mi
+                </Typography>
               </Grid>
               <Grid size={12} sx={{ width: "100%" }}>
-                <p className="class_descripcion">{descripcion}</p>
+                <Typography variant="body1" className="class_descripcion">
+                  {selectedData.aboutme}
+                </Typography>
               </Grid>
             </Grid>
           </Box>
@@ -93,10 +85,14 @@ function Overview_persona({ selectedData }: OverviewPersonaProps) {
                 <Box sx={{ width: "100%" }}>
                   <Grid container spacing={0}>
                     <Grid size={12}>
-                      <p className="class_edad_titulo">Edad</p>
+                      <Typography variant="body1" className="class_edad_titulo">
+                        Edad
+                      </Typography>
                     </Grid>
                     <Grid size={12}>
-                      <p className="class_edad">{edad}</p>
+                      <Typography variant="body1" className="class_edad">
+                        {selectedData.age}
+                      </Typography>
                     </Grid>
                   </Grid>
                 </Box>
@@ -105,10 +101,17 @@ function Overview_persona({ selectedData }: OverviewPersonaProps) {
                 <Box sx={{ width: "100%" }}>
                   <Grid container spacing={0}>
                     <Grid size={12}>
-                      <p className="class_genero_titulo">Género</p>
+                      <Typography
+                        variant="body1"
+                        className="class_genero_titulo"
+                      >
+                        Género
+                      </Typography>
                     </Grid>
                     <Grid size={12}>
-                      <p className="class_genero">{genero}</p>
+                      <Typography variant="body1" className="class_genero">
+                        {selectedData.gender}
+                      </Typography>
                     </Grid>
                   </Grid>
                 </Box>
