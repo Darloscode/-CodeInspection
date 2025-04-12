@@ -4,6 +4,7 @@ import AppointmentCreation from "@components/AppointmentCreation";
 import ProffesionalList from "@staff/ProffesionalList";
 import ClientList from "@staff/ClientList";
 import InvoiceList from "@staff/InvoiceList";
+import Agenda from "@components/Agenda";
 
 export const StaffRoutes = [
   { path: "/", element: <ControlPanel /> },
@@ -12,7 +13,7 @@ export const StaffRoutes = [
   { path: "/profesionales", element: <ProffesionalList /> },
   { path: "/pacientes", element: <ClientList /> },
   { path: "/facturas", element: <InvoiceList /> },
-  { path: "/facturas/2", element: <InvoiceList /> },
+  { path: "/agenda", element: <Agenda /> },
 
 
 
