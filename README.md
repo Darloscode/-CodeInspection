@@ -30,9 +30,30 @@ cd aspy
 # 2. Levantar los servicios con Docker
 docker-compose up -d --build
 
-# 3. Ingresar al contenedor PHP
+# 3. Ingresar al contenedor PHP (necesario para ejecutar comandos Artisan o Composer)
 docker-compose exec php bash
 ```
+
+---
+
+## 🧱 ¿Por qué usar el contenedor PHP?
+
+Laravel se ejecuta **dentro del contenedor PHP**, por eso debes usar:
+
+- `docker-compose exec php bash` para ingresar
+- `php artisan ...` desde ahí
+- `composer install`, `migrate`, `tinker`, etc. deben hacerse **dentro del contenedor**
+
+### Cuándo sí necesitas estar **dentro del contenedor**:
+- Para usar `php artisan`
+- Para instalar dependencias con `composer`
+- Para ejecutar seeders, migraciones, tinker
+- Para correr tests u otros comandos PHP
+
+### Cuándo puedes trabajar desde **tu máquina local**:
+- Editar archivos de código (Laravel, frontend)
+- Usar Git, VSCode, navegar en PgAdmin o el navegador web
+- Enviar requests con Postman o desde tu app React
 
 ---
 
@@ -69,11 +90,24 @@ php artisan migrate
 > - Email: `admin@admin.com`
 > - Password: `admin`
 
-Conexión en PgAdmin:
-- Host: `db`
-- Usuario: `postgres`
-- Contraseña: `postgres`
-- Base de datos: `laravel`
+---
+
+## 🛡 Conexión a PostgreSQL desde PgAdmin
+
+1. Ir a http://localhost:5050
+2. Iniciar sesión
+3. Registrar un nuevo servidor con:
+
+| Campo                  | Valor           |
+|------------------------|-----------------|
+| Nombre/Dirección       | Aspy-DB         |
+| Host name / address    | `db`            |
+| Puerto                 | `5432`          |
+| Base de datos          | `laravel`       |
+| Usuario                | `postgres`      |
+| Contraseña             | `postgres`      |
+
+> ⚠️ La base `postgres` es administrativa. Laravel usa `laravel`.
 
 ---
 
@@ -126,7 +160,25 @@ php artisan migrate
 
 ## 🔐 Rutas protegidas con Sanctum (API)
 
-### 1. Crear rutas en `routes/api.php`
+### 1. Instalar Sanctum
+
+```bash
+composer require laravel/sanctum
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate
+```
+
+### 2. Middleware en `app/Http/Kernel.php`
+
+```php
+'api' => [
+    \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+    'throttle:api',
+    \Illuminate\Routing\Middleware\SubstituteBindings::class,
+],
+```
+
+### 3. Crear rutas en `routes/api.php`
 
 ```php
 use App\Http\Controllers\AuthController;
@@ -136,35 +188,14 @@ Route::middleware('auth:sanctum')->get('/user', [AuthController::class, 'user'])
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
 ```
 
-### 2. Consume la ruta desde React o Postman
+### 4. Desde React o Postman
 
-Envía un `POST /api/login` con email y password.
+Envía un `POST /api/login` con email y password.  
+Luego usa el token recibido en las siguientes peticiones:
 
----
-
-## 🛡 Conexión a PostgreSQL desde PgAdmin
-
-### Paso a paso:
-
-1. Ir a http://localhost:5050
-2. Iniciar sesión con:
-   - Email: `admin@admin.com`
-   - Password: `admin`
-
-3. Registrar nuevo servidor con estos datos:
-
-| Campo                  | Valor           |
-|------------------------|-----------------|
-| Nombre/Dirección       | Laravel DB      |
-| Host name / address    | `db`            |
-| Puerto                 | `5432`          |
-| Base de datos          | `laravel`       |
-| Usuario                | `postgres`      |
-| Contraseña             | `postgres`      |
-
-> ⚠️ La base `postgres` es administrativa. Laravel usa `laravel`.
-
-Una vez conectado, explora `Schemas > public > Tables`.
+```
+Authorization: Bearer TU_TOKEN
+```
 
 ---
 
