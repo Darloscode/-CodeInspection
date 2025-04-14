@@ -21,7 +21,7 @@ function AddSign() {
           accept="image/*"
           label="Subir firma"
           icon={<UploadFile className="mr-2 text-blue-600" />}
-          buttonClassName="bg-white text-blue-600 border border-blue-600 hover:bg-blue-50"
+          buttonClassName="bg-white text-black border border-blue-600 hover:bg-blue-50"
           onFileSelected={(fileData) => setSignature(fileData)}
         />
         {signature && (
