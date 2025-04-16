@@ -6,7 +6,7 @@ function UploadButton({
   onFileSelected,
   accept = "application/pdf",
   label = "Subir archivo",
-  buttonClassName = "",
+  buttonClassName = "bg-black text-white font-bold py-2 px-4 rounded flex items-center",
   icon = <CloudUpload className="mr-2 w-5 h-5 text-white" />,
 }: UploadButtonProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -41,7 +41,7 @@ function UploadButton({
       <button
         onClick={handleButtonClick}
         type="button"
-        className={`bg-black text-white font-bold py-2 px-4 rounded flex items-center ${buttonClassName}`}
+        className={`${buttonClassName}`}
       >
         {icon}
         {label}
