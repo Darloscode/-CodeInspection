@@ -12,6 +12,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import { useTheme } from "@mui/material";
+import { getAuthenticatedUserName, getAuthenticatedUserEmail } from '@store';
 
 import MedicalServicesRoundedIcon from "@mui/icons-material/MedicalServicesRounded";
 import EventNoteRoundedIcon from "@mui/icons-material/EventNoteRounded";
@@ -102,16 +103,18 @@ export default function ControlPanel() {
   ];
 
   return (
-    <Box className="box-panel-control" sx ={{padding: 2}}>
+    <Box className="box-panel-control" sx={{ padding: 2 }}>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }}>
-        <Grid size={12} sx ={{padding: 5}}>
+        <Grid size={12} sx={{ padding: 0 }}>
           <Typography variant="h3" className="h1-panel">
             Bienvenid@ al Panel de Control, ASPY
           </Typography>
           <Typography variant="h3" className="h2-panel">
-            Dr. {nombre}
+            Dr. {getAuthenticatedUserName()}
           </Typography>
-          <Typography variant="h3">Proximas citas:</Typography>
+          <Typography variant="body1" className="h3-panel">
+            Proximas citas:
+          </Typography>
         </Grid>
 
         <Grid size={8}>

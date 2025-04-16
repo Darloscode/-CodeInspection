@@ -12,6 +12,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import { useTheme } from "@mui/material";
+import { getAuthenticatedUserName, getAuthenticatedUserEmail } from '@store';
 
 import PersonAddAltRoundedIcon from "@mui/icons-material/PersonAddAltRounded";
 import MedicalServicesRoundedIcon from "@mui/icons-material/MedicalServicesRounded";
@@ -114,7 +115,7 @@ export default function ControlPanel() {
             Bienvenid@ al Panel de Control, ASPY
           </Typography>
           <Typography variant="h3" className="h2-panel">
-            Secr. {nombre}
+            Secr. {getAuthenticatedUserName()}
           </Typography>
           <Typography variant="h3">Proximas citas:</Typography>
         </Grid>

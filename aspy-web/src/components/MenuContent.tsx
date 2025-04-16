@@ -19,8 +19,8 @@ import SwitchAccountRoundedIcon from "@mui/icons-material/SwitchAccountRounded";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import PaymentRoundedIcon from "@mui/icons-material/PaymentRounded";
 import ReceiptLongRoundedIcon from "@mui/icons-material/ReceiptLongRounded";
-import { getUserRole } from "@utils/auth";
 import { useNavigate } from "react-router-dom";
+import { getAuthenticatedUserRole } from "@store";
 
 type ListItem = {
   text: string;
@@ -81,7 +81,7 @@ const secondaryListItems = [
 
 export default function MenuContent() {
   const navigate = useNavigate();
-  const userRole = getUserRole();
+  const userRole = getAuthenticatedUserRole();
   let mainListItems: ListItem[];
 
   if (userRole === "admin") {

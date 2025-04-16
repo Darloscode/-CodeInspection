@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { getUserRole } from "@utils/auth";
+import { getAuthenticatedUserRole } from "@store";
 import { Routes } from "@routes/Routes";
 import AppTheme from "@shared-theme/AppTheme";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -19,7 +19,7 @@ const layouts = {
 
 const RoleBasedRoutes = () => {
     const xThemeComponents = {};
-  const role = getUserRole();
+  const role = getAuthenticatedUserRole();
   const Layout = layouts[role];
   const routes = Routes[role];
 

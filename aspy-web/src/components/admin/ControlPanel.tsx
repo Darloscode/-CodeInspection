@@ -9,6 +9,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material";
+import { getAuthenticatedUserName, getAuthenticatedUserEmail } from '@store';
 
 import PersonAddAltRoundedIcon from "@mui/icons-material/PersonAddAltRounded";
 import MedicalServicesRoundedIcon from "@mui/icons-material/MedicalServicesRounded";
@@ -59,7 +60,7 @@ export default function ControlPanel() {
             Bienvenid@ al Panel de Control, ASPY
           </Typography>
           <Typography variant="h3" className="h2-panel">
-            Administrador {nombre}
+            Administrador {getAuthenticatedUserName()}
           </Typography>
         </Grid>
 
