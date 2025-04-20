@@ -16,19 +16,17 @@ const pagoAPI = {
 
     createPago: (pagoData: {
         citaId: string;
-        monto: number;
-        servicio: string;
         metodoPago: string;
         fechaPago: string;
-        estado: string;
+        comprobante: string;
     }) =>
         axios.post(`${apiURL}/pagos`, pagoData),
 
-    updateEstado: (
-        id: string,
+    updateEstadoPago: (
+        idCita: string,
         estado: string,
     ) =>
-        axios.put(`${apiURL}/pagos/${id}`, { estado }),
+        axios.put(`${apiURL}/pagos/${idCita}`, { estado }),
 };
 
 export default pagoAPI;

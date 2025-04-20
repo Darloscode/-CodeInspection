@@ -17,6 +17,9 @@ const citaAPI = {
     getCitasByEstado: (estado: string) =>
         axios.get(`${apiURL}/citas?estado=${encodeURIComponent(estado)}`),
     
+    getHistoriaClinicaByPaciente: (id_paciente: string) =>
+        axios.get(`${apiURL}/citas/historiaClinica?paciente=${encodeURIComponent(id_paciente)}`),
+    
     createCita: (citaData: {
         cedulaPaciente: string;
         profesional: string;
@@ -27,6 +30,11 @@ const citaAPI = {
         horafin: string;
     }) =>
         axios.post(`${apiURL}/citas`, citaData),
+
+    //NO SE DEBE USAR AQUI SOLO ES PARA EL BACKEND
+    updateEstadoCita: (id: string, estado: string) =>
+    axios.put(`${apiURL}/citas/${id}`, { estado }),
+
 };
 
 export default citaAPI;
