@@ -21,6 +21,8 @@ export default defineConfig({
       '@types': '/src/types',
       '@hooks': '/src/hooks',
       '@store': '/src/utils/store.ts',
+      "@data": "/src/data",
+      "@forms": "/src/components/forms",
     }
   }
 });

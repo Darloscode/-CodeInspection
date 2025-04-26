@@ -6,6 +6,7 @@ export interface Cita {
   horainicio: string;
   horafin: string;
   doctor: User;
+  paciente: User;
   asistio: boolean;
   comentario?: string;
 }

@@ -36,7 +36,10 @@ const InvoiceView = (info: InvoiceData) => {
           <Table>
             <TableBody>
               <TableRow>
-                <TableCell colSpan={2} sx={{ fontWeight: "bold", backgroundColor: "#f5f5f5" }}>
+                <TableCell
+                  colSpan={2}
+                  sx={{ fontWeight: "bold", backgroundColor: "#f5f5f5" }}
+                >
                   Services
                 </TableCell>
               </TableRow>

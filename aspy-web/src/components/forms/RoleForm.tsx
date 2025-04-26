@@ -1,19 +1,21 @@
-import { inputServiceConfig } from "@/config/serviceFormConfig";
+import { roleFormConfig } from "@/config/roleFormConfig";
 //import { ServiceData } from "@/types/ServiceDataCreation";
 //import { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import UserInput from "./UserInput";
 import CancelButton from "../buttons/CancelButton";
-import { servicios } from "../../data/Servicios";
+import { roles } from "../../data/Roles";
 import SaveButton from "../buttons/SaveButton";
 import CreationButton from "../buttons/CreationButton";
 
-function ServiceForm(props: { isEditMode?: boolean; serviceId?: number }) {
+function RoleForm(props: { isEditMode?: boolean; roleId?: number }) {
   //const [serviceData, setServiceData] = useState<ServiceData | null>(null);
 
   //Estas dos lineas son solo para pruebas
-  const serviceData = servicios.find((u) => u.id === props.serviceId);
+  const roleData = roles.find((u) => u.id === props.roleId);
+  const nombresPermisos: string[] =
+    roleData?.permisos?.map((permiso) => permiso.nombre) ?? [];
 
   // Esto te lleva a la página anterior
   const navigate = useNavigate();
@@ -38,28 +40,19 @@ function ServiceForm(props: { isEditMode?: boolean; serviceId?: number }) {
 
   const methods = useForm({
     defaultValues: async () => {
-      if (props.isEditMode && serviceData) {
+      if (props.isEditMode && roleData) {
         return {
-          name: serviceData.nombre,
-          description: serviceData.descripcion,
-          price: serviceData.costo,
-          duracion: serviceData.duracion_minutos,
-          activo: serviceData.activo ? "Sí" : "No",
-          tipo: serviceData.tipo_servicio,
+          name: roleData.nombre,
         };
       } else {
         return {
           name: "",
-          description: "",
-          price: "",
-          duracion: "",
-          activo: "",
         };
       }
     },
   });
 
-  const list_inputs = inputServiceConfig.map((input) => (
+  const list_inputs = roleFormConfig.map((input) => (
     <UserInput
       label={input.label}
       key={input.key}
@@ -67,15 +60,7 @@ function ServiceForm(props: { isEditMode?: boolean; serviceId?: number }) {
       id={input.key}
       validation={input.validation}
       options={input.options}
-      default={
-        input.key === "activo"
-          ? serviceData?.activo
-            ? "Si"
-            : "No"
-          : input.key === "tipo"
-            ? serviceData?.tipo_servicio
-            : ""
-      }
+      defaultList={nombresPermisos}
     />
   ));
 
@@ -98,9 +83,7 @@ function ServiceForm(props: { isEditMode?: boolean; serviceId?: number }) {
         noValidate
       >
         <div className="items-center justify-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {list_inputs}
-          </div>
+          <div className="flex flex-col gap-10">{list_inputs}</div>
         </div>
         <div className="gap-10 mt-4 flex flex-row items-center justify-center">
           <CancelButton onClick={handleBack} />
@@ -116,4 +99,4 @@ function ServiceForm(props: { isEditMode?: boolean; serviceId?: number }) {
   );
 }
 
-export default ServiceForm;
+export default RoleForm;
