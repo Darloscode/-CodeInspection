@@ -17,8 +17,6 @@ import {
   GridRowSelectionModel,
 } from "@mui/x-data-grid";
 
-/*import { useNavigate, useLocation } from "react-router-dom";*/
-
 const columns: GridColDef[] = [
   {
     field: "identity",

@@ -17,6 +17,8 @@
       "@hooks/*": ["src/hooks/*"],
       "@types/*": ["src/types/*"],
       "@store": ["src/utils/store.ts"],
+      "@data/*": ["src/data/*"],
+      "@forms/*": ["src/components/forms/*"]
     },
 
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",

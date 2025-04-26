@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid2";
 import Typography from "@mui/material/Typography";
 import Agenda from "../Agenda";
 import { useTheme } from "@mui/material";
+import { citas } from "@/data/Citas";
 
 export default function Appointment() {
   const theme = useTheme();
@@ -24,7 +25,7 @@ export default function Appointment() {
           <Divider className="divider-pacientes"></Divider>
         </Grid>
         <Grid size={12} className={themeClass}>
-          <Agenda />
+          <Agenda citas={citas} />
         </Grid>
       </Grid>
     </Box>
