@@ -7,6 +7,19 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## How to run with docker
+
+You need to install docker & run the next command to boot up the server:
+
+```
+docker-compose up --build
+```
+
+In case of errors, do the following before running the previous command, you must have php & composer installed on your system:
+```
+composer clear-cache
+```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
