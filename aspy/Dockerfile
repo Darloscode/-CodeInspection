@@ -19,8 +19,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Establecer el directorio de trabajo
 WORKDIR /var/www
 
-# Copiar los archivos del proyecto
-COPY . .
 
 # Instalar dependencias PHP (Laravel)
 RUN composer install
