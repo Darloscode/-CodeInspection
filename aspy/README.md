@@ -20,6 +20,20 @@ In case of errors, do the following before running the previous command, you mus
 composer clear-cache
 ```
 
+## How to see UI API documentacion
+
+You need to have dev dependencies and run this command before booting the local server:
+
+```
+php artisan scribe:generate
+```
+
+after that you could boot the server and access this route
+
+```
+BASE_URL/docs
+```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

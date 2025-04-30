@@ -68,7 +68,7 @@ class CitasController extends Controller
 
     function updateCita(UpdateCitaRequestBody $request, $citaId){
         $validatedData = $request->validated();
-        
+
         return response()->json([
             'message' => 'Cita updated successfully',
             'data' => $validatedData
