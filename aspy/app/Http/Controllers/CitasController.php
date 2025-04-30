@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\createCitaRequestBody;
+use App\Http\Requests\UpdateCitaRequestBody;
 use Illuminate\Http\Request;
 
 /**
@@ -65,8 +66,13 @@ class CitasController extends Controller
         ], 201);
     }
 
-    function updateCita(Request $request){
-        return null;
+    function updateCita(UpdateCitaRequestBody $request, $citaId){
+        $validatedData = $request->validated();
+        
+        return response()->json([
+            'message' => 'Cita updated successfully',
+            'data' => $validatedData
+        ], 200);
     }
 
 }
