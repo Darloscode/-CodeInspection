@@ -2,17 +2,17 @@ import axios from 'axios';
 import apiURL from './apiConfig';
 
 const pagoAPI = {
-    getPagosByPaciente: (nombre: string) =>
-        axios.get(`${apiURL}/pagos?paciente=${encodeURIComponent(nombre)}`),
+    getPagosByPaciente: (id: string) =>
+        axios.get(`${apiURL}/pagos/paciente/${encodeURIComponent(id)}`),
 
     getPagoByCita: (citaId: string) =>
-        axios.get(`${apiURL}/pagos?citaId=${citaId}`),
+        axios.get(`${apiURL}/pagos/cita/${citaId}`),
 
     getPagosByEstado: (estado: string) =>
-        axios.get(`${apiURL}/pagos?estado=${encodeURIComponent(estado)}`),
+        axios.get(`${apiURL}/pagos/estado/${encodeURIComponent(estado)}`),
 
-    getPagosByServicio: (servicio: string) =>
-        axios.get(`${apiURL}/pagos?servicio=${encodeURIComponent(servicio)}`),
+    getPagosByServicio: (servicioId: string) =>
+        axios.get(`${apiURL}/pagos/servicio/${encodeURIComponent(servicioId)}`),
 
     createPago: (pagoData: {
         citaId: string;
