@@ -123,14 +123,14 @@ endpoints:
         name: id
         description: 'The ID of the cita.'
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: architecto
+      id: consequatur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -138,8 +138,11 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
-        content: '{"id":1,"nombre":"Cita 1","fecha":"2023-10-01","hora":"10:00 AM","paciente":"Juan Perez","doctor":"Dr. Smith"}'
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -173,14 +176,14 @@ endpoints:
         name: id
         description: 'The ID of the paciente.'
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: architecto
+      id: consequatur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -223,7 +226,7 @@ endpoints:
         name: fechaInicio
         description: ''
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -233,15 +236,15 @@ endpoints:
         name: fechaFin
         description: ''
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      fechaInicio: architecto
-      fechaFin: architecto
+      fechaInicio: consequatur
+      fechaFin: consequatur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -284,14 +287,14 @@ endpoints:
         name: profesionalId
         description: ''
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      profesionalId: architecto
+      profesionalId: consequatur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -334,14 +337,14 @@ endpoints:
         name: estado
         description: 'The estado.'
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      estado: architecto
+      estado: consequatur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -384,14 +387,14 @@ endpoints:
         name: pacienteId
         description: ''
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      pacienteId: architecto
+      pacienteId: consequatur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -438,7 +441,7 @@ endpoints:
         name: cedulaPaciente
         description: ''
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -448,7 +451,7 @@ endpoints:
         name: profesional
         description: ''
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -458,7 +461,7 @@ endpoints:
         name: servicio
         description: ''
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -468,7 +471,7 @@ endpoints:
         name: tipoConsulta
         description: ''
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -478,7 +481,7 @@ endpoints:
         name: fecha
         description: 'Must be a valid date.'
         required: true
-        example: '2025-05-01T17:59:34'
+        example: '2025-05-04T15:49:32'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -488,7 +491,7 @@ endpoints:
         name: horaInicio
         description: ''
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -498,20 +501,20 @@ endpoints:
         name: horaFin
         description: ''
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      cedulaPaciente: architecto
-      profesional: architecto
-      servicio: architecto
-      tipoConsulta: architecto
-      fecha: '2025-05-01T17:59:34'
-      horaInicio: architecto
-      horaFin: architecto
+      cedulaPaciente: consequatur
+      profesional: consequatur
+      servicio: consequatur
+      tipoConsulta: consequatur
+      fecha: '2025-05-04T15:49:32'
+      horaInicio: consequatur
+      horaFin: consequatur
     fileParameters: []
     responses: []
     responseFields: []
@@ -541,14 +544,14 @@ endpoints:
         name: id
         description: 'The ID of the cita.'
         required: true
-        example: architecto
-        type: string
+        example: 1
+        type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: architecto
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -556,7 +559,7 @@ endpoints:
         name: profesional
         description: ''
         required: false
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -566,7 +569,7 @@ endpoints:
         name: tipoConsulta
         description: ''
         required: false
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -576,7 +579,7 @@ endpoints:
         name: fecha
         description: 'Must be a valid date.'
         required: false
-        example: '2025-05-01T17:59:34'
+        example: '2025-05-04T15:49:32'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -586,7 +589,7 @@ endpoints:
         name: horaInicio
         description: ''
         required: false
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -596,18 +599,18 @@ endpoints:
         name: horaFin
         description: ''
         required: false
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: true
         custom: []
     cleanBodyParameters:
-      profesional: architecto
-      tipoConsulta: architecto
-      fecha: '2025-05-01T17:59:34'
-      horaInicio: architecto
-      horaFin: architecto
+      profesional: consequatur
+      tipoConsulta: consequatur
+      fecha: '2025-05-04T15:49:32'
+      horaInicio: consequatur
+      horaFin: consequatur
     fileParameters: []
     responses: []
     responseFields: []
@@ -637,14 +640,14 @@ endpoints:
         name: id
         description: 'The ID of the paciente.'
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: architecto
+      id: consequatur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -687,14 +690,14 @@ endpoints:
         name: citaId
         description: ''
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      citaId: architecto
+      citaId: consequatur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -737,14 +740,14 @@ endpoints:
         name: estado
         description: 'The estado.'
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      estado: architecto
+      estado: consequatur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -787,14 +790,14 @@ endpoints:
         name: servicioId
         description: ''
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      servicioId: architecto
+      servicioId: consequatur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -841,7 +844,7 @@ endpoints:
         name: citaId
         description: ''
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -851,7 +854,7 @@ endpoints:
         name: metodoPago
         description: ''
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -861,7 +864,7 @@ endpoints:
         name: fechaPago
         description: 'Must be a valid date.'
         required: true
-        example: '2025-05-01T17:59:34'
+        example: '2025-05-04T15:49:32'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -871,17 +874,17 @@ endpoints:
         name: comprobante
         description: ''
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      citaId: architecto
-      metodoPago: architecto
-      fechaPago: '2025-05-01T17:59:34'
-      comprobante: architecto
+      citaId: consequatur
+      metodoPago: consequatur
+      fechaPago: '2025-05-04T15:49:32'
+      comprobante: consequatur
     fileParameters: []
     responses: []
     responseFields: []
@@ -911,14 +914,14 @@ endpoints:
         name: id
         description: 'The ID of the pago.'
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: architecto
+      id: consequatur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -926,14 +929,14 @@ endpoints:
         name: estado
         description: ''
         required: true
-        example: architecto
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      estado: architecto
+      estado: consequatur
     fileParameters: []
     responses: []
     responseFields: []

@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var tryItOutBaseUrl = "http://localhost:8000";
+        var tryItOutBaseUrl = "http://localhost:8080";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -133,7 +133,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: May 1, 2025</li>
+        <li>Last updated: May 4, 2025</li>
     </ul>
 </div>
 
@@ -142,7 +142,7 @@
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost:8000</code>
+    <strong>Base URL</strong>: <code>http://localhost:8080</code>
 </aside>
 <pre><code>This documentation aims to provide all the information you need to work with our API.
 
@@ -169,14 +169,14 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/login" \
+    "http://localhost:8080/api/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/login"
+    "http://localhost:8080/api/login"
 );
 
 const headers = {
@@ -277,14 +277,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/user" \
+    --get "http://localhost:8080/api/user" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/user"
+    "http://localhost:8080/api/user"
 );
 
 const headers = {
@@ -401,14 +401,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/logout" \
+    "http://localhost:8080/api/logout" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/logout"
+    "http://localhost:8080/api/logout"
 );
 
 const headers = {
@@ -509,14 +509,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/citas/architecto" \
+    --get "http://localhost:8080/api/citas/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/citas/architecto"
+    "http://localhost:8080/api/citas/consequatur"
 );
 
 const headers = {
@@ -533,7 +533,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-citas--id-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -545,12 +545,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;id&quot;: 1,
-    &quot;nombre&quot;: &quot;Cita 1&quot;,
-    &quot;fecha&quot;: &quot;2023-10-01&quot;,
-    &quot;hora&quot;: &quot;10:00 AM&quot;,
-    &quot;paciente&quot;: &quot;Juan Perez&quot;,
-    &quot;doctor&quot;: &quot;Dr. Smith&quot;
+    &quot;message&quot;: &quot;Server Error&quot;
 }</code>
  </pre>
     </span>
@@ -630,10 +625,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-citas--id-"
-               value="architecto"
+               value="consequatur"
                data-component="url">
     <br>
-<p>The ID of the cita. Example: <code>architecto</code></p>
+<p>The ID of the cita. Example: <code>consequatur</code></p>
             </div>
                     </form>
 
@@ -650,14 +645,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/citas/paciente/architecto" \
+    --get "http://localhost:8080/api/citas/paciente/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/citas/paciente/architecto"
+    "http://localhost:8080/api/citas/paciente/consequatur"
 );
 
 const headers = {
@@ -764,10 +759,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-citas-paciente--id-"
-               value="architecto"
+               value="consequatur"
                data-component="url">
     <br>
-<p>The ID of the paciente. Example: <code>architecto</code></p>
+<p>The ID of the paciente. Example: <code>consequatur</code></p>
             </div>
                     </form>
 
@@ -784,14 +779,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/citas/entreFechas/architecto/architecto" \
+    --get "http://localhost:8080/api/citas/entreFechas/consequatur/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/citas/entreFechas/architecto/architecto"
+    "http://localhost:8080/api/citas/entreFechas/consequatur/consequatur"
 );
 
 const headers = {
@@ -898,10 +893,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fechaInicio"                data-endpoint="GETapi-citas-entreFechas--fechaInicio---fechaFin-"
-               value="architecto"
+               value="consequatur"
                data-component="url">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>fechaFin</code></b>&nbsp;&nbsp;
@@ -909,10 +904,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fechaFin"                data-endpoint="GETapi-citas-entreFechas--fechaInicio---fechaFin-"
-               value="architecto"
+               value="consequatur"
                data-component="url">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
             </div>
                     </form>
 
@@ -929,14 +924,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/citas/profesional/architecto" \
+    --get "http://localhost:8080/api/citas/profesional/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/citas/profesional/architecto"
+    "http://localhost:8080/api/citas/profesional/consequatur"
 );
 
 const headers = {
@@ -1043,10 +1038,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="profesionalId"                data-endpoint="GETapi-citas-profesional--profesionalId-"
-               value="architecto"
+               value="consequatur"
                data-component="url">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
             </div>
                     </form>
 
@@ -1063,14 +1058,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/citas/estado/architecto" \
+    --get "http://localhost:8080/api/citas/estado/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/citas/estado/architecto"
+    "http://localhost:8080/api/citas/estado/consequatur"
 );
 
 const headers = {
@@ -1177,10 +1172,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="estado"                data-endpoint="GETapi-citas-estado--estado-"
-               value="architecto"
+               value="consequatur"
                data-component="url">
     <br>
-<p>The estado. Example: <code>architecto</code></p>
+<p>The estado. Example: <code>consequatur</code></p>
             </div>
                     </form>
 
@@ -1197,14 +1192,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/historiaClinica/paciente/architecto" \
+    --get "http://localhost:8080/api/historiaClinica/paciente/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/historiaClinica/paciente/architecto"
+    "http://localhost:8080/api/historiaClinica/paciente/consequatur"
 );
 
 const headers = {
@@ -1311,10 +1306,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="pacienteId"                data-endpoint="GETapi-historiaClinica-paciente--pacienteId-"
-               value="architecto"
+               value="consequatur"
                data-component="url">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
             </div>
                     </form>
 
@@ -1331,24 +1326,24 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/citas" \
+    "http://localhost:8080/api/citas" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"cedulaPaciente\": \"architecto\",
-    \"profesional\": \"architecto\",
-    \"servicio\": \"architecto\",
-    \"tipoConsulta\": \"architecto\",
-    \"fecha\": \"2025-05-01T17:59:34\",
-    \"horaInicio\": \"architecto\",
-    \"horaFin\": \"architecto\"
+    \"cedulaPaciente\": \"consequatur\",
+    \"profesional\": \"consequatur\",
+    \"servicio\": \"consequatur\",
+    \"tipoConsulta\": \"consequatur\",
+    \"fecha\": \"2025-05-04T15:49:32\",
+    \"horaInicio\": \"consequatur\",
+    \"horaFin\": \"consequatur\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/citas"
+    "http://localhost:8080/api/citas"
 );
 
 const headers = {
@@ -1357,13 +1352,13 @@ const headers = {
 };
 
 let body = {
-    "cedulaPaciente": "architecto",
-    "profesional": "architecto",
-    "servicio": "architecto",
-    "tipoConsulta": "architecto",
-    "fecha": "2025-05-01T17:59:34",
-    "horaInicio": "architecto",
-    "horaFin": "architecto"
+    "cedulaPaciente": "consequatur",
+    "profesional": "consequatur",
+    "servicio": "consequatur",
+    "tipoConsulta": "consequatur",
+    "fecha": "2025-05-04T15:49:32",
+    "horaInicio": "consequatur",
+    "horaFin": "consequatur"
 };
 
 fetch(url, {
@@ -1452,10 +1447,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="cedulaPaciente"                data-endpoint="POSTapi-citas"
-               value="architecto"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>profesional</code></b>&nbsp;&nbsp;
@@ -1463,10 +1458,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="profesional"                data-endpoint="POSTapi-citas"
-               value="architecto"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>servicio</code></b>&nbsp;&nbsp;
@@ -1474,10 +1469,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="servicio"                data-endpoint="POSTapi-citas"
-               value="architecto"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>tipoConsulta</code></b>&nbsp;&nbsp;
@@ -1485,10 +1480,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="tipoConsulta"                data-endpoint="POSTapi-citas"
-               value="architecto"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fecha</code></b>&nbsp;&nbsp;
@@ -1496,10 +1491,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fecha"                data-endpoint="POSTapi-citas"
-               value="2025-05-01T17:59:34"
+               value="2025-05-04T15:49:32"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-05-01T17:59:34</code></p>
+<p>Must be a valid date. Example: <code>2025-05-04T15:49:32</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>horaInicio</code></b>&nbsp;&nbsp;
@@ -1507,10 +1502,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="horaInicio"                data-endpoint="POSTapi-citas"
-               value="architecto"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>horaFin</code></b>&nbsp;&nbsp;
@@ -1518,10 +1513,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="horaFin"                data-endpoint="POSTapi-citas"
-               value="architecto"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
         </form>
 
@@ -1538,22 +1533,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/citas/architecto" \
+    "http://localhost:8080/api/citas/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"profesional\": \"architecto\",
-    \"tipoConsulta\": \"architecto\",
-    \"fecha\": \"2025-05-01T17:59:34\",
-    \"horaInicio\": \"architecto\",
-    \"horaFin\": \"architecto\"
+    \"profesional\": \"consequatur\",
+    \"tipoConsulta\": \"consequatur\",
+    \"fecha\": \"2025-05-04T15:49:32\",
+    \"horaInicio\": \"consequatur\",
+    \"horaFin\": \"consequatur\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/citas/architecto"
+    "http://localhost:8080/api/citas/1"
 );
 
 const headers = {
@@ -1562,11 +1557,11 @@ const headers = {
 };
 
 let body = {
-    "profesional": "architecto",
-    "tipoConsulta": "architecto",
-    "fecha": "2025-05-01T17:59:34",
-    "horaInicio": "architecto",
-    "horaFin": "architecto"
+    "profesional": "consequatur",
+    "tipoConsulta": "consequatur",
+    "fecha": "2025-05-04T15:49:32",
+    "horaInicio": "consequatur",
+    "horaFin": "consequatur"
 };
 
 fetch(url, {
@@ -1651,14 +1646,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>integer</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="PUTapi-citas--id-"
-               value="architecto"
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="PUTapi-citas--id-"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the cita. Example: <code>architecto</code></p>
+<p>The ID of the cita. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -1667,10 +1662,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="profesional"                data-endpoint="PUTapi-citas--id-"
-               value="architecto"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>tipoConsulta</code></b>&nbsp;&nbsp;
@@ -1678,10 +1673,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="tipoConsulta"                data-endpoint="PUTapi-citas--id-"
-               value="architecto"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fecha</code></b>&nbsp;&nbsp;
@@ -1689,10 +1684,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="fecha"                data-endpoint="PUTapi-citas--id-"
-               value="2025-05-01T17:59:34"
+               value="2025-05-04T15:49:32"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-05-01T17:59:34</code></p>
+<p>Must be a valid date. Example: <code>2025-05-04T15:49:32</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>horaInicio</code></b>&nbsp;&nbsp;
@@ -1700,10 +1695,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="horaInicio"                data-endpoint="PUTapi-citas--id-"
-               value="architecto"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>horaFin</code></b>&nbsp;&nbsp;
@@ -1711,10 +1706,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="horaFin"                data-endpoint="PUTapi-citas--id-"
-               value="architecto"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
         </form>
 
@@ -1731,14 +1726,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/pagos/paciente/architecto" \
+    --get "http://localhost:8080/api/pagos/paciente/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/pagos/paciente/architecto"
+    "http://localhost:8080/api/pagos/paciente/consequatur"
 );
 
 const headers = {
@@ -1851,10 +1846,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-pagos-paciente--id-"
-               value="architecto"
+               value="consequatur"
                data-component="url">
     <br>
-<p>The ID of the paciente. Example: <code>architecto</code></p>
+<p>The ID of the paciente. Example: <code>consequatur</code></p>
             </div>
                     </form>
 
@@ -1871,14 +1866,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/pagos/cita/architecto" \
+    --get "http://localhost:8080/api/pagos/cita/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/pagos/cita/architecto"
+    "http://localhost:8080/api/pagos/cita/consequatur"
 );
 
 const headers = {
@@ -1985,10 +1980,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="citaId"                data-endpoint="GETapi-pagos-cita--citaId-"
-               value="architecto"
+               value="consequatur"
                data-component="url">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
             </div>
                     </form>
 
@@ -2005,14 +2000,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/pagos/estado/architecto" \
+    --get "http://localhost:8080/api/pagos/estado/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/pagos/estado/architecto"
+    "http://localhost:8080/api/pagos/estado/consequatur"
 );
 
 const headers = {
@@ -2119,10 +2114,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="estado"                data-endpoint="GETapi-pagos-estado--estado-"
-               value="architecto"
+               value="consequatur"
                data-component="url">
     <br>
-<p>The estado. Example: <code>architecto</code></p>
+<p>The estado. Example: <code>consequatur</code></p>
             </div>
                     </form>
 
@@ -2139,14 +2134,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/pagos/servicio/architecto" \
+    --get "http://localhost:8080/api/pagos/servicio/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/pagos/servicio/architecto"
+    "http://localhost:8080/api/pagos/servicio/consequatur"
 );
 
 const headers = {
@@ -2253,10 +2248,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="servicioId"                data-endpoint="GETapi-pagos-servicio--servicioId-"
-               value="architecto"
+               value="consequatur"
                data-component="url">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
             </div>
                     </form>
 
@@ -2273,21 +2268,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/pagos" \
+    "http://localhost:8080/api/pagos" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"citaId\": \"architecto\",
-    \"metodoPago\": \"architecto\",
-    \"fechaPago\": \"2025-05-01T17:59:34\",
-    \"comprobante\": \"architecto\"
+    \"citaId\": \"consequatur\",
+    \"metodoPago\": \"consequatur\",
+    \"fechaPago\": \"2025-05-04T15:49:32\",
+    \"comprobante\": \"consequatur\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/pagos"
+    "http://localhost:8080/api/pagos"
 );
 
 const headers = {
@@ -2296,10 +2291,10 @@ const headers = {
 };
 
 let body = {
-    "citaId": "architecto",
-    "metodoPago": "architecto",
-    "fechaPago": "2025-05-01T17:59:34",
-    "comprobante": "architecto"
+    "citaId": "consequatur",
+    "metodoPago": "consequatur",
+    "fechaPago": "2025-05-04T15:49:32",
+    "comprobante": "consequatur"
 };
 
 fetch(url, {
@@ -2388,10 +2383,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="citaId"                data-endpoint="POSTapi-pagos"
-               value="architecto"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>metodoPago</code></b>&nbsp;&nbsp;
@@ -2399,10 +2394,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="metodoPago"                data-endpoint="POSTapi-pagos"
-               value="architecto"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fechaPago</code></b>&nbsp;&nbsp;
@@ -2410,10 +2405,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fechaPago"                data-endpoint="POSTapi-pagos"
-               value="2025-05-01T17:59:34"
+               value="2025-05-04T15:49:32"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-05-01T17:59:34</code></p>
+<p>Must be a valid date. Example: <code>2025-05-04T15:49:32</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>comprobante</code></b>&nbsp;&nbsp;
@@ -2421,10 +2416,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="comprobante"                data-endpoint="POSTapi-pagos"
-               value="architecto"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
         </form>
 
@@ -2441,18 +2436,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/pagos/architecto" \
+    "http://localhost:8080/api/pagos/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"estado\": \"architecto\"
+    \"estado\": \"consequatur\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/pagos/architecto"
+    "http://localhost:8080/api/pagos/consequatur"
 );
 
 const headers = {
@@ -2461,7 +2456,7 @@ const headers = {
 };
 
 let body = {
-    "estado": "architecto"
+    "estado": "consequatur"
 };
 
 fetch(url, {
@@ -2550,10 +2545,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PUTapi-pagos--id-"
-               value="architecto"
+               value="consequatur"
                data-component="url">
     <br>
-<p>The ID of the pago. Example: <code>architecto</code></p>
+<p>The ID of the pago. Example: <code>consequatur</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -2562,10 +2557,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="estado"                data-endpoint="PUTapi-pagos--id-"
-               value="architecto"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
         </form>
 

@@ -15,20 +15,55 @@ You need to install docker & run the next command to boot up the server:
 docker-compose up --build
 ```
 
-In case of errors, do the following before running the previous command, you must have php & composer installed on your system:
+To delete the container & volumens
+
+```
+docker-compose down -v
+```
+
+In case you can't connect to the db, try this:
+
+```
+docker network inspect laravel
+docker exec -it aspy-pgadmin ping db
+```
+
+If doesn't ping, means there is no connection, TRY this (delete the folder data)
+```
+rmdir ../postgresql/data    
+```
+
+Reboot your containers
+```
+docker-compose down -v
+docker-compose up -d --build
+```
+
+Verify again the connection & try again doing in pdgadmin
+```
+docker network inspect laravel
+docker exec -it aspy-pgadmin ping db
+```
+
+In case of other errors, do the following inside your app cointainer, you must have php & composer installed on your system:
 ```
 composer clear-cache
 ```
 
 ## How to see UI API documentacion
 
-You need to have dev dependencies and run this command before booting the local server:
+You need to have dev dependencies and run this command after booting the local server & db (or docker compose file in case you use it):
 
+```
+docker exec -it aspy php artisan scribe:generate
+```
+
+in only use:
 ```
 php artisan scribe:generate
 ```
 
-after that you could boot the server and access this route
+To access docs use this route
 
 ```
 BASE_URL/docs

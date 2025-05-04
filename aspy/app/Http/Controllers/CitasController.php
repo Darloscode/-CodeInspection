@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\createCitaRequestBody;
 use App\Http\Requests\UpdateCitaRequestBody;
+use App\Services\CitaService;
 use Illuminate\Http\Request;
 
 /**
@@ -20,6 +21,15 @@ use Illuminate\Http\Request;
 
 class CitasController extends Controller
 {
+
+    protected CitaService $citaService;
+
+    public function __construct(CitaService $citaService)
+    {
+        $this->citaService = $citaService;
+    }
+
+
     function getCitaById($id){
         $data = [
             'id' => 1,
@@ -29,8 +39,8 @@ class CitasController extends Controller
             'paciente' => 'Juan Perez',
             'doctor' => 'Dr. Smith'
         ];
-    
-        return response()->json($data);
+        
+        return response()->json($this->citaService->getCitaById($id), 200);
     }
 
     function getCitasByPaciente($id){
