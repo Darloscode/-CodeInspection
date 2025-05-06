@@ -16,16 +16,16 @@ const reporteAPI = {
 
   //TODO VER QUE TAN NECESARIO ES TODO LO SIGUIENTE
   getReportesByPaciente: (nombre: string) =>
-    axios.get(`${apiURL}/reportes?paciente=${encodeURIComponent(nombre)}`),
+    axios.get(`${apiURL}/reportes/paciente/${encodeURIComponent(nombre)}`),
 
   getReportesEntreFechas: (fechaInicio: string, fechaFin: string) =>
     axios.get(
-      `${apiURL}/reportes?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`
+      `${apiURL}/reportes/entreFechas/${fechaInicio}/${fechaFin}`
     ),
 
   getReportesByProfesional: (profesional: string) =>
     axios.get(
-      `${apiURL}/reportes?profesional=${encodeURIComponent(profesional)}`
+      `${apiURL}/reportes/profesional/${encodeURIComponent(profesional)}`
     ),
 };
 

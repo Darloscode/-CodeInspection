@@ -485,7 +485,7 @@ endpoints:
         name: fecha
         description: 'Must be a valid date.'
         required: true
-        example: '2025-05-05T20:46:23'
+        example: '2025-05-05T21:40:34'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -516,7 +516,7 @@ endpoints:
       profesional: consequatur
       servicio: consequatur
       tipoConsulta: consequatur
-      fecha: '2025-05-05T20:46:23'
+      fecha: '2025-05-05T21:40:34'
       horaInicio: consequatur
       horaFin: consequatur
     fileParameters: []
@@ -583,7 +583,7 @@ endpoints:
         name: fecha
         description: 'Must be a valid date.'
         required: false
-        example: '2025-05-05T20:46:23'
+        example: '2025-05-05T21:40:34'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -612,7 +612,7 @@ endpoints:
     cleanBodyParameters:
       profesional: consequatur
       tipoConsulta: consequatur
-      fecha: '2025-05-05T20:46:23'
+      fecha: '2025-05-05T21:40:34'
       horaInicio: consequatur
       horaFin: consequatur
     fileParameters: []
@@ -877,7 +877,7 @@ endpoints:
         name: fechaPago
         description: 'Must be a valid date.'
         required: true
-        example: '2025-05-05T20:46:24'
+        example: '2025-05-05T21:40:35'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -896,7 +896,7 @@ endpoints:
     cleanBodyParameters:
       citaId: consequatur
       metodoPago: consequatur
-      fechaPago: '2025-05-05T20:46:24'
+      fechaPago: '2025-05-05T21:40:35'
       comprobante: consequatur
     fileParameters: []
     responses: []
@@ -927,14 +927,14 @@ endpoints:
         name: id
         description: 'The ID of the pago.'
         required: true
-        example: 17
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 17
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -952,6 +952,324 @@ endpoints:
       estado: consequatur
     fileParameters: []
     responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/reportes/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the reporte.'
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: consequatur
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"id":"consequatur","nombre":"Reporte consequatur","fecha":"2023-10-01","hora":"10:00 AM","paciente":"Juan Perez","doctor":"Dr. Smith"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/reportes
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      idPaciente:
+        name: idPaciente
+        description: ''
+        required: true
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      idProfesional:
+        name: idProfesional
+        description: ''
+        required: true
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      idCita:
+        name: idCita
+        description: ''
+        required: true
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      fecha:
+        name: fecha
+        description: 'Must be a valid date.'
+        required: true
+        example: '2025-05-05T21:40:35'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      hora:
+        name: hora
+        description: ''
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      comentario:
+        name: comentario
+        description: ''
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      firma:
+        name: firma
+        description: ''
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      idPaciente: 17
+      idProfesional: 17
+      idCita: 17
+      fecha: '2025-05-05T21:40:35'
+      hora: consequatur
+      comentario: consequatur
+      firma: consequatur
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/reportes/paciente/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the paciente.'
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: consequatur
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '[{"id":1,"nombre":"Reporte 1","fecha":"2023-10-01","hora":"10:00 AM","paciente":"Juan Perez","doctor":"Dr. Smith"},{"id":2,"nombre":"Reporte 2","fecha":"2023-10-02","hora":"11:00 AM","paciente":"Juan Perez","doctor":"Dr. Smith"}]'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/reportes/entreFechas/{fechaInicio}/{fechaFin}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      fechaInicio:
+        name: fechaInicio
+        description: ''
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      fechaFin:
+        name: fechaFin
+        description: ''
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      fechaInicio: consequatur
+      fechaFin: consequatur
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '[{"id":1,"nombre":"Reporte 1","fecha":"2023-10-01","hora":"10:00 AM","paciente":"Juan Perez","doctor":"Dr. Smith"},{"id":2,"nombre":"Reporte 2","fecha":"2023-10-02","hora":"11:00 AM","paciente":"Juan Perez","doctor":"Dr. Smith"}]'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/reportes/profesional/{profesionalId}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      profesionalId:
+        name: profesionalId
+        description: ''
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      profesionalId: consequatur
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '[{"id":1,"nombre":"Reporte 1","fecha":"2023-10-01","hora":"10:00 AM","paciente":"Juan Perez","doctor":"Dr. Smith"}]'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
     responseFields: []
     auth: []
     controller: null

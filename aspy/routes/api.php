@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CitasController;
 use App\Http\Controllers\PagoController;
+use App\Http\Controllers\ReporteController;
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->get('/user', [AuthController::class, 'user']);
@@ -24,3 +25,9 @@ Route::get('pagos/estado/{estado}', [PagoController::class, 'getPagosByEstado'])
 Route::get('pagos/servicio/{servicioId}', [PagoController::class, 'getPagosByServicio']);
 Route::post('pagos', [PagoController::class, 'createPago']);
 Route::put('pagos/{id}', [PagoController::class, 'updateEstadoPago']);
+
+Route::get('reportes/{id}', [ReporteController::class, 'getReporteById']);
+Route::post('reportes', [ReporteController::class, 'createReporte']);
+Route::get('reportes/paciente/{id}', [ReporteController::class, 'getReportesByPaciente']);
+Route::get('reportes/entreFechas/{fechaInicio}/{fechaFin}', [ReporteController::class, 'getReportesEntreFechas']);
+Route::get('reportes/profesional/{profesionalId}', [ReporteController::class, 'getReportesByProfesional']);
