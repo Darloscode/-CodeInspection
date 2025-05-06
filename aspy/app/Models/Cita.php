@@ -15,4 +15,10 @@ class Cita extends Model
     public $timestamps = true;
     protected $fillable = ['idCita', 'cedulaPaciente', 'profesional', 'servicio', 'tipoConsulta', 'fecha', 'horaInicio', 'horaFin'];
     protected $primaryKey = 'idCita';
+
+    public function pago()
+    {
+        return $this->hasOne(Pago::class, 'citaid', 'idCita');
+    }
+
 }

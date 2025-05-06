@@ -44,38 +44,40 @@ class CitasController extends Controller
     }
 
     function getCitasByPaciente($id){
-        return null;
+        return response()->json($this->citaService->getCitasByPaciente($id), 200);
     }
 
     function getCitasEntreFechas($fechaInicio, $fechaFin){
-        return null;
+        return response()->json($this->citaService->getCitasEntreFechas($fechaInicio, $fechaFin), 200);
     }
 
     function getCitasByProfesional($profesionalId){
-        return null;
+        return response()->json($this->citaService->getCitasByProfesional($profesionalId), 200);
     }
 
     function getCitasByEstado($estado){
-        return null;
+        return response()->json($this->citaService->getCitasByEstado($estado), 200);
     }
 
     function getHistoriaClinicaByPaciente($pacienteId){
-        return null;
+        return response()->json($this->citaService->getHistoriaClinicaByPaciente($pacienteId), 200);
     }
 
     function getHistoriaClinicaByCita($citaId){
-        return null;
+        return response()->json($this->citaService->getHistoriaClinicaByCita($citaId), 200);
     }
 
     function createCita(createCitaRequestBody $request){
         $validatedData = $request->validated();
 
+        $cita = $this->citaService->createCita($validatedData);
         return response()->json([
             'message' => 'Cita created successfully',
-            'data' => $validatedData
+            'data' => $cita
         ], 201);
     }
 
+    //TODO
     function updateCita(UpdateCitaRequestBody $request, $citaId){
         $validatedData = $request->validated();
 

@@ -5,39 +5,42 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePagoRequestBody;
 use App\Http\Requests\UpdateEstadoPago;
+use App\Services\PagoService;
 use Illuminate\Http\Request;
 
 class PagoController extends Controller
 {
-    function getPagosByPaciente($id){
-        $data = [
-            'id' => 1,
-            'monto' => 100.00,
-            'fecha' => '2023-10-01',
-            'paciente' => 'Juan Perez',
-            'estado' => 'Pagado'
-        ];
+    protected PagoService $pagoService;
 
-        return response()->json($data);
+    public function __construct(PagoService $pagoService)
+    {
+        $this->pagoService = $pagoService;
+    }
+
+    function getPagosByPaciente($id){
+        
+        return response()->json($this->pagoService->getPagosByPaciente($id), 200);
     }
 
     function getPagoByCita($citaId){
-        return null;
+        return response()->json($this->pagoService->getPagoByCita($citaId), 200);
     }
 
     function getPagosByEstado($estado){
-        return null;
+        return response()->json($this->pagoService->getPagosByEstado($estado), 200);
     }
 
     function getPagosByServicio($servicioId){
-        return null;
+        return response()->json($this->pagoService->getPagosByServicio($servicioId), 200);  
     }
 
     function createPago(CreatePagoRequestBody $request){
-        return null;
+        $validation = $request->validated();
+        return response()->json($this->pagoService->createPago($validation), 201);
     }
 
     function updateEstadoPago(UpdateEstadoPago $request, $idCita){
-        return null;
+        $validation = $request->validated();
+        return response()->json($this->pagoService->updateEstadoPago($validation, $idCita), 200);
     }
 }

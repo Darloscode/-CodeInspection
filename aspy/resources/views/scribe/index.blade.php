@@ -133,7 +133,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: May 4, 2025</li>
+        <li>Last updated: May 5, 2025</li>
     </ul>
 </div>
 
@@ -675,12 +675,12 @@ fetch(url, {
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">content-type: text/html; charset=UTF-8
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;"></code>
+<code class="language-json" style="max-height: 300px;">[]</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-citas-paciente--id-" hidden>
@@ -803,18 +803,20 @@ fetch(url, {
 
 <span id="example-responses-GETapi-citas-entreFechas--fechaInicio---fechaFin-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">content-type: text/html; charset=UTF-8
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;"></code>
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Server Error&quot;
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-citas-entreFechas--fechaInicio---fechaFin-" hidden>
@@ -954,12 +956,12 @@ fetch(url, {
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">content-type: text/html; charset=UTF-8
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;"></code>
+<code class="language-json" style="max-height: 300px;">[]</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-citas-profesional--profesionalId-" hidden>
@@ -1082,18 +1084,20 @@ fetch(url, {
 
 <span id="example-responses-GETapi-citas-estado--estado-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">content-type: text/html; charset=UTF-8
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;"></code>
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Server Error&quot;
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-citas-estado--estado-" hidden>
@@ -1222,12 +1226,12 @@ fetch(url, {
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">content-type: text/html; charset=UTF-8
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;"></code>
+<code class="language-json" style="max-height: 300px;">[]</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-historiaClinica-paciente--pacienteId-" hidden>
@@ -1334,7 +1338,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"profesional\": \"consequatur\",
     \"servicio\": \"consequatur\",
     \"tipoConsulta\": \"consequatur\",
-    \"fecha\": \"2025-05-04T15:49:32\",
+    \"fecha\": \"2025-05-05T20:46:23\",
     \"horaInicio\": \"consequatur\",
     \"horaFin\": \"consequatur\"
 }"
@@ -1356,7 +1360,7 @@ let body = {
     "profesional": "consequatur",
     "servicio": "consequatur",
     "tipoConsulta": "consequatur",
-    "fecha": "2025-05-04T15:49:32",
+    "fecha": "2025-05-05T20:46:23",
     "horaInicio": "consequatur",
     "horaFin": "consequatur"
 };
@@ -1491,10 +1495,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fecha"                data-endpoint="POSTapi-citas"
-               value="2025-05-04T15:49:32"
+               value="2025-05-05T20:46:23"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-05-04T15:49:32</code></p>
+<p>Must be a valid date. Example: <code>2025-05-05T20:46:23</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>horaInicio</code></b>&nbsp;&nbsp;
@@ -1539,7 +1543,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"profesional\": \"consequatur\",
     \"tipoConsulta\": \"consequatur\",
-    \"fecha\": \"2025-05-04T15:49:32\",
+    \"fecha\": \"2025-05-05T20:46:23\",
     \"horaInicio\": \"consequatur\",
     \"horaFin\": \"consequatur\"
 }"
@@ -1559,7 +1563,7 @@ const headers = {
 let body = {
     "profesional": "consequatur",
     "tipoConsulta": "consequatur",
-    "fecha": "2025-05-04T15:49:32",
+    "fecha": "2025-05-05T20:46:23",
     "horaInicio": "consequatur",
     "horaFin": "consequatur"
 };
@@ -1684,10 +1688,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="fecha"                data-endpoint="PUTapi-citas--id-"
-               value="2025-05-04T15:49:32"
+               value="2025-05-05T20:46:23"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-05-04T15:49:32</code></p>
+<p>Must be a valid date. Example: <code>2025-05-05T20:46:23</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>horaInicio</code></b>&nbsp;&nbsp;
@@ -1761,13 +1765,7 @@ content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">{
-    &quot;id&quot;: 1,
-    &quot;monto&quot;: 100,
-    &quot;fecha&quot;: &quot;2023-10-01&quot;,
-    &quot;paciente&quot;: &quot;Juan Perez&quot;,
-    &quot;estado&quot;: &quot;Pagado&quot;
-}</code>
+<code class="language-json" style="max-height: 300px;">[]</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-pagos-paciente--id-" hidden>
@@ -1890,18 +1888,20 @@ fetch(url, {
 
 <span id="example-responses-GETapi-pagos-cita--citaId-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">content-type: text/html; charset=UTF-8
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;"></code>
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Server Error&quot;
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-pagos-cita--citaId-" hidden>
@@ -2024,18 +2024,20 @@ fetch(url, {
 
 <span id="example-responses-GETapi-pagos-estado--estado-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">content-type: text/html; charset=UTF-8
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;"></code>
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Server Error&quot;
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-pagos-estado--estado-" hidden>
@@ -2158,18 +2160,20 @@ fetch(url, {
 
 <span id="example-responses-GETapi-pagos-servicio--servicioId-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">content-type: text/html; charset=UTF-8
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;"></code>
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Server Error&quot;
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-pagos-servicio--servicioId-" hidden>
@@ -2274,7 +2278,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"citaId\": \"consequatur\",
     \"metodoPago\": \"consequatur\",
-    \"fechaPago\": \"2025-05-04T15:49:32\",
+    \"fechaPago\": \"2025-05-05T20:46:24\",
     \"comprobante\": \"consequatur\"
 }"
 </code></pre></div>
@@ -2293,7 +2297,7 @@ const headers = {
 let body = {
     "citaId": "consequatur",
     "metodoPago": "consequatur",
-    "fechaPago": "2025-05-04T15:49:32",
+    "fechaPago": "2025-05-05T20:46:24",
     "comprobante": "consequatur"
 };
 
@@ -2405,10 +2409,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="fechaPago"                data-endpoint="POSTapi-pagos"
-               value="2025-05-04T15:49:32"
+               value="2025-05-05T20:46:24"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-05-04T15:49:32</code></p>
+<p>Must be a valid date. Example: <code>2025-05-05T20:46:24</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>comprobante</code></b>&nbsp;&nbsp;
@@ -2436,7 +2440,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8080/api/pagos/consequatur" \
+    "http://localhost:8080/api/pagos/17" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2447,7 +2451,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8080/api/pagos/consequatur"
+    "http://localhost:8080/api/pagos/17"
 );
 
 const headers = {
@@ -2541,14 +2545,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>integer</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="PUTapi-pagos--id-"
-               value="consequatur"
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="PUTapi-pagos--id-"
+               value="17"
                data-component="url">
     <br>
-<p>The ID of the pago. Example: <code>consequatur</code></p>
+<p>The ID of the pago. Example: <code>17</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">

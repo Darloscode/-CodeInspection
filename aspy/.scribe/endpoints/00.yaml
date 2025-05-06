@@ -190,10 +190,10 @@ endpoints:
     responses:
       -
         status: 200
-        content: ''
+        content: '[]'
         headers:
-          content-type: 'text/html; charset=UTF-8'
           cache-control: 'no-cache, private'
+          content-type: application/json
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -250,11 +250,14 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
-        content: ''
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
         headers:
-          content-type: 'text/html; charset=UTF-8'
           cache-control: 'no-cache, private'
+          content-type: application/json
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -301,10 +304,10 @@ endpoints:
     responses:
       -
         status: 200
-        content: ''
+        content: '[]'
         headers:
-          content-type: 'text/html; charset=UTF-8'
           cache-control: 'no-cache, private'
+          content-type: application/json
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -350,11 +353,14 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
-        content: ''
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
         headers:
-          content-type: 'text/html; charset=UTF-8'
           cache-control: 'no-cache, private'
+          content-type: application/json
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -401,10 +407,10 @@ endpoints:
     responses:
       -
         status: 200
-        content: ''
+        content: '[]'
         headers:
-          content-type: 'text/html; charset=UTF-8'
           cache-control: 'no-cache, private'
+          content-type: application/json
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -479,7 +485,7 @@ endpoints:
         name: fecha
         description: 'Must be a valid date.'
         required: true
-        example: '2025-05-04T15:49:32'
+        example: '2025-05-05T20:46:23'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -510,7 +516,7 @@ endpoints:
       profesional: consequatur
       servicio: consequatur
       tipoConsulta: consequatur
-      fecha: '2025-05-04T15:49:32'
+      fecha: '2025-05-05T20:46:23'
       horaInicio: consequatur
       horaFin: consequatur
     fileParameters: []
@@ -577,7 +583,7 @@ endpoints:
         name: fecha
         description: 'Must be a valid date.'
         required: false
-        example: '2025-05-04T15:49:32'
+        example: '2025-05-05T20:46:23'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -606,7 +612,7 @@ endpoints:
     cleanBodyParameters:
       profesional: consequatur
       tipoConsulta: consequatur
-      fecha: '2025-05-04T15:49:32'
+      fecha: '2025-05-05T20:46:23'
       horaInicio: consequatur
       horaFin: consequatur
     fileParameters: []
@@ -654,7 +660,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"id":1,"monto":100,"fecha":"2023-10-01","paciente":"Juan Perez","estado":"Pagado"}'
+        content: '[]'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -703,11 +709,14 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
-        content: ''
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
         headers:
-          content-type: 'text/html; charset=UTF-8'
           cache-control: 'no-cache, private'
+          content-type: application/json
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -753,11 +762,14 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
-        content: ''
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
         headers:
-          content-type: 'text/html; charset=UTF-8'
           cache-control: 'no-cache, private'
+          content-type: application/json
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -803,11 +815,14 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
-        content: ''
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
         headers:
-          content-type: 'text/html; charset=UTF-8'
           cache-control: 'no-cache, private'
+          content-type: application/json
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -862,7 +877,7 @@ endpoints:
         name: fechaPago
         description: 'Must be a valid date.'
         required: true
-        example: '2025-05-04T15:49:32'
+        example: '2025-05-05T20:46:24'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -881,7 +896,7 @@ endpoints:
     cleanBodyParameters:
       citaId: consequatur
       metodoPago: consequatur
-      fechaPago: '2025-05-04T15:49:32'
+      fechaPago: '2025-05-05T20:46:24'
       comprobante: consequatur
     fileParameters: []
     responses: []
@@ -912,14 +927,14 @@ endpoints:
         name: id
         description: 'The ID of the pago.'
         required: true
-        example: consequatur
-        type: string
+        example: 17
+        type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: consequatur
+      id: 17
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
