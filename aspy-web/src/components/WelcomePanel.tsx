@@ -14,7 +14,6 @@ export default function WelcomePanel({ user }: WelcomePanelProps) {
       <Typography variant="h3" className="h2-panel">
         {user}
       </Typography>
-      <Typography variant="h3">Proximas citas:</Typography>
     </Box>
   );
 }

@@ -83,7 +83,7 @@ export default function InvoiceList() {
           </Grid>
           <Divider className="divider-paciente-historial"></Divider>
         </Grid>
-        <Grid size={8} className={themeClass}>
+        <Grid size={8} className={themeClass + " grid-tabla"}>
           <Table<Invoice>
             columns={newColumns}
             rows={facturas}

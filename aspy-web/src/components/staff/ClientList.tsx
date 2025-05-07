@@ -73,7 +73,7 @@ export default function ClientsList() {
           </Grid>
           <Divider className="divider-paciente-historial"></Divider>
         </Grid>
-        <Grid size={8} className={themeClass}>
+        <Grid size={8} className={themeClass + " grid-tabla"}>
           <Table<User>
             columns={columnsUsers}
             rows={usuarios}

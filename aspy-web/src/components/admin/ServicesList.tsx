@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { GridColDef, GridRowSelectionModel } from "@mui/x-data-grid";
 import { useTheme } from "@mui/material";
-import Paper from "@mui/material/Paper";
+import { servicios } from "@data/Servicios";
+import { Servicio } from "@/types/Servicio";
+import { columnsServiceAdmin } from "@utils/columns";
 import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -9,44 +12,18 @@ import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
-import { servicios } from "@data/Servicios";
-import {
-  DataGrid,
-  GridColDef,
-  GridToolbar,
-  GridRowSelectionModel,
-} from "@mui/x-data-grid";
+import Table from "@components/Table";
 
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import AssignmentTurnedInRoundedIcon from "@mui/icons-material/AssignmentTurnedInRounded";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 
-export default function Services() {
-  const [rowSelectionModel, setRowSelectionModel] =
-    useState<GridRowSelectionModel>([]);
-
-  //Servicio seleccionado
-  //const [servicio, setServicio] = useState<Servicio | null>(null);
+export default function ServicesList() {
+  const [rowSelection, setRowSelection] = useState<GridRowSelectionModel>([]);
 
   const theme = useTheme();
   const themeClass =
     theme.palette.mode === "dark" ? "dark-theme" : "light-theme";
-
-  //Mostrar el servicios
-  /*
-  useEffect(() => {
-    if (rowSelectionModel.length > 0) {
-      const selectedService = servicios.find(
-        (item) => item.id === rowSelectionModel[0]
-      );
-      if (selectedService) {
-        setServicio(selectedService);
-      }
-    } else {
-      setServicio(null);
-    }
-  }, [rowSelectionModel]);
-  */
 
   //Ruta para editar y crear
   const navigate = useNavigate();
@@ -62,28 +39,7 @@ export default function Services() {
     navigate(newPath);
   };
 
-  const columns: GridColDef[] = [
-    {
-      field: "id",
-      headerName: "ID",
-      flex: 1,
-      disableColumnMenu: true,
-      resizable: false,
-    },
-    {
-      field: "nombre",
-      headerName: "Nombre",
-      flex: 2,
-      disableColumnMenu: true,
-      resizable: false,
-    },
-    {
-      field: "descripcion",
-      headerName: "Descripción",
-      flex: 3,
-      disableColumnMenu: true,
-      resizable: false,
-    },
+  const columnsExtra: GridColDef[] = [
     {
       field: "costo",
       headerName: "Costo",
@@ -104,29 +60,7 @@ export default function Services() {
         return <Typography variant="body1">{params.value} min</Typography>;
       },
     },
-    {
-      field: "tipo_servicio",
-      headerName: "Tipo",
-      flex: 3,
-      disableColumnMenu: true,
-      resizable: false,
-    },
-    {
-      field: "activo",
-      headerName: "Activo",
-      flex: 2,
-      disableColumnMenu: true,
-      resizable: false,
-      renderCell: (params) => (params.value ? "Sí" : "No"),
-    },
-    {
-      field: "actualizado_en",
-      headerName: "Últ. Act.",
-      flex: 2,
-      disableColumnMenu: true,
-      resizable: false,
-      valueFormatter: (params) => new Date(params).toLocaleDateString("es-ES"),
-    },
+
     {
       field: "acciones",
       headerName: "",
@@ -149,19 +83,23 @@ export default function Services() {
     },
   ];
 
+  const newColumns: GridColDef[] = [...columnsServiceAdmin, ...columnsExtra];
+
   return (
     <Box className="box-panel-control" sx={{ padding: 2 }}>
       <Grid container spacing={1}>
         <Grid size={12} className="grid-p-patients-tittle">
-          <Typography variant="h3" className="h3-patients">
-            Lista de Servicios
-          </Typography>
-          <Divider className="divider-pacientes" />
+          <Grid container spacing={0}>
+            <Grid size={9} marginBottom={"4px"}>
+              <Typography variant="h3">Lista de Servicios</Typography>
+            </Grid>
+          </Grid>
+          <Divider className="divider-paciente-historial"></Divider>
         </Grid>
 
         <Grid size={12}>
           <Stack direction="row" spacing={2}>
-            <IconButton aria-label="rol" size="large" className="botones-admin">
+            <IconButton size="large" className="botones-admin">
               <AssignmentTurnedInRoundedIcon fontSize="inherit" />
               <Grid container sx={{ marginLeft: 2 }}>
                 <Grid size={12}>
@@ -176,11 +114,9 @@ export default function Services() {
                 </Grid>
               </Grid>
             </IconButton>
-
             <IconButton
-              aria-label="add"
               size="large"
-              className="boton-agregar"
+              className="botones-admin"
               onClick={handleCreate}
             >
               <AddCircleOutlineOutlinedIcon fontSize="inherit" />
@@ -195,34 +131,15 @@ export default function Services() {
           </Stack>
         </Grid>
 
-        <Grid
-          size={12}
-          className={themeClass}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Paper sx={{ height: "70vh", width: "98%" }}>
-            <DataGrid
-              className="data-grid-custom"
-              rows={servicios}
-              columns={columns}
-              getRowId={(row) => row.id}
-              autoPageSize
-              /*checkboxSelection*/
-              slots={{ toolbar: GridToolbar }}
-              onRowSelectionModelChange={(newSelection) =>
-                setRowSelectionModel(newSelection)
-              }
-              rowSelectionModel={rowSelectionModel}
-              disableColumnFilter
-              disableColumnSelector
-              disableDensitySelector
-              slotProps={{ toolbar: { showQuickFilter: true } }}
-            />
-          </Paper>
+        <Grid size={12} className={themeClass + " grid-tabla"}>
+          <Table<Servicio>
+            columns={newColumns}
+            rows={servicios}
+            rowSelectionModel={rowSelection}
+            onRowSelectionChange={(newSelection) =>
+              setRowSelection(newSelection)
+            }
+          />
         </Grid>
       </Grid>
     </Box>

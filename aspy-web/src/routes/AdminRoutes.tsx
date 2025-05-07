@@ -1,9 +1,8 @@
 import ControlPanel from "@admin/ControlPanel";
 import Profile from "@components/Profile";
-import Users from "@admin/Users";
+import UsersList from "@/components/admin/UsersList";
 import Roles from "@admin/Roles";
-import Services from "@admin/Services";
-import Pruebas from "@/components/admin/Pruebas";
+import ServicesList from "@/components/admin/ServicesList";
 import EditUser from "@/components/EditUser";
 import EditService from "@/components/EditService";
 import EditRole from "@/components/EditRole";
@@ -15,10 +14,9 @@ import Appointment from "@/components/admin/Appointments";
 export const AdminRoutes = [
   { path: "/", element: <ControlPanel /> },
   { path: "/perfil", element: <Profile /> },
-  { path: "/usuarios", element: <Users /> },
+  { path: "/usuarios", element: <UsersList /> },
   { path: "/roles", element: <Roles /> },
-  { path: "/servicios", element: <Services /> },
-  { path: "/pruebas", element: <Pruebas /> },
+  { path: "/servicios", element: <ServicesList /> },
   { path: "/usuarios/:id", element: <EditUser /> },
   { path: "/servicios/:id", element: <EditService /> },
   { path: "/roles/:id", element: <EditRole /> },
