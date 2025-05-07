@@ -3,27 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateServicioRequestBody;
+use App\Http\Requests\UpdateServicioRequestBody;
+use App\Services\ServiciosService;
 use Illuminate\Http\Request;
 
 class ServiciosController extends Controller
 {
+    protected ServiciosService $servicioService;
+
+    public function __construct(ServiciosService $servicioService)
+    {
+        $this->servicioService = $servicioService;
+    }
     function getAllServicios()
     {
-        return null;
+        return $this->servicioService->getAllServicios();
     }
+
 
     function getServicioById($id)
     {
-        return null;
+        return $this->servicioService->getServicioById($id);
     }
 
-    function createServicio(Request $request)
+    function createServicio(CreateServicioRequestBody $request)
     {
-        return null;
+        $validated = $request->validated();
+        return $this->servicioService->createServicio($validated);
     }
 
-    function updateServicio(Request $request, $id)
+    function updateServicio(UpdateServicioRequestBody $request, $id)
     {
-        return null;
+        $validated = $request->validated();
+        return $this->servicioService->updateServicio($id, $validated);
     }
 }

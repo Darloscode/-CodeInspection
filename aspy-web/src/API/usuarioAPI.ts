@@ -41,7 +41,7 @@ const usuarioAPI = {
         telefonoRepresentante?: string;
         cedulaRepresentante?: string;
         emailRepresentante?: string;
-        parentezco?: string;
+        parentesco?: string;
     }) =>
         axios.put(`${apiURL}/usuarios/${id}`, usuarioData),
 };

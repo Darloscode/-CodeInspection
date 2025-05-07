@@ -6,6 +6,7 @@ use App\Http\Controllers\PagoController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\ServiciosController;
+use App\Http\Controllers\UsuariosController;
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->get('/user', [AuthController::class, 'user']);
@@ -43,3 +44,9 @@ Route::get('servicios', [ServiciosController::class, 'getAllServicios']);
 Route::get('servicios/{id}', [ServiciosController::class, 'getServicioById']);
 Route::post('servicios', [ServiciosController::class, 'createServicio']);
 Route::put('servicios/{id}', [ServiciosController::class, 'updateServicio']);
+
+Route::get('usuarios', [UsuariosController::class, 'getAllUsuarios']);
+Route::get('usuarios/{id}', [UsuariosController::class, 'getUsuarioById']);
+Route::get('usuarios/rol/{role}', [UsuariosController::class, 'getUsuariosByRol']);
+Route::post('usuarios', [UsuariosController::class, 'createUsuario']);
+Route::put('usuarios/{id}', [UsuariosController::class, 'updateUsuario']);
