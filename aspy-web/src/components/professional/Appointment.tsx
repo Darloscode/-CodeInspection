@@ -12,14 +12,10 @@ export default function Appointment() {
     theme.palette.mode === "dark" ? "dark-theme" : "light-theme";
 
   return (
-    <Box className="box-panel-control">
+    <Box className="box-panel-control" sx={{ padding: 2 }}>
       <Grid container spacing={1}>
         <Grid size={12} className="grid-p-patients-tittle">
-          <Typography
-            variant="h3"
-            className="h1-panel"
-            sx={{ marginBottom: "2%" }}
-          >
+          <Typography variant="h3" className="h3-patients">
             Citas
           </Typography>
           <Divider className="divider-pacientes"></Divider>

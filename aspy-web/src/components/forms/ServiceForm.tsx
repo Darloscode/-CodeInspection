@@ -44,7 +44,7 @@ function ServiceForm(props: { isEditMode?: boolean; serviceId?: number }) {
           description: serviceData.descripcion,
           price: serviceData.costo,
           duracion: serviceData.duracion_minutos,
-          activo: serviceData.activo ? "Sí" : "No",
+          activo: serviceData.activo ? "Si" : "No",
           tipo: serviceData.tipo_servicio,
         };
       } else {
@@ -71,7 +71,7 @@ function ServiceForm(props: { isEditMode?: boolean; serviceId?: number }) {
         input.key === "activo"
           ? serviceData?.activo
             ? "Si"
-            : "No"
+            : ""
           : input.key === "tipo"
             ? serviceData?.tipo_servicio
             : ""
@@ -97,7 +97,7 @@ function ServiceForm(props: { isEditMode?: boolean; serviceId?: number }) {
         onSubmit={(e) => e.preventDefault()}
         noValidate
       >
-        <div className="items-center justify-center">
+        <div className="flex justify-center items-center">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {list_inputs}
           </div>

@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { useTheme } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -89,8 +88,7 @@ const buttonsData = [
 
 export default function Users() {
   //Fila seleccionada
-  const [rowSelectionModel, setRowSelectionModel] =
-    React.useState<GridRowSelectionModel>([]);
+  const [rowSelectionModel, setRowSelectionModel] = useState<GridRowSelectionModel>([]);
 
   //Usuario seleccionado
   const [user, setUser] = useState<User | null>(null);

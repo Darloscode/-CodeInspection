@@ -1,19 +1,16 @@
+import { useState } from "react";
+import { ReceiptRevisionData } from "@/types/ReceiptRevisionData";
 import CancelButton from "@/components/buttons/CancelButton";
 import CreationButton from "@/components/buttons/CreationButton";
 import UploadButton from "@/components/buttons/UploadButton";
 import FileItem from "@/components/FileItem";
-import ReceiptRevision from "@/components/ReceiptRevision";
-import { useState } from "react";
+import ReceiptRevision from "@/components/staff/ReceiptRevision";
 
-function ReceiptRevisionPage() {
-  const pagoData = {
-    id: 1,
-    paciente: "Juanito Perez",
-    representante: "Juan Perez",
-    cedula_paciente: "123456789",
-    url_comprobante_pago: "https://example.com/comprobante_pago.pdf",
-  };
-
+export default function ReceiptRevisionPage({
+  pagoData,
+}: {
+  pagoData: ReceiptRevisionData;
+}) {
   const onClick = () => {
     alert("Creation button clicked!");
   };
@@ -34,7 +31,7 @@ function ReceiptRevisionPage() {
 
   //TODO SAVE THE FILE
   return (
-    <div>
+    <div className="mx-auto max-w-2xl p-4">
       <div className="m-4">
         <h1 className="font-kumbh text-primaryAspy font-semibold text-base">
           Pendiente de revisión
@@ -68,5 +65,3 @@ function ReceiptRevisionPage() {
     </div>
   );
 }
-
-export default ReceiptRevisionPage;

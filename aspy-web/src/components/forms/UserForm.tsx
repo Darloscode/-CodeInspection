@@ -9,7 +9,11 @@ import { usuarios } from "../../data/Usuarios";
 import SaveButton from "../buttons/SaveButton";
 import CreationButton from "../buttons/CreationButton";
 
-function UserForm(props: { isEditMode?: boolean; userId?: number }) {
+function UserForm(props: {
+  isEditMode?: boolean;
+  userId?: number;
+  role?: string;
+}) {
   //const [userData, setUserData] = useState<UserData | null>(null);
 
   //Estas dos lineas son solo para pruebas
@@ -46,6 +50,7 @@ function UserForm(props: { isEditMode?: boolean; userId?: number }) {
           address: user.address,
           identification_number: user.identity,
           provincia: user.provincia, // << AQUÍ
+          rol: user.rol,
           password: "",
           confirm_password: "",
           /*
@@ -92,7 +97,7 @@ function UserForm(props: { isEditMode?: boolean; userId?: number }) {
           : input.validation
       }
       options={input.options}
-      default={user?.provincia ?? ""}
+      default={user?.rol ?? props.role}
     />
   ));
 
@@ -114,7 +119,7 @@ function UserForm(props: { isEditMode?: boolean; userId?: number }) {
         onSubmit={(e) => e.preventDefault()}
         noValidate
       >
-        <div className="items-center justify-center">
+        <div className="flex justify-center items-center">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {list_inputs}
           </div>

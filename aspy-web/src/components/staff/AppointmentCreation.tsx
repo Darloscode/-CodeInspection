@@ -1,43 +1,48 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import top100Films from "@assets/top100Films";
-import { useNavigate } from "react-router-dom";
 
-import DateCalendarValue from "./DateCalendarValue";
+import DateCalendarValue from "../DateCalendarValue";
 
 export default function AppointmentCreation() {
+  const navigate = useNavigate();
 
-const navigate = useNavigate();
+  const handleToPay = () => {
+    navigate("/pago");
+  };
 
   return (
     <div
       style={{
         display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100vh",
+        justifyContent: "center", // Centra horizontalmente el contenedor
+        alignItems: "center", // Centra verticalmente el contenedor
+        gap: "0px", // Espacio entre los dos divs
       }}
     >
-      <div style={{ flex: "5%" }}>
-        <h1 style={{ marginBottom: "25px" }}>Agendar Cita </h1>
+      {/* Div izquierdo - contenido del formulario */}
+      <div
+        style={{
+          width: "20%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <FormControl>
           <Autocomplete
             style={{ marginBottom: "25px" }}
             disablePortal
             options={top100Films}
-            sx={{ width: 300 }}
+            sx={{ width: "100%" }}
             renderInput={(params) => (
               <TextField {...params} label="Escoja el servicio" />
             )}
@@ -47,7 +52,7 @@ const navigate = useNavigate();
             style={{ marginBottom: "25px" }}
             disablePortal
             options={top100Films}
-            sx={{ width: 300 }}
+            sx={{ width: "100%" }}
             renderInput={(params) => (
               <TextField {...params} label="Escoja el profesional" />
             )}
@@ -71,7 +76,7 @@ const navigate = useNavigate();
 
           <Box
             component="form"
-            sx={{ "& > :not(style)": { m: 1, width: "25ch" } }}
+            sx={{ "& > :not(style)": { m: 1, width: "100%" } }}
             noValidate
             autoComplete="off"
             style={{
@@ -89,15 +94,24 @@ const navigate = useNavigate();
               id="outlined-basic"
               label="Nombre del paciente"
               variant="outlined"
-              readOnly
-              disabled
             />
           </Box>
 
-          <Button variant="contained" onClick={() => navigate('/pago')} >Proceder a pagar</Button>
+          <Button variant="contained" onClick={handleToPay}>
+            Proceder a pagar
+          </Button>
         </FormControl>
       </div>
-      <div style={{ flex: "50%" }}>
+
+      {/* Div derecho - calendario */}
+      <div
+        style={{
+          width: "50%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <DateCalendarValue />
       </div>
     </div>
