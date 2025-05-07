@@ -9,6 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -19,6 +20,7 @@ const MenuProps = {
     },
   },
 };
+
 function UserInput(props: {
   label: string;
   key: string;
@@ -91,15 +93,13 @@ function UserInput(props: {
     </div>
     */}
       {props.type === "select" ? (
-        <TextField
-          select
-          required
-          id={props.id}
-          variant="outlined"
-          size="small"
-          className="w-full md:w-[350px]"
-          defaultValue={props.default}
+        <Select
           {...register(props.id, props.validation)}
+          className="w-full md:w-[350px]"
+          variant="outlined"
+          id={props.id}
+          defaultValue={props.default || ""}
+          disabled={props.label !== "Activo" && !!props.default}
         >
           <MenuItem value="">Seleccione una opción</MenuItem>
           {props.options?.map((option) => (
@@ -107,12 +107,12 @@ function UserInput(props: {
               {option}
             </MenuItem>
           ))}
-        </TextField>
+        </Select>
       ) : props.type === "multiselect" ? (
         <Select
           labelId="demo-multiple-checkbox-label"
           {...register(props.id, props.validation)}
-          id="demo-multiple-checkbox"
+          id={props.id}
           multiple
           className="w-full md:w-[350px]"
           value={personName}

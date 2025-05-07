@@ -82,7 +82,7 @@ function RoleForm(props: { isEditMode?: boolean; roleId?: number }) {
         onSubmit={(e) => e.preventDefault()}
         noValidate
       >
-        <div className="items-center justify-center">
+        <div className="flex justify-center items-center">
           <div className="flex flex-col gap-10">{list_inputs}</div>
         </div>
         <div className="gap-10 mt-4 flex flex-row items-center justify-center">

@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { getProfesionales } from "@utils/utils";
+import { User } from "@/types/User";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Box from "@mui/material/Box";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { getProfesionales } from "@utils/utils";
-import { User } from "@/types/User";
+import Typography from "@mui/material/Typography";
 
 export default function SelectProfessional({
   onSelect,
@@ -23,6 +24,7 @@ export default function SelectProfessional({
 
   return (
     <Box sx={{ minWidth: 120 }}>
+      <Typography variant="body1">Profesionales</Typography>
       <FormControl fullWidth>
         <Select value={selectedId} onChange={handleChange}>
           <MenuItem value="">Seleccione una opción</MenuItem>

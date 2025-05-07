@@ -24,14 +24,13 @@ function AreaGradient({ color, id }: { color: string; id: string }) {
 
 function getDaysInMonth(month: number, year: number) {
   const date = new Date(year, month, 0);
-  const monthName = date.toLocaleDateString("en-US", {
-    month: "short",
-  });
+  const monthName = date.toLocaleDateString("es-ES", { month: "short" });
+  const formattedMonthName = monthName.charAt(0).toUpperCase() + monthName.slice(1);
   const daysInMonth = date.getDate();
   const days = [];
   let i = 1;
   while (days.length < daysInMonth) {
-    days.push(`${monthName} ${i}`);
+    days.push(`${formattedMonthName} ${i}`);
     i += 1;
   }
   return days;
@@ -90,8 +89,8 @@ export default function SessionsChart({ income }: SessionsChartProps) {
           ]}
           series={[
             {
-              id: "organic",
-              label: "Organic",
+              id: "ingresos",
+              label: "Ingresos",
               showMark: false,
               curve: "linear",
               stack: "total",
@@ -104,14 +103,8 @@ export default function SessionsChart({ income }: SessionsChartProps) {
           margin={{ left: 50, right: 20, top: 20, bottom: 20 }}
           grid={{ horizontal: true }}
           sx={{
-            "& .MuiAreaElement-series-organic": {
-              fill: "url('#organic')",
-            },
-            "& .MuiAreaElement-series-referral": {
-              fill: "url('#referral')",
-            },
-            "& .MuiAreaElement-series-direct": {
-              fill: "url('#direct')",
+            "& .MuiAreaElement-series-ingresos": {
+              fill: "url('#ingresos')",
             },
           }}
           slotProps={{
@@ -120,9 +113,8 @@ export default function SessionsChart({ income }: SessionsChartProps) {
             },
           }}
         >
-          <AreaGradient color={theme.palette.primary.dark} id="organic" />
-          <AreaGradient color={theme.palette.primary.main} id="referral" />
-          <AreaGradient color={theme.palette.primary.light} id="direct" />
+          <AreaGradient color={theme.palette.primary.dark} id="ingresos" />
+
         </LineChart>
       </CardContent>
     </Card>

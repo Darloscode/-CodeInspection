@@ -4,12 +4,12 @@ import Users from "@admin/Users";
 import Roles from "@admin/Roles";
 import Services from "@admin/Services";
 import Pruebas from "@/components/admin/Pruebas";
-import EditUser from "@/components/admin/EditUser";
-import EditService from "@/components/admin/EditService";
-import EditRole from "@components/admin/EditRole";
-import CreateRole from "@/components/admin/CreateRole";
-import CreateService from "@/components/admin/CreateService";
-import CreateUser from "@/components/admin/CreateUser";
+import EditUser from "@/components/EditUser";
+import EditService from "@/components/EditService";
+import EditRole from "@/components/EditRole";
+import CreateRole from "@/components/CreateRole";
+import CreateService from "@/components/CreateService";
+import CreateUser from "@/components/CreateUser";
 import Appointment from "@/components/admin/Appointments";
 
 export const AdminRoutes = [
@@ -24,6 +24,6 @@ export const AdminRoutes = [
   { path: "/roles/:id", element: <EditRole /> },
   { path: "/nuevo-rol", element: <CreateRole /> },
   { path: "/nuevo-servicio", element: <CreateService /> },
-  { path: "/nuevo-usuario", element: <CreateUser /> },
+  { path: "/nuevo-usuario", element: <CreateUser role="" /> },
   { path: "/citas", element: <Appointment /> },
 ];
