@@ -5,6 +5,7 @@ use App\Http\Controllers\CitasController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\RolController;
+use App\Http\Controllers\ServiciosController;
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->get('/user', [AuthController::class, 'user']);
@@ -37,3 +38,8 @@ Route::get('roles', [RolController::class, 'getAllRoles']);
 Route::get('roles/{id}', [RolController::class, 'getRolById']);
 Route::post('roles', [RolController::class, 'createRol']);
 Route::put('roles/{id}', [RolController::class, 'updateRol']);
+
+Route::get('servicios', [ServiciosController::class, 'getAllServicios']);
+Route::get('servicios/{id}', [ServiciosController::class, 'getServicioById']);
+Route::post('servicios', [ServiciosController::class, 'createServicio']);
+Route::put('servicios/{id}', [ServiciosController::class, 'updateServicio']);
