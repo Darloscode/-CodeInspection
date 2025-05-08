@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { getAuthenticatedUserName } from "@store";
 import { citas } from "@/data/Citas";
+import { ButtonControl } from "@/types/ButtonControl";
 import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
 import ButtonList from "@components/ButtonList";
 import ShowAppointment from "@components/ShowAppointment";
 import WelcomePanel from "@components/WelcomePanel";
+import Typography from "@mui/material/Typography";
 
 import PersonAddAltRoundedIcon from "@mui/icons-material/PersonAddAltRounded";
 import MedicalServicesRoundedIcon from "@mui/icons-material/MedicalServicesRounded";
@@ -35,7 +37,7 @@ export default function ControlPanel() {
     navigate(newPath);
   };
 
-  const botones = [
+  const botones: ButtonControl[] = [
     {
       texto: "Agregar Profesional",
       icono: <PersonAddAltRoundedIcon className="boton-panelcontrol" />,
@@ -66,6 +68,7 @@ export default function ControlPanel() {
         </Grid>
 
         <Grid size={8}>
+          <Typography variant="h3">Proximas citas:</Typography>
           <ShowAppointment citas={citas} />
         </Grid>
 

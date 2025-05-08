@@ -1,14 +1,7 @@
+//Se debe ELIMINAR
 import { useState } from "react";
 import { useTheme } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
-import Divider from "@mui/material/Divider";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid2";
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import IconButton from "@mui/material/IconButton";
 import {
   DataGrid,
   GridColDef,
@@ -17,6 +10,14 @@ import {
 } from "@mui/x-data-grid";
 import { Permiso } from "@/types/Permiso";
 import { roles } from "@data/Roles";
+import Divider from "@mui/material/Divider";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid2";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import IconButton from "@mui/material/IconButton";
 
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
@@ -100,10 +101,12 @@ export default function Roles() {
     <Box className="box-panel-control" sx={{ padding: 2 }}>
       <Grid container spacing={1}>
         <Grid size={12} className="grid-p-patients-tittle">
-          <Typography variant="h3" className="h3-patients">
-            Roles
-          </Typography>
-          <Divider className="divider-pacientes" />
+          <Grid container spacing={0}>
+            <Grid size={9} marginBottom={"4px"}>
+              <Typography variant="h3">Roles</Typography>
+            </Grid>
+          </Grid>
+          <Divider className="divider-paciente-historial"></Divider>
         </Grid>
 
         <Grid size={12}>

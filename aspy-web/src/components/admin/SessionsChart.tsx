@@ -1,11 +1,11 @@
 import { useTheme } from "@mui/material/styles";
+import { LineChart } from "@mui/x-charts/LineChart";
+import { CalcularTendenciaDiaria, TotalIngresosMensual } from "@utils/utils";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import { LineChart } from "@mui/x-charts/LineChart";
-import { CalcularTendenciaDiaria, TotalIngresosMensual } from "@utils/utils";
 
 export type SessionsChartProps = {
   income: number[];
@@ -25,7 +25,8 @@ function AreaGradient({ color, id }: { color: string; id: string }) {
 function getDaysInMonth(month: number, year: number) {
   const date = new Date(year, month, 0);
   const monthName = date.toLocaleDateString("es-ES", { month: "short" });
-  const formattedMonthName = monthName.charAt(0).toUpperCase() + monthName.slice(1);
+  const formattedMonthName =
+    monthName.charAt(0).toUpperCase() + monthName.slice(1);
   const daysInMonth = date.getDate();
   const days = [];
   let i = 1;
@@ -114,7 +115,6 @@ export default function SessionsChart({ income }: SessionsChartProps) {
           }}
         >
           <AreaGradient color={theme.palette.primary.dark} id="ingresos" />
-
         </LineChart>
       </CardContent>
     </Card>

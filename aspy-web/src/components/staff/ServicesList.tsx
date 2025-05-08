@@ -118,15 +118,7 @@ export default function Services() {
           <Divider className="divider-paciente-historial"></Divider>
         </Grid>
 
-        <Grid
-          size={12}
-          className={themeClass}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <Grid size={12} className={themeClass + " grid-tabla"}>
           <Table
             columns={newColumns}
             rows={servicios}

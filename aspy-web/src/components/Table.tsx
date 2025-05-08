@@ -20,7 +20,7 @@ export default function Table<T>({
   onRowSelectionChange,
 }: TableProps<T>) {
   return (
-    <Paper sx={{ height: "100vh", width: "100%" }}>
+    <Paper sx={{ height: "70vh", width: "98%" }}>
       <DataGrid
         className="data-grid-custom"
         rows={rows}
