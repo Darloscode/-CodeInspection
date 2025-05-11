@@ -9,7 +9,7 @@ const usuarioAPI = {
         axios.get(`${apiURL}/usuarios/${id}`),
 
     getUsuariosByRol: (rol: string) =>
-        axios.get(`${apiURL}/usuarios?rol=${encodeURIComponent(rol)}`),
+        axios.get(`${apiURL}/usuarios/rol/${encodeURIComponent(rol)}`),
 
     createUsuario: (usuarioData: {
         nombre: string;
