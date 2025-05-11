@@ -1,20 +1,25 @@
-import React from "react";
-import { InvoiceData } from "@types/Invoice";
-import {
-  Box,
-  Typography,
-  Grid,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-  TableContainer,
-  Paper,
-} from "@mui/material";
+import { Invoice } from "@/types/Invoice";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid2";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableRow from "@mui/material/TableRow";
+import TableContainer from "@mui/material/TableContainer";
+import Paper from "@mui/material/Paper";
 
-const InvoiceView = (info: InvoiceData) => {
+export default function InvoiceView({ info }: { info: Invoice }) {
   return (
-    <Box maxWidth={500} mx="auto" p={3} bgcolor="#fff" borderRadius={2}>
+    <Box
+      maxWidth={500}
+      mx="auto"
+      p={3}
+      bgcolor="#fff"
+      borderRadius={1}
+      border={1}
+      borderColor="#000000"
+    >
       <Typography variant="h6" fontWeight="bold">
         Invoice
       </Typography>
@@ -36,7 +41,10 @@ const InvoiceView = (info: InvoiceData) => {
           <Table>
             <TableBody>
               <TableRow>
-                <TableCell colSpan={2} sx={{ fontWeight: "bold", backgroundColor: "#f5f5f5" }}>
+                <TableCell
+                  colSpan={2}
+                  sx={{ fontWeight: "bold", backgroundColor: "#f5f5f5" }}
+                >
                   Services
                 </TableCell>
               </TableRow>
@@ -46,6 +54,17 @@ const InvoiceView = (info: InvoiceData) => {
                   ${info.servicePrice ? info.servicePrice.toFixed(2) : "0.00"}
                 </TableCell>
               </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+        <TableContainer
+          component={Paper}
+          variant="outlined"
+          sx={{ marginTop: "2%" }}
+        >
+          <Table>
+            <TableBody>
               <TableRow>
                 <TableCell>Subtotal</TableCell>
                 <TableCell align="right">
@@ -70,11 +89,11 @@ const InvoiceView = (info: InvoiceData) => {
       </Box>
 
       <Grid container mt={4} spacing={2}>
-        <Grid item xs={6}>
+        <Grid size={6}>
           <Typography fontWeight="bold">Payment Method:</Typography>
           <Typography>{info.paymentMethod || "N/A"}</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid size={6}>
           <Typography fontWeight="bold">Contact Info:</Typography>
           <Typography>{info.contactEmail || "N/A"}</Typography>
           <Typography>{info.contactPhone || "N/A"}</Typography>
@@ -82,6 +101,4 @@ const InvoiceView = (info: InvoiceData) => {
       </Grid>
     </Box>
   );
-};
-
-export default InvoiceView;
+}

@@ -12,4 +12,5 @@ export interface User {
   identity?: number;
   phone?: string;
   address?: string;
+  provincia?: string;
 }

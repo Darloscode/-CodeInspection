@@ -7,7 +7,7 @@ export const inputCreateUserConfig = [
       required: {
         value: true,
         message: "Campo requerido",
-      }
+      },
     },
   },
   {
@@ -18,7 +18,7 @@ export const inputCreateUserConfig = [
       required: {
         value: true,
         message: "Campo requerido",
-      }
+      },
     },
   },
   {
@@ -39,14 +39,14 @@ export const inputCreateUserConfig = [
   {
     label: "Teléfono",
     key: "phone",
-    type: "number",
+    type: "text",
     validation: {
       required: {
         value: true,
         message: "Campo requerido",
       },
       pattern: {
-        value: /^[0-9]{10}$/,  // Expresión regular para exactamente 10 dígitos
+        value: /^[0-9]{10}$/, // Expresión regular para exactamente 10 dígitos
         message: "Teléfono debe tener 10 dígitos",
       },
     },
@@ -59,7 +59,7 @@ export const inputCreateUserConfig = [
       required: {
         value: true,
         message: "Campo requerido",
-      }
+      },
     },
   },
   {
@@ -72,7 +72,7 @@ export const inputCreateUserConfig = [
         message: "Campo requerido",
       },
       pattern: {
-        value: /^[0-9]{10}$/,  // Expresión regular para exactamente 10 dígitos
+        value: /^[0-9]{10}$/, // Expresión regular para exactamente 10 dígitos
         message: "Cédula debe tener 10 dígitos",
       },
     },
@@ -106,5 +106,17 @@ export const inputCreateUserConfig = [
         message: "min 6 caracteres",
       },
     },
+  },
+  {
+    label: "Rol",
+    key: "rol",
+    type: "select",
+    validation: {
+      required: {
+        value: true,
+        message: "Debe seleccionar un rol",
+      },
+    },
+    options: ["Paciente", "Profesional", "Secretario", "Administrador"],
   },
 ];

@@ -12,7 +12,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import { useTheme } from "@mui/material";
-import { getAuthenticatedUserName, getAuthenticatedUserEmail } from '@store';
+import { getAuthenticatedUserName } from "@store";
 
 import MedicalServicesRoundedIcon from "@mui/icons-material/MedicalServicesRounded";
 import EventNoteRoundedIcon from "@mui/icons-material/EventNoteRounded";
@@ -41,7 +41,6 @@ type Boton = {
 
 export default function ControlPanel() {
   const theme = useTheme();
-  const nombre = "Luis Martinez";
   const themeClass =
     theme.palette.mode === "dark" ? "dark-theme" : "light-theme";
 

@@ -33,6 +33,7 @@ const adminListItems = [
   { text: "Usuarios", route: "/usuarios", icon: <GroupRoundedIcon /> },
   { text: "Roles", route: "/roles", icon: <ContactMailRoundedIcon /> },
   { text: "Servicios ", route: "/servicios", icon: <AssignmentRoundedIcon /> },
+  { text: "Citas ", route: "/citas", icon: <CalendarMonthRoundedIcon /> },
 ];
 
 const staffListItems = [

@@ -28,11 +28,17 @@ export default function DateCalendarValue() {
   };
 
   return (
-    <div style={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DateCalendar", "DateCalendar"]}>
-          <DemoItem label="Seleccione la fecha">
-            <DateCalendar value={value}  />
+          <DemoItem>
+            <DateCalendar value={value} />
           </DemoItem>
         </DemoContainer>
       </LocalizationProvider>
@@ -41,11 +47,19 @@ export default function DateCalendarValue() {
         value={hora}
         exclusive
         aria-label="Hora"
-        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", width: "60%" }}
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          width: "60%",
+        }}
       >
         {hours.map((hour) => (
           <ToggleButton
-            style={{ margin: "5px", borderRadius: "10px" }}
+            style={{
+              margin: "5px",
+              borderRadius: "10px",
+            }}
             value={hour}
             aria-label={hour}
             key={hour}

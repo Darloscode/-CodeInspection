@@ -1,4 +1,5 @@
-export interface InvoiceData {
+export interface Invoice {
+  id: number;
   number: string;
   issueDate: string;
   clientName: string;
@@ -11,4 +12,5 @@ export interface InvoiceData {
   paymentMethod: string;
   contactEmail: string;
   contactPhone: string;
+  status: boolean;
 }

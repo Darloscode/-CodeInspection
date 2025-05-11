@@ -1,17 +1,33 @@
 import { FormProvider, useForm } from "react-hook-form";
 import UserInput from "./UserInput";
 import CancelButton from "../buttons/CancelButton";
+//import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+//import { UserData } from "../../types/UserDataCreation";
+import { inputCreateUserConfig } from "../../config//userFormConfig";
+import { usuarios } from "../../data/Usuarios";
+import SaveButton from "../buttons/SaveButton";
 import CreationButton from "../buttons/CreationButton";
-import { useEffect, useState } from "react";
-import { UserData } from "../../types/UserDataCreation";
-import { inputCreateUserConfig } from '../../config//userFormConfig';
 
+function UserForm(props: {
+  isEditMode?: boolean;
+  userId?: number;
+  role?: string;
+}) {
+  //const [userData, setUserData] = useState<UserData | null>(null);
 
-function UserForm(props: { isEditMode?: boolean; userId?: string }) {
-  const [userData, setUserData] = useState<UserData | null>(null);
+  //Estas dos lineas son solo para pruebas
+  const user = usuarios.find((u) => u.id === props.userId);
+
+  // Esto te lleva a la página anterior
+  const navigate = useNavigate();
+  const handleBack = () => {
+    navigate(-1);
+  };
 
   // TODO Fetch user data if in edit mode and userId is provided
   // TODO separate fetch function to avoid duplication
+  /*
   useEffect(() => {
     if (props.isEditMode && props.userId) {
       const fetchData = async () => {
@@ -21,13 +37,23 @@ function UserForm(props: { isEditMode?: boolean; userId?: string }) {
       };
       fetchData();
     }
-  }, [props.isEditMode, props.userId]);
-
+  }, [props.isEditMode, props.userId]);*/
 
   const methods = useForm({
     defaultValues: async () => {
-      if (props.isEditMode && userData) {
+      if (props.isEditMode && /*userData*/ user) {
         return {
+          surname: user.lastName,
+          name: user.firstName,
+          email: user.email,
+          phone: user.phone,
+          address: user.address,
+          identification_number: user.identity,
+          provincia: user.provincia, // << AQUÍ
+          rol: user.rol,
+          password: "",
+          confirm_password: "",
+          /*
           name: userData.name,
           surname: userData.surname,
           email: userData.email,
@@ -36,6 +62,7 @@ function UserForm(props: { isEditMode?: boolean; userId?: string }) {
           identification_number: userData.identification_number,
           password: "", // Do not pre-fill password fields for security reasons
           confirm_password: "",
+          */
         };
       } else {
         return {
@@ -47,6 +74,7 @@ function UserForm(props: { isEditMode?: boolean; userId?: string }) {
           identification_number: "",
           password: "",
           confirm_password: "",
+          provincia: "",
         };
       }
     },
@@ -58,33 +86,52 @@ function UserForm(props: { isEditMode?: boolean; userId?: string }) {
       key={input.key}
       type={input.type}
       id={input.key}
-      validation={input.key === "confirm_password" ? {
-        ...input.validation,
-        validate: (value: string) => value === methods.getValues("password") || "Las contraseñas no coinciden",
-      } : input.validation}    />
+      validation={
+        input.key === "confirm_password"
+          ? {
+              ...input.validation,
+              validate: (value: string) =>
+                value === methods.getValues("password") ||
+                "Las contraseñas no coinciden",
+            }
+          : input.validation
+      }
+      options={input.options}
+      default={user?.rol ?? props.role}
+    />
   ));
 
   // TODO in a diff file
+  const onClickSave = methods.handleSubmit((data) => {
+    alert(data);
+    console.log(data);
+  });
+
   const onClickCreate = methods.handleSubmit((data) => {
     alert(data);
     console.log(data);
   });
 
-  // TODO in a diff file
-  const onClickCancel = () => {
-    alert("Cancel button clicked");
-  };
-
   return (
     <FormProvider {...methods}>
-      <form  className="flex flex-col w-full h-full p-6" onSubmit={(e) => e.preventDefault()} noValidate>
-        <div className="items-center justify-center">
-          <h1>Nuevo Usuario</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">{list_inputs}</div>
+      <form
+        className="flex flex-col w-full h-full p-6"
+        onSubmit={(e) => e.preventDefault()}
+        noValidate
+      >
+        <div className="flex justify-center items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {list_inputs}
+          </div>
         </div>
-        <div className="gap-10 mt-4 flex flex-row justify-start">
-          <CancelButton onClick={onClickCancel} />
-          <CreationButton onClick={onClickCreate} text="Crear" />
+        <div className="gap-10 mt-4 flex flex-row items-center justify-center">
+          <CancelButton onClick={handleBack} />
+          {!props.isEditMode && (
+            <CreationButton onClick={onClickCreate} text="Crear" />
+          )}
+          {props.isEditMode && (
+            <SaveButton onClick={onClickSave} text="Guardar" />
+          )}
         </div>
       </form>
     </FormProvider>
