@@ -8,7 +8,7 @@ import UserForm from "@forms/UserForm";
 export default function EditRole() {
   //Obtener usuario
   const { id } = useParams();
-  const numericId = id ? parseInt(id) : undefined;
+  const numericId = parseInt(id!);
 
   return (
     <Box className="box-panel-control" sx={{ padding: 2 }}>

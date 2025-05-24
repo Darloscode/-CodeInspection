@@ -73,6 +73,7 @@ function UserForm(props: {
           address: "",
           identification_number: "",
           password: "",
+          rol: "",
           confirm_password: "",
           provincia: "",
         };

@@ -211,6 +211,8 @@ p {
 .typography-citas {
   text-align: left;
   font-weight: bold !important;
+  margin-bottom: 2% !important;
+  margin-top: 5px !important;
 }
 
 .card-content-citas {
