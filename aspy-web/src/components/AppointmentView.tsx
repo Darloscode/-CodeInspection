@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
 import ReplyRoundedIcon from "@mui/icons-material/ReplyRounded";
-import AppointmentCreation from "@staff/AppointmentCreation";
+import AppointmentCreation from "@components/AppointmentCreation";
 
 export default function AppointmentView() {
   const navigate = useNavigate();

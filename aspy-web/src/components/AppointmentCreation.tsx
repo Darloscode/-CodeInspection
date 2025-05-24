@@ -10,7 +10,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import top100Films from "@assets/top100Films";
 
-import DateCalendarValue from "../DateCalendarValue";
+import DateCalendarValue from "./DateCalendarValue";
 
 export default function AppointmentCreation() {
   const navigate = useNavigate();

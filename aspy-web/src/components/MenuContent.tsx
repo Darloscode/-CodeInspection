@@ -1,12 +1,13 @@
-import * as React from "react";
 import { ReactNode } from "react";
-
+import { useNavigate } from "react-router-dom";
+import { getAuthenticatedUserRole } from "@store";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Stack from "@mui/material/Stack";
+
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import AssignmentRoundedIcon from "@mui/icons-material/AssignmentRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
@@ -19,8 +20,7 @@ import SwitchAccountRoundedIcon from "@mui/icons-material/SwitchAccountRounded";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import PaymentRoundedIcon from "@mui/icons-material/PaymentRounded";
 import ReceiptLongRoundedIcon from "@mui/icons-material/ReceiptLongRounded";
-import { useNavigate } from "react-router-dom";
-import { getAuthenticatedUserRole } from "@store";
+import CreditScoreRoundedIcon from "@mui/icons-material/CreditScoreRounded";
 
 type ListItem = {
   text: string;
@@ -62,6 +62,7 @@ const professionalListItems = [
     icon: <AssignmentIndRoundedIcon />,
   },
   { text: "Citas", route: "/citas", icon: <CalendarMonthRoundedIcon /> },
+  { text: "Pagos", route: "/pagos", icon: <CreditScoreRoundedIcon /> },
 ];
 
 const clientListItems = [

@@ -12,7 +12,7 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import { GridColDef } from "@mui/x-data-grid";
 
-import OverviewPersona from "./OverviewPersona";
+import OverviewPersona from "./professional/OverviewPersona";
 import TablaDatos from "./TablaDatos";
 import Data from "@types/Data";
 

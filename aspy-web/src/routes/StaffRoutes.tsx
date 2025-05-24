@@ -11,8 +11,8 @@ import CreateUser from "@components/CreateUser";
 import CreateService from "@components/CreateService";
 import EditUser from "@components/EditUser";
 import EditService from "@components/EditService";
-import AppointmentView from "@staff/AppointmentView";
-import CheckoutView from "@staff/CheckoutView";
+import AppointmentView from "@components/AppointmentView";
+import CheckoutView from "@components/CheckoutView";
 
 export const StaffRoutes = [
   { path: "/", element: <ControlPanel /> },

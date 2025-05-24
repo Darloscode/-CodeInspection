@@ -1,104 +1,77 @@
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid2";
 import { useState } from "react";
-import React, { useRef } from "react";
-import Button from "@mui/material/Button";
-import BackupIcon from "@mui/icons-material/Backup";
-import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
+import { Edit, UploadFile } from "@mui/icons-material";
+import { FileData } from "@/types/FileData";
+import CancelButton from "@buttons/CancelButton";
+import CreationButton from "@buttons/CreationButton";
+import UploadButton from "@buttons/UploadButton";
 
 export default function AddReport() {
-  const [preview, setPreview] = useState<string | null>(null);
+  const [signature, setSignature] = useState<FileData | null>(null);
+  const [report, setReport] = useState<FileData | null>(null);
+  const [comment, setComment] = useState<string>("");
   const navigate = useNavigate();
   const handleBack = () => {
-    navigate(-1); // Esto te lleva a la página anterior
-  };
-  /*
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setPreview(url);
-    }
-  };*/
-
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const handleIconClick = () => {
-    inputRef.current?.click();
+    navigate(-1);
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setPreview(url);
-    }
-  };
-
-  const [comentario, setComentario] = useState("");
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setComentario(event.target.value);
-  };
-  console.log(comentario);
   return (
-    <Box className="box-panel-control">
-      <Grid container spacing={2}>
-        <Grid size={12}>
-          <Typography variant="h2">Nuevo Reporte</Typography>
-        </Grid>
-        <Grid container size={12} alignContent={"center"}>
-          <Grid size={12}>
-            <input
-              type="file"
-              accept="image/*"
-              style={{ display: "none" }}
-              ref={inputRef}
-              onChange={handleFileChange}
-            />
+    <div className="bg-white p-6 rounded-xl shadow-md w-full  space-y-6 flex flex-col relative">
+      <div>
+        <div className="flex items-center mb-2">
+          <Edit className="mr-2 text-gray-600" />
+          <h2 className="text-lg font-semibold">Firma del profesional</h2>
+        </div>
+        <UploadButton
+          accept="image/*"
+          label="Subir firma"
+          icon={<UploadFile className="mr-2 text-blue-600" />}
+          buttonClassName="bg-white text-black font-bold border border-blue-600 hover:bg-blue-50"
+          onFileSelected={(fileData) => setSignature(fileData)}
+        />
+        {signature && (
+          <p className="text-sm text-gray-500 mt-1">
+            Firma cargada: <strong>{signature.name}</strong>
+          </p>
+        )}
+      </div>
 
-            <Button
-              variant="outlined"
-              startIcon={<BackupIcon />}
-              onClick={handleIconClick}
-              sx={{ width: "100%" }}
-            >
-              Ingrese su firma
-            </Button>
-          </Grid>
-          <Grid size={12} container justifyContent="center" alignItems="center">
-            {preview && <img src={preview} alt="Vista previa" width={200} />}
-          </Grid>
-        </Grid>
-        <Grid size={12}>
-          <TextField
-            fullWidth
-            id="filled-textarea"
-            label="Agregue un comentario"
-            multiline
-            variant="filled"
-            onChange={handleChange}
-          />
-        </Grid>
-        <Grid
-          container
-          size={12}
-          textAlign={"right"}
-          className="grid-botones-anadir"
-        >
-          <Grid size={6}>
-            <Button variant="outlined" className="cerrar" onClick={handleBack}>
-              Cerrar
-            </Button>
-          </Grid>
-          <Grid size={6}>
-            <Button variant="outlined" className="guardar">
-              Añadir
-            </Button>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Box>
+      <div>
+        <div className="flex items-center mb-2">
+          <Edit className="mr-2 text-gray-600" />
+          <h2 className="text-lg font-semibold">Reporte del profesional</h2>
+        </div>
+        <UploadButton
+          accept="image/*"
+          label="Subir Reporte"
+          icon={<UploadFile className="mr-2 text-blue-600" />}
+          buttonClassName="bg-white text-black font-bold border border-blue-600 hover:bg-blue-50"
+          onFileSelected={(fileData) => setReport(fileData)}
+        />
+        {report && (
+          <p className="text-sm text-gray-500 mt-1">
+            Reporte cargado: <strong>{report.name}</strong>
+          </p>
+        )}
+      </div>
+
+      <div className="flex justify-end gap-3 mt-auto">
+        <CancelButton
+          onClick={() => {
+            setSignature(null);
+            setComment("");
+            setReport(null);
+            handleBack();
+          }}
+        />
+        <CreationButton
+          text="Enviar reporte"
+          onClick={() => {
+            console.log("Comentario:", comment);
+            console.log("Firma:", signature);
+          }}
+        />
+      </div>
+    </div>
   );
 }

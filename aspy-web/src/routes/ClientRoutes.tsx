@@ -1,6 +1,6 @@
 import ControlPanel from "@client/ControlPanel";
 import Profile from "@components/Profile";
-import AppointmentCreation from "@/components/staff/AppointmentCreation";
+import AppointmentCreation from "@components/AppointmentCreation";
 import InvoiceList from "@staff/InvoiceList";
 
 export const ClientRoutes = [

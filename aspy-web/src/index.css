@@ -211,8 +211,6 @@ p {
 .typography-citas {
   text-align: left;
   font-weight: bold !important;
-  margin-bottom: 2% !important;
-  margin-left: 2% !important;
 }
 
 .card-content-citas {
@@ -382,14 +380,12 @@ p {
 .light-theme .button-new-report {
   background-color: #152259 !important;
   color: white !important;
-  width: 70%;
   outline: none !important;
 }
 
 .dark-theme .button-new-report {
   background-color: #c6c9d7 !important;
   color: black !important;
-  width: 70%;
   outline: none !important;
 }
 
