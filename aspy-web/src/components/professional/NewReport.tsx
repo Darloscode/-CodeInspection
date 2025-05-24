@@ -10,9 +10,9 @@ export default function NewReport() {
     <Box className="box-panel-control" sx={{ padding: 2 }}>
       <Grid container spacing={1}>
         <Grid size={12} className="grid-p-patients-tittle">
-          <Grid container spacing={0} className="contenedor">
-            <Grid size={6}>
-              <Typography variant="h3">Pacientes</Typography>
+          <Grid container spacing={0}>
+            <Grid size={9} marginBottom={"4px"}>
+              <Typography variant="h3">Nuevo Reporte</Typography>
             </Grid>
           </Grid>
           <Divider className="divider-paciente-historial"></Divider>

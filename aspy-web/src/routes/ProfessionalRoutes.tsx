@@ -1,19 +1,19 @@
 import ControlPanel from "@professional/ControlPanel";
 import Profile from "@components/Profile";
-import Appointment from "@professional/Appointment";
+import Appointments from "@professional/Appointments";
 import PatientsList from "@professional/PatientsList";
 import DetallePaciente from "@professional/History";
 import NewReport from "@professional/NewReport";
 import Detail from "@professional/Detail";
-import AddSign from "@/components/AddSign";
+import PaymentsList from "@professional/PaymentsList";
 
 export const ProfessionalRoutes = [
   { path: "/", element: <ControlPanel /> },
   { path: "/perfil", element: <Profile /> },
   { path: "/pacientes", element: <PatientsList /> },
-  { path: "/citas", element: <Appointment /> },
+  { path: "/citas", element: <Appointments /> },
   { path: "/pacientes/:id", element: <DetallePaciente /> },
   { path: "/pacientes/:id/nuevoReporte", element: <NewReport /> },
   { path: "/pacientes/:id/:citaId", element: <Detail /> },
-  { path: "/pacientes/reporte", element: <AddSign /> },
+  { path: "/pagos", element: <PaymentsList /> },
 ];

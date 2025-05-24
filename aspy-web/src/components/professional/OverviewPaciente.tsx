@@ -1,10 +1,10 @@
+import { useTheme } from "@mui/material";
+import { User } from "@/types/User";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
-import { User } from "../../types/User";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
-import { useTheme } from "@mui/material";
 
 interface OverviewPacienteProps {
   paciente: User;
@@ -12,7 +12,7 @@ interface OverviewPacienteProps {
   newReport: () => void;
 }
 
-function OverviewPaciente({
+export default function OverviewPaciente({
   paciente,
   representante,
   newReport,
@@ -20,6 +20,7 @@ function OverviewPaciente({
   const theme = useTheme();
   const themeClass =
     theme.palette.mode === "dark" ? "dark-theme" : "light-theme";
+
   return (
     <Box className="contenedor-overview">
       <Grid
@@ -116,5 +117,3 @@ function OverviewPaciente({
     </Box>
   );
 }
-
-export default OverviewPaciente;

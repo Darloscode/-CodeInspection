@@ -20,13 +20,12 @@ export default function Table<T>({
   onRowSelectionChange,
 }: TableProps<T>) {
   return (
-    <Paper sx={{ height: "70vh", width: "98%" }}>
+    <Paper sx={{ height: "auto", width: "98%" }}>
       <DataGrid
         className="data-grid-custom"
         rows={rows}
         columns={columns}
         getRowId={(row) => row.id}
-        autoPageSize
         slots={{ toolbar: GridToolbar }}
         onRowSelectionModelChange={(newRowSelectionModel) => {
           onRowSelectionChange(newRowSelectionModel);

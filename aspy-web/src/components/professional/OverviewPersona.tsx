@@ -1,6 +1,6 @@
+import { User } from "@/types/User";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
-import { User } from "../types/User";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -12,7 +12,10 @@ interface OverviewPersonaProps {
   moreInfo: () => void;
 }
 
-function Overview_persona({ selectedData, moreInfo }: OverviewPersonaProps) {
+export default function Overview_persona({
+  selectedData,
+  moreInfo,
+}: OverviewPersonaProps) {
   return (
     <Box className="contenedor-overview">
       <Grid container rowSpacing={6} columnSpacing={{ xs: 1, sm: 1, md: 1 }}>
@@ -123,5 +126,3 @@ function Overview_persona({ selectedData, moreInfo }: OverviewPersonaProps) {
     </Box>
   );
 }
-
-export default Overview_persona;
