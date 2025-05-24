@@ -13,19 +13,17 @@ import ReceiptDetails from "@staff/ReceiptDetails";
 export default function PaymentDetails() {
   //Obtener Factura
   const { id } = useParams();
-  const numericId = id ? parseInt(id) : undefined;
-  const invoice: Invoice = getFactura(numericId!);
+  const numericId = parseInt(id!);
+  const invoice: Invoice = getFactura(numericId);
   const receipt: ReceiptRevisionData = getRecibo(numericId!);
 
   return (
     <Box className="box-panel-control" sx={{ padding: 2 }}>
       <Grid container spacing={1}>
         <Grid size={12} className="grid-p-patients-tittle">
-          <Grid container spacing={0} className="contenedor">
-            <Grid size={8}>
-              <Typography variant="h3">
-                Detalles de Comprobante de Pago
-              </Typography>
+          <Grid container spacing={0}>
+            <Grid size={9} marginBottom={"4px"}>
+              <Typography variant="h3">Detalles del pago</Typography>
             </Grid>
           </Grid>
           <Divider className="divider-paciente-historial"></Divider>
