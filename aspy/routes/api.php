@@ -50,3 +50,5 @@ Route::get('usuarios/{id}', [UsuariosController::class, 'getUsuarioById']);
 Route::get('usuarios/rol/{role}', [UsuariosController::class, 'getUsuariosByRol']);
 Route::post('usuarios', [UsuariosController::class, 'createUsuario']);
 Route::put('usuarios/{id}', [UsuariosController::class, 'updateUsuario']);
+
+
