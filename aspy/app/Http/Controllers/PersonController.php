@@ -9,12 +9,12 @@ class PersonController extends Controller
 {
     public function index()
     {
-        return Person::with(['genderRelation', 'occupationRelation', 'maritalStatusRelation', 'educationRelation'])->get();
+        return Person::all();
     }
 
     public function show($id)
     {
-        return Person::with(['genderRelation', 'occupationRelation', 'maritalStatusRelation', 'educationRelation'])->findOrFail($id);
+        return Person::findOrFail($id);
     }
 
     public function store(Request $request)

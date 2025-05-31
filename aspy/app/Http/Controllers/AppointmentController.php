@@ -9,12 +9,12 @@ class AppointmentController extends Controller
 {
     public function index()
     {
-        return Appointment::with(['payment', 'scheduledBy', 'workerSchedule', 'status', 'tracking'])->get();
+        return Appointment::with(['payment', 'scheduledBy', 'workerSchedule', 'status', 'trackingAppointment'])->get();
     }
 
     public function show($id)
     {
-        return Appointment::with(['payment', 'scheduledBy', 'workerSchedule', 'status', 'tracking'])->findOrFail($id);
+        return Appointment::with(['payment', 'scheduledBy', 'workerSchedule', 'status', 'trackingAppointment'])->findOrFail($id);
     }
 
     public function store(Request $request)
