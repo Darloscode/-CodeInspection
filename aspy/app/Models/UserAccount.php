@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class UserAccount extends Authenticatable
 {
     use HasApiTokens, HasFactory;
 
     protected $table = 'user_account';
+    protected $primaryKey = 'user_id';
 
     protected $fillable = [
         'role_id',

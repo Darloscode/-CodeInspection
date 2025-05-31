@@ -75,6 +75,9 @@ php artisan key:generate
 
 # Ejecutar migraciones
 php artisan migrate
+
+#  Ejecutar seeders
+php artisan db:seed
 ```
 
 ---
