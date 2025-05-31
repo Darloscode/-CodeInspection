@@ -8,9 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class AppointmentStatus extends Model
 {
     use HasFactory;
-
     protected $table = 'appointment_status';
-
+    protected $primaryKey = 'status_id';
     protected $fillable = [
         'name',
     ];

@@ -1,7 +1,7 @@
 -- Tablas
 -- Roles y usuarios
-CREATE TABLE role (
-    role_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS role (
+    role_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(255) UNIQUE NOT NULL,
     created_by VARCHAR(255) DEFAULT 'system',
     modified_by VARCHAR(255),
@@ -10,70 +10,70 @@ CREATE TABLE role (
 );
 
 
-CREATE TABLE gender (
-    gender_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS gender (
+    gender_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE occupation (
-    occupation_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS occupation (
+    occupation_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE marital_status (
-    marital_status_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS marital_status (
+    marital_status_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE education (
-    education_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS education (
+    education_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
 
-CREATE TABLE country (
-    country_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS country (
+    country_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     phone_code VARCHAR(10) NOT NULL
 );
 
-CREATE TABLE state (
-    state_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS state (
+    state_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     country_id INT NOT NULL,
     FOREIGN KEY (country_id) REFERENCES country(country_id)
 );
 
-CREATE TABLE city (
-    city_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS city (
+    city_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     state_id INT NOT NULL,
     FOREIGN KEY (state_id) REFERENCES state(state_id)
 );
 
-CREATE TABLE aga (
-    aga_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS aga (
+    aga_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE user_account_status (
-    status_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS user_account_status (
+    status_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE appointment_status (
-    status_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS appointment_status (
+    status_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE payment_status (
-    status_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS payment_status (
+    status_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
 
-CREATE TABLE user_account (
-    user_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS user_account (
+    user_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     role_id INT NOT NULL, 
     email VARCHAR(255) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
@@ -88,8 +88,8 @@ CREATE TABLE user_account (
 );
 
 -- Persona y relaciones
-CREATE TABLE person (
-    person_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS person (
+    person_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id INT UNIQUE NOT NULL,
     first_name VARCHAR(255) NOT NULL,
     middle_name VARCHAR(255),
@@ -109,8 +109,8 @@ CREATE TABLE person (
     FOREIGN KEY (education) REFERENCES education(education_id)
 );
 
-CREATE TABLE client (
-    person_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS client (
+    person_id INT PRIMARY KEY,
     created_by VARCHAR(255) DEFAULT 'system',
     modified_by VARCHAR(255),
     creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -118,8 +118,8 @@ CREATE TABLE client (
     FOREIGN KEY (person_id) REFERENCES person(person_id)
 );
 
-CREATE TABLE staff (
-    person_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS staff (
+    person_id INT PRIMARY KEY,
     created_by VARCHAR(255) DEFAULT 'system',
     modified_by VARCHAR(255),
     creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -127,8 +127,8 @@ CREATE TABLE staff (
     FOREIGN KEY (person_id) REFERENCES person(person_id)
 );
 
-CREATE TABLE professional (
-    person_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS professional (
+    person_id INT PRIMARY KEY,
     specialty VARCHAR(255) NOT NULL,
     title VARCHAR(50) NOT NULL,
     about TEXT,
@@ -140,8 +140,8 @@ CREATE TABLE professional (
 );
 
 -- Identificación y direcciones
-CREATE TABLE identification (
-    identification_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS identification (
+    identification_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     person_id INT NOT NULL,
     type VARCHAR(50) NOT NULL,
     number VARCHAR(13) UNIQUE NOT NULL,
@@ -153,8 +153,8 @@ CREATE TABLE identification (
     FOREIGN KEY (person_id) REFERENCES person(person_id)
 );
 
-CREATE TABLE address (
-    address_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS address (
+    address_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     person_id INT NOT NULL,
     type VARCHAR(50) NOT NULL,
     country INT NOT NULL,
@@ -175,8 +175,8 @@ CREATE TABLE address (
 );
 
 -- Teléfonos
-CREATE TABLE phone (
-    phone_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS phone (
+    phone_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     person_id INT NOT NULL,
     type VARCHAR(50) NOT NULL,
     number VARCHAR(10) NOT NULL,
@@ -190,8 +190,8 @@ CREATE TABLE phone (
 );
 
 -- Perfil médico
-CREATE TABLE medical_profile (
-    medical_profile_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS medical_profile (
+    medical_profile_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     person_id INT NOT NULL,
     diagnose VARCHAR(255) UNIQUE NOT NULL,
     created_by VARCHAR(255) DEFAULT 'system',
@@ -202,8 +202,8 @@ CREATE TABLE medical_profile (
 );
 
 -- Agendamiento
-CREATE TABLE schedule (
-    schedule_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS schedule (
+    schedule_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     date DATE NOT NULL,
     start_time TIME NOT NULL,
     end_time TIME NOT NULL,
@@ -214,8 +214,8 @@ CREATE TABLE schedule (
     modification_date TIMESTAMP
 );
 
-CREATE TABLE worker_schedule (
-    worker_schedule_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS worker_schedule (
+    worker_schedule_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     schedule_id INT NOT NULL,
     person_id INT NOT NULL,
     is_available BOOLEAN NOT NULL,
@@ -228,8 +228,8 @@ CREATE TABLE worker_schedule (
 );
 
 -- Servicios y profesionales
-CREATE TABLE discount (
-    discount_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS discount (
+    discount_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(255) UNIQUE NOT NULL,
     discount INT NOT NULL,
     created_by VARCHAR(255) DEFAULT 'system',
@@ -238,8 +238,8 @@ CREATE TABLE discount (
     modification_date TIMESTAMP
 );
 
-CREATE TABLE service (
-    service_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS service (
+    service_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(255) UNIQUE NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     created_by VARCHAR(255) DEFAULT 'system',
@@ -248,8 +248,8 @@ CREATE TABLE service (
     modification_date TIMESTAMP
 );
 
-CREATE TABLE professional_service (
-    professional_service_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS professional_service (
+    professional_service_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     service_id INT NOT NULL,
     person_id INT NOT NULL,
     created_by VARCHAR(255) DEFAULT 'system',
@@ -261,8 +261,8 @@ CREATE TABLE professional_service (
 );
 
 -- Datos de pago y recibos
-CREATE TABLE payment_data (
-    payment_data_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS payment_data (
+    payment_data_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     type VARCHAR(50) NOT NULL,
     number INT NOT NULL,
     file VARCHAR(255) UNIQUE NOT NULL,
@@ -272,8 +272,8 @@ CREATE TABLE payment_data (
     modification_date TIMESTAMP
 );
 
-CREATE TABLE payment (
-    payment_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS payment (
+    payment_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     person_id INT NOT NULL,
     service_id INT NOT NULL,
     discount_id INT,
@@ -293,8 +293,8 @@ CREATE TABLE payment (
     FOREIGN KEY (status) REFERENCES payment_status(status_id)
 );
 
-CREATE TABLE receipt (
-    receipt_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS receipt (
+    receipt_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     payment_id INT UNIQUE NOT NULL,
     status VARCHAR(50) NOT NULL,
     created_by VARCHAR(255) DEFAULT 'system',
@@ -304,8 +304,8 @@ CREATE TABLE receipt (
     FOREIGN KEY (payment_id) REFERENCES payment(payment_id)
 );
 
-CREATE TABLE appointment (
-    appointment_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS appointment (
+    appointment_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     payment_id INT NOT NULL,
     scheduled_by INT NOT NULL,
     worker_schedule_id INT UNIQUE NOT NULL,
@@ -322,8 +322,8 @@ CREATE TABLE appointment (
     FOREIGN KEY (status) REFERENCES appointment_status(status_id)
 );
 
-CREATE TABLE appointment_report (
-    appointment_report_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS appointment_report (
+    appointment_report_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     appointment_id INT UNIQUE NOT NULL,
     comments TEXT NOT NULL,
     sign VARCHAR(255) NOT NULL,
@@ -350,7 +350,6 @@ CREATE INDEX idx_address_country ON address(country);
 CREATE INDEX idx_address_province ON address(province);
 CREATE INDEX idx_address_city ON address(city);
 CREATE INDEX idx_address_aga ON address(aga);
-CREATE INDEX idx_address_zone ON address(zone);
 CREATE INDEX idx_phone_person_id ON phone(person_id);
 CREATE INDEX idx_phone_type ON phone(type);
 CREATE INDEX idx_phone_relationship ON phone(relationship);
@@ -396,18 +395,6 @@ ALTER TABLE person
 ADD CONSTRAINT chk_birthdate_past
 CHECK (birthdate <= CURRENT_DATE);
 
-ALTER TABLE client
-ADD CONSTRAINT chk_client_unique
-CHECK (person_id NOT IN (SELECT person_id FROM staff UNION SELECT person_id FROM professional));
-
-ALTER TABLE staff
-ADD CONSTRAINT chk_staff_unique
-CHECK (person_id NOT IN (SELECT person_id FROM client UNION SELECT person_id FROM professional));
-
-ALTER TABLE professional
-ADD CONSTRAINT chk_professional_unique
-CHECK (person_id NOT IN (SELECT person_id FROM client UNION SELECT person_id FROM staff));
-
 ALTER TABLE schedule
 ADD CONSTRAINT chk_schedule_time
 CHECK (start_time >= TIME '07:00:00' AND end_time <= TIME '21:00:00' AND start_time < end_time);
@@ -435,6 +422,7 @@ CHECK (number ~ '^\d{8,10}$');
 ALTER TABLE address
 ADD CONSTRAINT chk_address_country_province_city
 CHECK (country IS NOT NULL AND province IS NOT NULL AND city IS NOT NULL);
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -476,8 +464,17 @@ INSERT INTO country (name, phone_code) VALUES ('Ecuador', '+593');
 INSERT INTO state (name, country_id) VALUES ('Pichincha', 1);
 INSERT INTO city (name, state_id) VALUES ('Quito', 1);
 
--- AGA
-INSERT INTO aga (name) VALUES ('Zona 1');
+-- AGA (Áreas Geográficas)
+INSERT INTO aga (name) VALUES 
+('Zona 1: Esmeraldas, Imbabura, Carchi, Sucumbíos'),
+('Zona 2: Pichincha (excepto Quito), Napo, Orellana'),
+('Zona 3: Cotopaxi, Tungurahua, Chimborazo, Pastaza'),
+('Zona 4: Manabí, Santo Domingo de los Tsáchilas'),
+('Zona 5: Santa Elena, Guayas (excepto Guayaquil, Samborondón y Durán), Bolívar, Los Ríos, Galápagos'),
+('Zona 6: Cañar, Azuay, Morona Santiago'),
+('Zona 7: El Oro, Loja, Zamora Chinchipe'),
+('Zona 8: Guayaquil, Samborondón y Durán'),
+('Zona 9: Distrito Metropolitano de Quito');
 
 -- Usuarios
 INSERT INTO user_account (role_id, email, password_hash, status, created_by)
@@ -496,13 +493,14 @@ VALUES
 (4, 'Luisa', NULL, '1985-07-15', 2, 2, 1, 2, 'system');
 
 -- Clientes, Staff y Profesionales
+INSERT INTO staff (person_id, created_by) VALUES (1, 'system');
+INSERT INTO professional (person_id, specialty, title, created_by) VALUES (2, 'Cardiología', 'Médico', 'system');
 INSERT INTO client (person_id, created_by) VALUES (3, 'system');
 INSERT INTO staff (person_id, created_by) VALUES (4, 'system');
-INSERT INTO professional (person_id, specialty, title, created_by) VALUES (2, 'Cardiología', 'Médico', 'system');
 
 -- Identificaciones (solo cliente ejemplo)
 INSERT INTO identification (person_id, type, number, created_by)
-VALUES (3, 'Cédula', '1712345678', 'system');
+VALUES (3, 'Cedula', '1712345678', 'system');
 
 -- Direcciones (ejemplo para cliente)
 INSERT INTO address (person_id, type, country, province, city, primary_address, aga, created_by)
@@ -533,7 +531,7 @@ INSERT INTO payment_data (type, number, file, created_by) VALUES ('Tarjeta Créd
 
 -- Pago (con precio de servicio copiado)
 INSERT INTO payment (person_id, service_id, discount_id, payment_data_id, service_price, discount_percentage, total_amount, status, created_by)
-VALUES (1, 1, 1, 1, 50.00, 10, 45.00, 2, 'system'); -- Cliente 1 pago
+VALUES (3, 1, 1, 1, 50.00, 10, 45.00, 2, 'system'); -- Cliente 1 pago
 
 -- Recibo
 INSERT INTO receipt (payment_id, status, created_by) VALUES (1, 'Emitido', 'system');

@@ -10,7 +10,7 @@ class Professional extends Model
     use HasFactory;
 
     protected $table = 'professional';
-
+    protected $primaryKey = 'person_id';
     protected $fillable = [
         'person_id',
         'specialty',

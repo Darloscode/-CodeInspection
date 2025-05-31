@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProfessionalService extends Model
 {
+    protected $table = 'professional_service';
+    protected $primaryKey = 'professional_service_id';
     protected $fillable = [
         'service_id',
         'person_id',

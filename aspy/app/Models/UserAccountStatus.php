@@ -10,7 +10,7 @@ class UserAccountStatus extends Model
     use HasFactory;
 
     protected $table = 'user_account_status';
-
+    protected $primaryKey = 'status_id';
     protected $fillable = [
         'name',
     ];

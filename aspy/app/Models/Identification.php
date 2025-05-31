@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Identification extends Model
 {
+    protected $table = 'identification';
+    protected $primaryKey = 'identification_id';
     protected $fillable = [
         'person_id',
         'type',

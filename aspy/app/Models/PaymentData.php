@@ -10,7 +10,7 @@ class PaymentData extends Model
     use HasFactory;
 
     protected $table = 'payment_data';
-
+    protected $primaryKey = 'payment_data_id';
     protected $fillable = [
         'type',
         'number',

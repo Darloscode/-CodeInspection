@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class MedicalProfile extends Model
 {
+    protected $table = 'medical_profile';
+    protected $primaryKey = 'medical_profile_id';
     protected $fillable = [
         'person_id',
         'diagnose',

@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class AppointmentReport extends Model
 {
+    protected $table = 'appointment_report';
+    protected $primaryKey = 'appointment_report_id';
     protected $fillable = [
         'appointment_id',
         'comments',

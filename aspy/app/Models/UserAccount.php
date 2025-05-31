@@ -11,6 +11,7 @@ class UserAccount extends Authenticatable
     use HasApiTokens, HasFactory;
 
     protected $table = 'user_account';
+    protected $primaryKey = 'user_id';
 
     protected $fillable = [
         'role_id',

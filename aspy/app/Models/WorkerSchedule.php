@@ -10,7 +10,7 @@ class WorkerSchedule extends Model
     use HasFactory;
 
     protected $table = 'worker_schedule';
-
+    protected $primaryKey = 'worker_schedule_id';
     protected $fillable = [
         'schedule_id',
         'person_id',

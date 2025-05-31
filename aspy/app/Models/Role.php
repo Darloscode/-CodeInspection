@@ -10,7 +10,7 @@ class Role extends Model
     use HasFactory;
 
     protected $table = 'role';
-
+    protected $primaryKey = 'role_id';
     protected $fillable = [
         'name',
         'created_by',

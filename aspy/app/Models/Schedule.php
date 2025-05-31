@@ -10,7 +10,7 @@ class Schedule extends Model
     use HasFactory;
 
     protected $table = 'schedule';
-
+    protected $primaryKey = 'schedule_id';
     protected $fillable = [
         'date',
         'start_time',
