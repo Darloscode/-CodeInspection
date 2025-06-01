@@ -29,7 +29,7 @@ services:
       - laravel
 
   pgadmin:
-    image: dpage/pgadmin4
+    image: dpage/pgadmin4:latest
     container_name: aspy-pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com

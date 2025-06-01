@@ -1,4 +1,4 @@
-FROM php:8.4-cli
+FROM php:8.4-fpm
 
 # Instalamos utilidades del sistema
 RUN apt-get update && apt-get install -y \
@@ -11,20 +11,25 @@ RUN apt-get update && apt-get install -y \
     git \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd fileinfo
 
-
 # Instalar Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
 
 # Establecer el directorio de trabajo
 WORKDIR /var/www
 
+# Copiar archivos composer.json y composer.lock para instalación de dependencias
+COPY composer.json composer.lock ./
 
 # Instalar dependencias PHP (Laravel)
-RUN composer install
+RUN composer install --no-dev --optimize-autoloader
 
-# Exponer el puerto 8000
-EXPOSE 8000
+# Copiar todo el código fuente al contenedor
+COPY . .
 
-# Comando por defecto: correr servidor Laravel
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+# Exponer puerto 9000 (PHP-FPM)
+EXPOSE 9000
+
+# El CMD por defecto de la imagen php:8.4-fpm ya ejecuta php-fpm, por lo que
+# no necesitas definirlo explícitamente a menos que quieras personalizarlo.
+# Si quieres puedes dejarlo explícito así:
+CMD ["php-fpm"]
