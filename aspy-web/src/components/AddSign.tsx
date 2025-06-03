@@ -11,7 +11,6 @@ function AddSign() {
 
   return (
     <div className="bg-white p-6 rounded-xl shadow-md w-full min-h-screen space-y-6 flex flex-col relative">
-
       <div>
         <div className="flex items-center mb-2">
           <Edit className="mr-2 text-gray-600" />
@@ -62,7 +61,7 @@ function AddSign() {
       </div>
 
       <div className="flex justify-end gap-3 absolute right-0 bottom-0 p-6">
-      <CreationButton
+        <CreationButton
           text="Enviar reporte"
           onClick={() => {
             console.log("Comentario:", comment);

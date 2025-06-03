@@ -13,8 +13,8 @@ import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import Info from "@components/Info";
 import InfoMobile from "@components/InfoMobile";
-import PaymentForm from "@/components/PaymentForm";
-import Review from "@/components/staff/Review";
+import PaymentForm from "@components/PaymentForm";
+import Review from "@components/Review";
 import SitemarkIcon from "@components/SitemarkIcon";
 
 const steps = ["Payment details", "Review your order"];

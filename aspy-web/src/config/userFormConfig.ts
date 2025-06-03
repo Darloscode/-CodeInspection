@@ -1,7 +1,7 @@
 export const inputCreateUserConfig = [
   {
     label: "Nombre",
-    key: "name",
+    key: "firstName",
     type: "text",
     validation: {
       required: {
@@ -12,7 +12,7 @@ export const inputCreateUserConfig = [
   },
   {
     label: "Apellido",
-    key: "surname",
+    key: "lastName",
     type: "text",
     validation: {
       required: {
@@ -64,7 +64,7 @@ export const inputCreateUserConfig = [
   },
   {
     label: "Numero de Identificación",
-    key: "identification_number",
+    key: "identity",
     type: "number",
     validation: {
       required: {
@@ -76,6 +76,18 @@ export const inputCreateUserConfig = [
         message: "Cédula debe tener 10 dígitos",
       },
     },
+  },
+  {
+    label: "Rol",
+    key: "role",
+    type: "select",
+    validation: {
+      required: {
+        value: true,
+        message: "Debe seleccionar un rol",
+      },
+    },
+    options: ["Paciente", "Profesional", "Secretario", "Administrador"],
   },
   {
     label: "Contraseña",
@@ -94,7 +106,7 @@ export const inputCreateUserConfig = [
   },
   {
     label: "Confirmar Contraseña",
-    key: "confirm_password",
+    key: "confirmPassword",
     type: "password",
     validation: {
       required: {
@@ -106,17 +118,5 @@ export const inputCreateUserConfig = [
         message: "min 6 caracteres",
       },
     },
-  },
-  {
-    label: "Rol",
-    key: "rol",
-    type: "select",
-    validation: {
-      required: {
-        value: true,
-        message: "Debe seleccionar un rol",
-      },
-    },
-    options: ["Paciente", "Profesional", "Secretario", "Administrador"],
   },
 ];

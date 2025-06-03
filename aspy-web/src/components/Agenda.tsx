@@ -46,22 +46,6 @@ export default function Agenda({ citas }: { citas: Cita[] }) {
         noDataToDisplay: "No hay eventos para mostrar", // 🔹 Texto cuando no hay eventos
         loading: "Cargando...", // 🔹 Texto mientras se cargan los eventos
       }}
-      /*
-      events={[
-        {
-          event_id: 1,
-          title: "Event 1",
-          start: new Date("2025/4/25 09:30"),
-          end: new Date("2025/3425 10:30"),
-        },
-        {
-          event_id: 2,
-          title: "Event 2",
-          start: new Date("2025/4/26 10:00"),
-          end: new Date("2025/4/26 11:00"),
-        },
-      ]}
-      */
       events={events}
     />
   );
