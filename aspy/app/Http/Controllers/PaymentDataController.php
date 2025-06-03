@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PaymentData;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PaymentDataController extends Controller
 {
@@ -23,7 +24,7 @@ class PaymentDataController extends Controller
             'type' => 'required|string',
             'number' => 'required|integer',
             'file' => 'required|string|unique:payment_data,file',
-            'created_by' => 'sometimes|string',
+            
         ]);
 
         return PaymentData::create($validated);
@@ -35,9 +36,12 @@ class PaymentDataController extends Controller
         $validated = $request->validate([
             'type' => 'string',
             'number' => 'integer',
-            'file' => 'string|unique:payment_data,file,'.$id,
-            'modified_by' => 'sometimes|string',
+            'file' => 'string|unique:payment_data,file,'.$id
         ]);
+        
+        $validated['modification_date'] = Carbon::now();
+        $validated['modified_by'] = 'system';
+
         $paymentData->update($validated);
         return $paymentData;
     }

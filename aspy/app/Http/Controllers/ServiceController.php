@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ServiceController extends Controller
 {
@@ -22,7 +23,7 @@ class ServiceController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|unique:services,name',
             'price' => 'required|numeric|min:0',
-            'created_by' => 'sometimes|string',
+            
         ]);
 
         return Service::create($validated);
@@ -33,9 +34,12 @@ class ServiceController extends Controller
         $service = Service::findOrFail($id);
         $validated = $request->validate([
             'name' => 'string|unique:services,name,'.$id,
-            'price' => 'numeric|min:0',
-            'modified_by' => 'sometimes|string',
+            'price' => 'numeric|min:0'
         ]);
+        
+        $validated['modification_date'] = Carbon::now();
+        $validated['modified_by'] = 'system';
+
         $service->update($validated);
         return $service;
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Schedule;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ScheduleController extends Controller
 {
@@ -24,7 +25,7 @@ class ScheduleController extends Controller
             'start_time' => 'required|date_format:H:i:s',
             'end_time' => 'required|date_format:H:i:s|after:start_time',
             'name' => 'nullable|string',
-            'created_by' => 'sometimes|string',
+            
         ]);
 
         return Schedule::create($validated);
@@ -37,9 +38,12 @@ class ScheduleController extends Controller
             'date' => 'date',
             'start_time' => 'date_format:H:i:s',
             'end_time' => 'date_format:H:i:s|after:start_time',
-            'name' => 'string',
-            'modified_by' => 'sometimes|string',
+            'name' => 'string'
         ]);
+        
+        $validated['modification_date'] = Carbon::now();
+        $validated['modified_by'] = 'system';
+
         $schedule->update($validated);
         return $schedule;
     }

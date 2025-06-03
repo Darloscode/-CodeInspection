@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class RoleController extends Controller
 {
@@ -21,7 +22,7 @@ class RoleController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|unique:roles,name',
-            'created_by' => 'sometimes|string',
+            
         ]);
 
         return Role::create($validated);
@@ -31,9 +32,12 @@ class RoleController extends Controller
     {
         $role = Role::findOrFail($id);
         $validated = $request->validate([
-            'name' => 'string|unique:roles,name,'.$id,
-            'modified_by' => 'sometimes|string',
+            'name' => 'string|unique:roles,name,'.$id
         ]);
+        
+        $validated['modification_date'] = Carbon::now();
+        $validated['modified_by'] = 'system';
+
         $role->update($validated);
         return $role;
     }
