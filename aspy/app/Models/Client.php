@@ -10,6 +10,7 @@ class Client extends Model
     use HasFactory;
     protected $table = 'client';
     protected $primaryKey = 'person_id';
+    public $timestamps = false;
 
     protected $fillable = [
         'person_id',

@@ -11,6 +11,7 @@ class WorkerSchedule extends Model
 
     protected $table = 'worker_schedule';
     protected $primaryKey = 'worker_schedule_id';
+    public $timestamps = false;
     protected $fillable = [
         'schedule_id',
         'person_id',

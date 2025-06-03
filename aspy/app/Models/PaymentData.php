@@ -11,6 +11,7 @@ class PaymentData extends Model
 
     protected $table = 'payment_data';
     protected $primaryKey = 'payment_data_id';
+    public $timestamps = false;
     protected $fillable = [
         'type',
         'number',

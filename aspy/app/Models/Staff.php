@@ -11,6 +11,7 @@ class Staff extends Model
 
     protected $table = 'staff';
     protected $primaryKey = 'person_id';
+    public $timestamps = false;
     protected $fillable = [
         'person_id',
         'created_by',

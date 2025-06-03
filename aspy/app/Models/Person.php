@@ -11,6 +11,7 @@ class Person extends Model
 
     protected $table = 'person';
     protected $primaryKey = 'person_id';
+    public $timestamps = false;
     protected $fillable = [
         'user_id',
         'first_name',
