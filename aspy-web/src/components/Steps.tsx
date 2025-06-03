@@ -35,7 +35,7 @@ export default function Steps({ activeStep, steps }: StepsProps) {
         >
           {steps.map((label) => (
             <Step
-              sx={{ ":first-child": { pl: 0 }, ":last-child": { pr: 0 } }}
+              sx={{ ":first-of-type": { pl: 0 }, ":last-child": { pr: 0 } }}
               key={label}
             >
               <StepLabel>{label}</StepLabel>

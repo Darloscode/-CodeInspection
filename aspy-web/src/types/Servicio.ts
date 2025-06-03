@@ -1,4 +1,5 @@
 type TipoServicio =
+  | ""
   | "Consulta Médica"
   | "Terapia Psicológica"
   | "Terapia de Lenguaje";

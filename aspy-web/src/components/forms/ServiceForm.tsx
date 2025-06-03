@@ -5,15 +5,25 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import UserInput from "./UserInput";
 import CancelButton from "../buttons/CancelButton";
-import { servicios } from "../../data/Servicios";
+import { servicios } from "@data/Servicios";
+import { Servicio } from "@/types/Servicio";
 import SaveButton from "../buttons/SaveButton";
 import CreationButton from "../buttons/CreationButton";
+import { useEffect } from "react";
 
-function ServiceForm(props: { isEditMode?: boolean; serviceId?: number }) {
+interface ServiceFormProps {
+  isEditMode: boolean;
+  serviceId?: number;
+}
+
+export default function ServiceForm({
+  isEditMode,
+  serviceId,
+}: ServiceFormProps) {
   //const [serviceData, setServiceData] = useState<ServiceData | null>(null);
 
   //Estas dos lineas son solo para pruebas
-  const serviceData = servicios.find((u) => u.id === props.serviceId);
+  const serviceData = servicios.find((u) => u.id === serviceId);
 
   // Esto te lleva a la página anterior
   const navigate = useNavigate();
@@ -36,28 +46,29 @@ function ServiceForm(props: { isEditMode?: boolean; serviceId?: number }) {
   }, [props.isEditMode, props.serviceId]);
   */
 
-  const methods = useForm({
-    defaultValues: async () => {
-      if (props.isEditMode && serviceData) {
-        return {
-          name: serviceData.nombre,
-          description: serviceData.descripcion,
-          price: serviceData.costo,
-          duracion: serviceData.duracion_minutos,
-          activo: serviceData.activo ? "Si" : "No",
-          tipo: serviceData.tipo_servicio,
-        };
-      } else {
-        return {
-          name: "",
-          description: "",
-          price: "",
-          duracion: "",
-          activo: "",
-        };
-      }
-    },
-  });
+  const methods = useForm<Servicio>();
+
+  useEffect(() => {
+    if (isEditMode && serviceData) {
+      methods.reset({
+        nombre: serviceData.nombre,
+        descripcion: serviceData.descripcion,
+        costo: serviceData.costo,
+        duracion_minutos: serviceData.duracion_minutos,
+        activo: serviceData.activo,
+        tipo_servicio: serviceData.tipo_servicio,
+      });
+    } else {
+      methods.reset({
+        nombre: "",
+        descripcion: "",
+        costo: 0,
+        duracion_minutos: 0,
+        activo: false,
+        tipo_servicio: "",
+      });
+    }
+  }, [isEditMode, serviceData, methods]);
 
   const list_inputs = inputServiceConfig.map((input) => (
     <UserInput
@@ -67,15 +78,6 @@ function ServiceForm(props: { isEditMode?: boolean; serviceId?: number }) {
       id={input.key}
       validation={input.validation}
       options={input.options}
-      default={
-        input.key === "activo"
-          ? serviceData?.activo
-            ? "Si"
-            : ""
-          : input.key === "tipo"
-            ? serviceData?.tipo_servicio
-            : ""
-      }
     />
   ));
 
@@ -104,16 +106,12 @@ function ServiceForm(props: { isEditMode?: boolean; serviceId?: number }) {
         </div>
         <div className="gap-10 mt-4 flex flex-row items-center justify-center">
           <CancelButton onClick={handleBack} />
-          {!props.isEditMode && (
+          {!isEditMode && (
             <CreationButton onClick={onClickCreate} text="Crear" />
           )}
-          {props.isEditMode && (
-            <SaveButton onClick={onClickSave} text="Guardar" />
-          )}
+          {isEditMode && <SaveButton onClick={onClickSave} text="Guardar" />}
         </div>
       </form>
     </FormProvider>
   );
 }
-
-export default ServiceForm;

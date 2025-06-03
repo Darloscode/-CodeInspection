@@ -1,7 +1,7 @@
 export const inputServiceConfig = [
   {
     label: "Nombre del servicio",
-    key: "name",
+    key: "nombre",
     type: "text",
     validation: {
       required: {
@@ -12,7 +12,7 @@ export const inputServiceConfig = [
   },
   {
     label: "Descripción",
-    key: "description",
+    key: "descripcion",
     type: "text",
     validation: {
       required: {
@@ -23,7 +23,7 @@ export const inputServiceConfig = [
   },
   {
     label: "Precio",
-    key: "price",
+    key: "costo",
     type: "number",
     validation: {
       required: {
@@ -38,7 +38,7 @@ export const inputServiceConfig = [
   },
   {
     label: "Duración (minutos)",
-    key: "duracion",
+    key: "duracion_minutos",
     type: "number",
     validation: {
       required: {

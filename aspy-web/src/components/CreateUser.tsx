@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
-import UserForm from "@forms/UserForm";
+import FormView from "@components/FormView";
 
 interface CreateUserProps {
   role: string;
@@ -22,7 +22,7 @@ export default function CreateUser({ role }: CreateUserProps) {
         </Grid>
 
         <Grid size={12}>
-          <UserForm isEditMode={false} role={role} />
+          <FormView isEdit={false} role={role} />
         </Grid>
       </Grid>
     </Box>
