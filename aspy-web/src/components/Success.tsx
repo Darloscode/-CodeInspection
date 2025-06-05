@@ -5,17 +5,20 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 
 import logo from "@assets/visto.png";
+import schedule from "@assets/cita.png";
 
 interface SuccessDialogProps {
   open: boolean;
   handleClose: () => void;
-  card: boolean;
+  isRegister: boolean;
+  message: string;
 }
 
-export default function Successo({
+export default function Success({
   open,
   handleClose,
-  card,
+  isRegister,
+  message,
 }: SuccessDialogProps) {
   return (
     <Dialog
@@ -52,12 +55,12 @@ export default function Successo({
         }}
       >
         <img
-          src={logo}
+          src={isRegister ? schedule : logo}
           alt="Success"
           style={{ width: 100, height: 100, marginBottom: 10 }}
         />
         <DialogContentText sx={{ fontSize: "1.2rem", fontWeight: 500 }}>
-          {card ? "Cita agendada con éxito" : "Cita registrada con éxito"}
+          {message}
         </DialogContentText>
       </DialogContent>
       <DialogActions sx={{ justifyContent: "center" }}>

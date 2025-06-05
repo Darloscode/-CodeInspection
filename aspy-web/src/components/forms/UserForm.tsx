@@ -65,6 +65,7 @@ export default function UserForm({
       label={input.label}
       type={input.type}
       id={input.key}
+      role={role}
       validation={
         input.key === "confirmPassword"
           ? {
@@ -108,11 +109,20 @@ export default function UserForm({
         </div>
         <div className="gap-10 mt-4 flex flex-row items-center justify-center">
           {start != 0 && (
-            <Button variant="outlined" onClick={onBack}>
+            <Button
+              variant="outlined"
+              onClick={onBack}
+              className="md:w-[250px]"
+            >
               Anterior
             </Button>
           )}
-          <Button variant="outlined" onClick={onSubmit}>
+          <Button
+            type="submit"
+            variant="contained"
+            onClick={onSubmit}
+            className="md:w-[250px]"
+          >
             {getButtonLabel()}
           </Button>
         </div>

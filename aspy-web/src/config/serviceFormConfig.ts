@@ -65,7 +65,7 @@ export const inputServiceConfig = [
   },
   {
     label: "Tipo",
-    key: "tipo",
+    key: "tipo_servicio",
     type: "select",
     validation: {
       required: {

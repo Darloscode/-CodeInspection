@@ -11,6 +11,7 @@ interface UserInputProps {
   id: string;
   validation: object;
   options?: string[];
+  role?: string;
 }
 
 export default function UserInput({
@@ -19,6 +20,7 @@ export default function UserInput({
   id,
   validation,
   options,
+  role,
 }: UserInputProps) {
   const {
     register,
@@ -29,8 +31,8 @@ export default function UserInput({
   const isInvalid = isFormInvalid(inputError);
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex flex-row gap-2">
+    <div className="flex flex-col gap-2 w-full">
+      <div className="flex flex-row gap-2 w-full">
         <h6 className="grow">{label}</h6>
         <AnimatePresence mode="wait" initial={false}>
           {isInvalid && (
@@ -45,7 +47,8 @@ export default function UserInput({
         <select
           id={id}
           {...register(id, validation)}
-          className="border border-gray-300 rounded-md p-2"
+          className="border border-gray-300 rounded-md p-2 w-full"
+          disabled={!!role}
         >
           <option value="">Seleccione una opción</option>
           {options?.map((option) => (
@@ -61,7 +64,7 @@ export default function UserInput({
           type={type}
           variant="outlined"
           size="small"
-          className="w-full md:w-[350px]"
+          className="w-full md:w-[230px]"
           sx={{
             "& input::-webkit-outer-spin-button": {
               WebkitAppearance: "none",
