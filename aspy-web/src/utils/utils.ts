@@ -59,7 +59,7 @@ export function TotalIngresosMensual(data: number[]): TotalIngresosMensual {
 }
 
 export function getProfesionales(): User[] {
-  return usuarios.filter((u: User) => u.rol === "Profesional");
+  return usuarios.filter((u: User) => u.role === "Profesional");
 }
 
 export function getCitasProfesional(id: number): Cita[] {
