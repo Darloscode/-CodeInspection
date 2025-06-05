@@ -22,20 +22,21 @@ export default function ShowAppointment({ citas }: ShowAppointmentProps) {
         <Card key={index} className="card-citas">
           <CardContent className="card-content-citas">
             <Typography className="typography-citas" variant="body1">
-              Paciente: {cita.paciente.firstName}
+              Paciente: {cita.patient.firstName + cita.patient.lastName}
             </Typography>
             <Typography className="typography-citas" variant="body1">
-              Profesional: {cita.doctor.firstName}
+              Profesional:{" "}
+              {cita.professional.firstName + cita.professional.lastName}
             </Typography>
 
             <Divider className="divider-citas" />
 
             <Grid container spacing={1} className="grid-citas-fecha">
               <Grid size={{ xs: 10, md: 10 }}>
-                <Typography className="p-citas">{cita.horainicio}</Typography>
+                <Typography className="p-citas">{cita.startTime}</Typography>
               </Grid>
               <Grid size={{ xs: 2, md: 2 }}>
-                <Typography className="p-citas">{cita.fecha}</Typography>
+                <Typography className="p-citas">{cita.date}</Typography>
               </Grid>
             </Grid>
           </CardContent>

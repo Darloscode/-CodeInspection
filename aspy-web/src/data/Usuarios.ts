@@ -13,7 +13,7 @@ export const usuarios: User[] = [
     identity: 123456789,
     phone: "0999273651",
     address: "Av. Quito y Los Ríos",
-    provincia: "Pichincha", // Campo provincia agregado
+    province: "Pichincha", // Campo province agregado
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ export const usuarios: User[] = [
     identity: 987654321,
     phone: "0987654321",
     address: "Calle 10 y Bolívar",
-    provincia: "Guayas", // Campo provincia agregado
+    province: "Guayas", // Campo province agregado
   },
   {
     id: 3,
@@ -41,7 +41,7 @@ export const usuarios: User[] = [
     identity: 456789123,
     phone: "0912345678",
     address: "Av. Central 123",
-    provincia: "Azuay", // Campo provincia agregado
+    province: "Azuay", // Campo province agregado
   },
   {
     id: 4,
@@ -55,7 +55,7 @@ export const usuarios: User[] = [
     identity: 789123456,
     phone: "0999988776",
     address: "Calle 5 y Eloy Alfaro",
-    provincia: "El Oro", // Campo provincia agregado
+    province: "El Oro", // Campo province agregado
   },
   {
     id: 5,
@@ -69,7 +69,7 @@ export const usuarios: User[] = [
     identity: 321654987,
     phone: "0965432187",
     address: "Av. 9 de Octubre",
-    provincia: "Manabí", // Campo provincia agregado
+    province: "Manabí", // Campo province agregado
   },
   {
     id: 6,
@@ -83,7 +83,7 @@ export const usuarios: User[] = [
     identity: 654987321,
     phone: "0943210987",
     address: "Calle Amazonas",
-    provincia: "Loja", // Campo provincia agregado
+    province: "Loja", // Campo province agregado
   },
   {
     id: 7,
@@ -97,7 +97,7 @@ export const usuarios: User[] = [
     identity: 987321654,
     phone: "0981122334",
     address: "Calle Esmeraldas y Pichincha",
-    provincia: "Pichincha", // Campo provincia agregado
+    province: "Pichincha", // Campo province agregado
   },
   {
     id: 8,
@@ -111,7 +111,7 @@ export const usuarios: User[] = [
     identity: 123789456,
     phone: "0977665544",
     address: "Barrio Centenario",
-    provincia: "Guayas", // Campo provincia agregado
+    province: "Guayas", // Campo province agregado
   },
   {
     id: 9,
@@ -125,7 +125,7 @@ export const usuarios: User[] = [
     identity: 456123789,
     phone: "0934567890",
     address: "Vía a Daule",
-    provincia: "Guayas", // Campo provincia agregado
+    province: "Guayas", // Campo province agregado
   },
   {
     id: 10,
@@ -139,7 +139,7 @@ export const usuarios: User[] = [
     identity: 789456123,
     phone: "0922334455",
     address: "Urdesa Central",
-    provincia: "Azuay", // Campo provincia agregado
+    province: "Azuay", // Campo province agregado
   },
   {
     id: 11,
@@ -153,7 +153,7 @@ export const usuarios: User[] = [
     identity: 112233445,
     phone: "0911998877",
     address: "Sauces 6",
-    provincia: "Manabí", // Campo provincia agregado
+    province: "Manabí", // Campo province agregado
   },
   {
     id: 12,
@@ -167,7 +167,7 @@ export const usuarios: User[] = [
     identity: 998877665,
     phone: "0955778899",
     address: "La Alborada Etapa 2",
-    provincia: "Loja", // Campo provincia agregado
+    province: "Loja", // Campo province agregado
   },
   {
     id: 13,
@@ -181,7 +181,7 @@ export const usuarios: User[] = [
     identity: 556677889,
     phone: "0944885566",
     address: "Ceibos Norte",
-    provincia: "Pichincha", // Campo provincia agregado
+    province: "Pichincha", // Campo province agregado
   },
   {
     id: 14,
@@ -195,7 +195,7 @@ export const usuarios: User[] = [
     identity: 334455667,
     phone: "0933445566",
     address: "Av. Barcelona",
-    provincia: "El Oro", // Campo provincia agregado
+    province: "El Oro", // Campo province agregado
   },
   {
     id: 15,
@@ -209,7 +209,7 @@ export const usuarios: User[] = [
     identity: 778899001,
     phone: "0900112233",
     address: "Vía a la Costa",
-    provincia: "Guayas", // Campo provincia agregado
+    province: "Guayas", // Campo province agregado
   },
   {
     id: 16,
@@ -223,7 +223,7 @@ export const usuarios: User[] = [
     identity: 778899001,
     phone: "0900112233",
     address: "Vía a la Costa",
-    provincia: "Azuay", // Campo provincia agregado
+    province: "Azuay", // Campo province agregado
   },
   {
     id: 17,
@@ -237,7 +237,7 @@ export const usuarios: User[] = [
     identity: 12123001,
     phone: "09003213",
     address: "Vía a la Costa",
-    provincia: "Guayaas", // Campo provincia agregado
+    province: "Guayaas", // Campo province agregado
   },
   {
     id: 18,
@@ -251,7 +251,7 @@ export const usuarios: User[] = [
     identity: 998877221,
     phone: "0930001122",
     address: "Av. de las Américas",
-    provincia: "Pichincha",
+    province: "Pichincha",
   },
   {
     id: 19,
@@ -265,7 +265,7 @@ export const usuarios: User[] = [
     identity: 112244668,
     phone: "0912341234",
     address: "Calle Loja y Cuenca",
-    provincia: "Manabí",
+    province: "Manabí",
   },
   {
     id: 20,
@@ -279,6 +279,6 @@ export const usuarios: User[] = [
     identity: 556699332,
     phone: "0944556677",
     address: "Urbanización La Rioja",
-    provincia: "Guayas",
+    province: "Guayas",
   },
 ];

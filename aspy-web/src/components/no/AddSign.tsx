@@ -14,7 +14,7 @@ function AddSign() {
       <div>
         <div className="flex items-center mb-2">
           <Edit className="mr-2 text-gray-600" />
-          <h2 className="text-lg font-semibold">Firma del profesional</h2>
+          <h2 className="text-lg font-semibold">Firma del profesionalxd</h2>
         </div>
         <UploadButton
           accept="image/*"

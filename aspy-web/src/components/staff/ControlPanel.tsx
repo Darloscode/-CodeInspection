@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { getAuthenticatedUserName } from "@store";
-import { citas } from "@/data/Citas";
+import { citas } from "@data/Citas";
 import { ButtonControl } from "@/types/ButtonControl";
 import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
@@ -39,23 +39,23 @@ export default function ControlPanel() {
 
   const botones: ButtonControl[] = [
     {
-      texto: "Agregar Profesional",
-      icono: <PersonAddAltRoundedIcon className="boton-panelcontrol" />,
+      text: "Agregar Profesional",
+      icon: <PersonAddAltRoundedIcon className="boton-panelcontrol" />,
       accion: handleCreateProfessional,
     },
     {
-      texto: "Agregar Paciente",
-      icono: <PermContactCalendarRoundedIcon className="boton-panelcontrol" />,
+      text: "Agregar Paciente",
+      icon: <PermContactCalendarRoundedIcon className="boton-panelcontrol" />,
       accion: handleCreatePatient,
     },
     {
-      texto: "Agregar Servicio",
-      icono: <MedicalServicesRoundedIcon className="boton-panelcontrol" />,
+      text: "Agregar Servicio",
+      icon: <MedicalServicesRoundedIcon className="boton-panelcontrol" />,
       accion: handleCreateService,
     },
     {
-      texto: "Agendar Nueva Cita",
-      icono: <EditCalendarRoundedIcon className="boton-panelcontrol" />,
+      text: "Agendar Nueva Cita",
+      icon: <EditCalendarRoundedIcon className="boton-panelcontrol" />,
       accion: handleCreateAppointment,
     },
   ];

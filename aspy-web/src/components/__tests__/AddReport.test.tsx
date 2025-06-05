@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import AddSign from "@/components/AddSign";
+import AddReport from "../professional/AddReport";
 import "@testing-library/jest-dom";
 
-describe("AddSign component", () => {
+describe("AddReport component", () => {
   test("renders correctly and allows uploading a file and writing a comment", () => {
-    render(<AddSign />);
+    render(<AddReport />);
     // Check for titles
     expect(screen.getByText("Firma del profesional")).toBeInTheDocument();
   });

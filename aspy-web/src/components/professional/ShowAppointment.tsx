@@ -49,7 +49,7 @@ export default function ShowAppointment({
                     }}
                   >
                     <Typography gutterBottom variant="h6">
-                      Paciente: {cita.paciente.name}
+                      Paciente: {cita.patient.firstName + cita.patient.lastName}
                     </Typography>
                   </Stack>
                 </Box>
@@ -113,7 +113,7 @@ export default function ShowAppointment({
                     }}
                   >
                     <Typography gutterBottom variant="h6">
-                      Paciente: {cita.paciente.name}
+                      Paciente: {cita.patient.firstName + cita.patient.lastName}
                     </Typography>
                   </Stack>
                 </Box>
@@ -126,7 +126,7 @@ export default function ShowAppointment({
                   >
                     <Button
                       onClick={() => {
-                        const newPath = `pacientes/${cita.paciente.id}-${cita.paciente.firstName.toLowerCase()}/nuevoReporte`;
+                        const newPath = `pacientes/${cita.patient.id}-${cita.patient.firstName.toLowerCase()}/nuevoReporte`;
                         navigate(newPath);
                       }}
                       variant="outlined"

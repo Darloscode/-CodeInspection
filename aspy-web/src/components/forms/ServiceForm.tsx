@@ -1,15 +1,13 @@
-import { inputServiceConfig } from "@/config/serviceFormConfig";
-//import { ServiceData } from "@/types/ServiceDataCreation";
-//import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import UserInput from "./UserInput";
-import CancelButton from "../buttons/CancelButton";
 import { servicios } from "@data/Servicios";
-import { Servicio } from "@/types/Servicio";
-import SaveButton from "../buttons/SaveButton";
-import CreationButton from "../buttons/CreationButton";
-import { useEffect } from "react";
+import { inputServiceConfig } from "@/config/serviceFormConfig";
+import { Servicio } from "@/types/Service";
+import UserInput from "@forms/UserInput";
+import CancelButton from "@buttons/CancelButton";
+import SaveButton from "@buttons/SaveButton";
+import CreationButton from "@buttons/CreationButton";
 
 interface ServiceFormProps {
   isEditMode: boolean;
@@ -51,21 +49,21 @@ export default function ServiceForm({
   useEffect(() => {
     if (isEditMode && serviceData) {
       methods.reset({
-        nombre: serviceData.nombre,
-        descripcion: serviceData.descripcion,
-        costo: serviceData.costo,
-        duracion_minutos: serviceData.duracion_minutos,
-        activo: serviceData.activo,
-        tipo_servicio: serviceData.tipo_servicio,
+        name: serviceData.name,
+        description: serviceData.description,
+        price: serviceData.price,
+        durationMinutes: serviceData.durationMinutes,
+        active: serviceData.active,
+        serviceType: serviceData.serviceType,
       });
     } else {
       methods.reset({
-        nombre: "",
-        descripcion: "",
-        costo: 0,
-        duracion_minutos: 0,
-        activo: false,
-        tipo_servicio: "",
+        name: "",
+        description: "",
+        price: 0,
+        durationMinutes: 0,
+        active: false,
+        serviceType: "",
       });
     }
   }, [isEditMode, serviceData, methods]);

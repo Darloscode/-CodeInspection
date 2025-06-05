@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useTheme } from "@mui/material";
-import { getCitasProfesional } from "@utils/utils";
 import { useNavigate } from "react-router-dom";
+import { getCitasProfesional } from "@utils/utils";
 import { Cita } from "@/types/Cita";
 import Divider from "@mui/material/Divider";
+import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
 import Typography from "@mui/material/Typography";
 import Agenda from "@components/Agenda";
-import SelectProfessional from "@/components/SelectProfessional";
-import Button from "@mui/material/Button";
+import SelectProfessional from "@components/SelectProfessional";
 
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 

@@ -63,7 +63,6 @@ const App = () => {
           {/* Rutas públicas sin layout */}
           <Route path="/login" element={<SignInSide />} />
           <Route path="/register" element={<SignUp />} />
-
           {/* Rutas privadas basadas en el rol */}
           {RoleBasedRoutes()}
 

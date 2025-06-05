@@ -66,7 +66,7 @@ export function getCitasProfesional(id: number): Cita[] {
   if (!id) {
     return citas;
   }
-  return citas.filter((cita) => cita.doctor?.id === id);
+  return citas.filter((cita) => cita.professional?.id === id);
 }
 
 export function handleDownloadInvoice(invoice: Invoice) {

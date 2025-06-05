@@ -45,17 +45,17 @@ export default function TimeLinePatients() {
             <Grid container spacing={10} sx={{ marginBottom: "3%" }}>
               <Grid size={8}>
                 <Typography variant="body1">
-                  <strong>Fecha:</strong> {cita.fecha}
+                  <strong>Fecha:</strong> {cita.date}
                 </Typography>
                 <Typography variant="body1">
-                  <strong>Hora:</strong> {cita.horainicio} - {cita.horafin}
+                  <strong>Hora:</strong> {cita.startTime} - {cita.endTime}
                 </Typography>
                 <Typography variant="body1">
-                  <strong>Profesional:</strong> {cita.doctor.firstName}{" "}
-                  {cita.doctor.lastName}
+                  <strong>Profesional:</strong> {cita.professional.firstName}{" "}
+                  {cita.patient.lastName}
                 </Typography>
                 <Typography variant="body1">
-                  <strong>{cita.asistio ? "Asistió" : "No Asistió"}</strong>
+                  <strong>{cita.assist ? "Asistió" : "No Asistió"}</strong>
                 </Typography>
               </Grid>
               <Grid
