@@ -14,7 +14,7 @@ export default function AddReport() {
   const handleBack = () => {
     navigate(-1);
   };
-
+  console.log(report?.file);
   return (
     <div className="bg-white p-6 rounded-xl shadow-md w-full  space-y-6 flex flex-col relative">
       <div>
@@ -42,7 +42,7 @@ export default function AddReport() {
           <h2 className="text-lg font-semibold">Reporte del profesional</h2>
         </div>
         <UploadButton
-          accept="image/*"
+          accept="pdf/*"
           label="Subir Reporte"
           icon={<UploadFile className="mr-2 text-blue-600" />}
           buttonClassName="bg-white text-black font-bold border border-blue-600 hover:bg-blue-50"

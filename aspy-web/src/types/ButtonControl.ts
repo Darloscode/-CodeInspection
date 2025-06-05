@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 export interface ButtonControl {
-  texto: string;
-  icono: ReactNode;
+  text: string;
+  icon: ReactNode;
   accion: () => void;
 }

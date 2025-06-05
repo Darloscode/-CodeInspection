@@ -4,13 +4,13 @@ export interface User {
   firstName: string;
   lastName: string;
   role: string;
-  image?: string;
+  photo?: string;
   aboutme?: string;
-  age?: number;
-  gender?: string;
-  email?: string;
+  age: number;
+  gender: string;
+  email: string;
   phone?: string;
   address?: string;
-  provincia?: string;
+  province?: string;
   password?: string;
 }

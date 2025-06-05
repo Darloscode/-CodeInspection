@@ -1,10 +1,10 @@
+import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import UserInput from "./UserInput";
-import { inputCreateUserConfig } from "../../config//userFormConfig";
-import { usuarios } from "../../data/Usuarios";
+import { inputCreateUserConfig } from "@/config/userFormConfig";
+import { usuarios } from "@data/Usuarios";
 import { User } from "@/types/User";
 import Button from "@mui/material/Button";
-import { useEffect } from "react";
+import UserInput from "@forms/UserInput";
 
 interface UserFormProps {
   isEditMode?: boolean;

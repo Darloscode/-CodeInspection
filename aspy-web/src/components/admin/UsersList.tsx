@@ -12,7 +12,7 @@ import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
 import Typography from "@mui/material/Typography";
-import ProfileView from "../ProfileView";
+import ProfileView from "@components/ProfileView";
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
 import DataInformation from "@admin/DataInformation";

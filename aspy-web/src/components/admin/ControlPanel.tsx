@@ -32,18 +32,18 @@ export default function ControlPanel() {
 
   const botones: ButtonControl[] = [
     {
-      texto: "Agregar Usuario",
-      icono: <AccountCircleOutlinedIcon className="boton-panelcontrol" />,
+      text: "Agregar Usuario",
+      icon: <AccountCircleOutlinedIcon className="boton-panelcontrol" />,
       accion: handleCreateUser,
     },
     {
-      texto: "Agregar Rol",
-      icono: <QueueOutlinedIcon className="boton-panelcontrol" />,
+      text: "Agregar Rol",
+      icon: <QueueOutlinedIcon className="boton-panelcontrol" />,
       accion: handleCreateRole,
     },
     {
-      texto: "Agregar Servicio",
-      icono: <PostAddOutlinedIcon className="boton-panelcontrol" />,
+      text: "Agregar Servicio",
+      icon: <PostAddOutlinedIcon className="boton-panelcontrol" />,
       accion: handleCreateService,
     },
   ];

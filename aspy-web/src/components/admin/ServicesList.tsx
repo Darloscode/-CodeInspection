@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { GridColDef, GridRowSelectionModel } from "@mui/x-data-grid";
 import { useTheme } from "@mui/material";
 import { servicios } from "@data/Servicios";
-import { Servicio } from "@/types/Servicio";
+import { Servicio } from "@/types/Service";
 import { columnsServiceAdmin } from "@utils/columns";
 import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
