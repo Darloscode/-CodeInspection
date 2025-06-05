@@ -9,6 +9,7 @@ import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import PersonIcon from "@mui/icons-material/Person";
 import { styled } from "@mui/material/styles";
 import { getAuthenticatedUserRole, setAuthenticatedUserByRole } from "@store";
+import { Role } from "@/types/Role";
 
 const roleOptions = [
   {
@@ -45,11 +46,7 @@ export default function RoleSwitcher() {
   const [role, setRole] = React.useState(currentRole);
 
   const handleChange = (event: SelectChangeEvent) => {
-    const selectedRole = event.target.value as
-      | "admin"
-      | "staff"
-      | "professional"
-      | "client";
+    const selectedRole = event.target.value as Role;
     setRole(selectedRole);
     setAuthenticatedUserByRole(selectedRole);
     window.location.reload();
