@@ -11,11 +11,11 @@ import Stepper from "@mui/material/Stepper";
 import Typography from "@mui/material/Typography";
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
-import Info from "@components/Info";
-import InfoMobile from "@components/InfoMobile";
+import Info from "./Info";
+import InfoMobile from "./InfoMobile";
 import PaymentForm from "@components/PaymentForm";
 import Review from "@components/Review";
-import SitemarkIcon from "@components/SitemarkIcon";
+import SitemarkIcon from "./SitemarkIcon";
 
 const steps = ["Payment details", "Review your order"];
 

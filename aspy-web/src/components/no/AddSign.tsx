@@ -1,9 +1,9 @@
 import { Edit, UploadFile } from "@mui/icons-material";
-import CancelButton from "./buttons/CancelButton";
-import CreationButton from "./buttons/CreationButton";
+import CancelButton from "../buttons/CancelButton";
+import CreationButton from "../buttons/CreationButton";
 import { useState } from "react";
 import { FileData } from "@/types/FileData";
-import UploadButton from "./buttons/UploadButton";
+import UploadButton from "../buttons/UploadButton";
 
 function AddSign() {
   const [signature, setSignature] = useState<FileData | null>(null);

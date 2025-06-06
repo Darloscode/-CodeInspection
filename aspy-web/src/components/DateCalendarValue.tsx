@@ -8,7 +8,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 export default function DateCalendarValue() {
-  const [value, setValue] = React.useState<Dayjs | null>(dayjs());
+  const [value] = React.useState<Dayjs | null>(dayjs()); // I removed setValue since it was not used
   const hours = [
     "9:00",
     "10:00",
@@ -20,12 +20,13 @@ export default function DateCalendarValue() {
     "16:00",
     "17:00",
   ];
-  const [hora, setHora] = React.useState<string | null>(null);
+  const [hora] = React.useState<string | null>(null); // I removed setHora since it was not used
 
+  /*
   const handleChange = (newValue: Dayjs | null) => {
     setValue(newValue);
     console.log(newValue?.format("YYYY-MM-DD"));
-  };
+  };*/  //Not used in the current implementation
 
   return (
     <div
