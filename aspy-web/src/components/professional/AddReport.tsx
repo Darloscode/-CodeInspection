@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Edit, UploadFile } from "@mui/icons-material";
 import { FileData } from "@/types/FileData";
-import CancelButton from "@buttons/CancelButton";
-import CreationButton from "@buttons/CreationButton";
-import UploadButton from "@buttons/UploadButton";
+import CancelButton from "../buttons/CancelButton";
+import CreationButton from "../buttons/CreationButton";
+import UploadButton from "../buttons/UploadButton";
 
 export default function AddReport() {
   const [signature, setSignature] = useState<FileData | null>(null);
