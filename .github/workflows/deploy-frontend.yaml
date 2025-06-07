@@ -23,8 +23,10 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./aspy-web
 
       - name: Build project
         run: npm run build
+        working-directory: ./aspy-web
 
         
