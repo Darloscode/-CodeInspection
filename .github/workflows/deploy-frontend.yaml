@@ -12,10 +12,11 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-        
 
-      - name: Set working directory
-        run: cd aspy-web
+
+      - name: Remove node_modules and package-lock.json
+        run: rm -rf node_modules package-lock.json
+        working-directory: ./aspy-web
       
       - name: Set up Node.js
         uses: actions/setup-node@v4
