@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      - name: Set working directory
+        run: cd aspy-web
       
       - name: Set up Node.js
         uses: actions/setup-node@v4
