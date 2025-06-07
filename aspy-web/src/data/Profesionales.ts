@@ -13,7 +13,7 @@ export const profesionales: User[] = [
     identity: 778899001,
     phone: "0900112233",
     address: "Vía a la Costa",
-    provincia: "Azuay", // Campo provincia agregado
+    province: "Azuay", // Campo province agregado
   },
   {
     id: 17,
@@ -27,7 +27,7 @@ export const profesionales: User[] = [
     identity: 12123001,
     phone: "09003213",
     address: "Vía a la Costa",
-    provincia: "Guayaas", // Campo provincia agregado
+    province: "Guayaas", // Campo province agregado
   },
   {
     id: 18,
@@ -41,7 +41,7 @@ export const profesionales: User[] = [
     identity: 998877221,
     phone: "0930001122",
     address: "Av. de las Américas",
-    provincia: "Pichincha",
+    province: "Pichincha",
   },
   {
     id: 19,
@@ -55,7 +55,7 @@ export const profesionales: User[] = [
     identity: 112244668,
     phone: "0912341234",
     address: "Calle Loja y Cuenca",
-    provincia: "Manabí",
+    province: "Manabí",
   },
   {
     id: 20,
@@ -69,6 +69,6 @@ export const profesionales: User[] = [
     identity: 556699332,
     phone: "0944556677",
     address: "Urbanización La Rioja",
-    provincia: "Guayas",
+    province: "Guayas",
   },
 ];
