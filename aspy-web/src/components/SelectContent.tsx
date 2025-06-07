@@ -45,7 +45,7 @@ export default function RoleSwitcher() {
   const currentRole = getAuthenticatedUserRole();
   const [role, setRole] = React.useState(currentRole);
 
-  const handleChange = (event: SelectChangeEvent) => {
+  const handleChange = (event: SelectChangeEvent<unknown>) => {
     const selectedRole = event.target.value as Role;
     setRole(selectedRole);
     setAuthenticatedUserByRole(selectedRole);
