@@ -63,6 +63,7 @@ export default function AddReport() {
             setReport(null);
             handleBack();
           }}
+          text="Cancelar"
         />
         <CreationButton
           text="Enviar reporte"

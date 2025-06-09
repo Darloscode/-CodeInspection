@@ -1,7 +1,7 @@
-import { Cita } from "@/types/Cita";
+import { Appointment } from "@/types/Appointment";
 import { usuarios } from "@data/Usuarios";
 
-export const citas: Cita[] = [
+export const citas: Appointment[] = [
   {
     id: 1,
     date: "2025-03-15",
