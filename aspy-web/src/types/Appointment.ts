@@ -1,6 +1,6 @@
 import { User } from "./User";
 
-export interface Cita {
+export interface Appointment {
   id: number;
   date: string;
   startTime: string;

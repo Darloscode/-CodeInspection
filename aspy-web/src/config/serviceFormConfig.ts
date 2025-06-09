@@ -1,7 +1,7 @@
 export const inputServiceConfig = [
   {
     label: "Nombre del servicio",
-    key: "nombre",
+    key: "name",
     type: "text",
     validation: {
       required: {
@@ -12,7 +12,7 @@ export const inputServiceConfig = [
   },
   {
     label: "Descripción",
-    key: "descripcion",
+    key: "description",
     type: "text",
     validation: {
       required: {
@@ -23,7 +23,7 @@ export const inputServiceConfig = [
   },
   {
     label: "Precio",
-    key: "costo",
+    key: "price",
     type: "number",
     validation: {
       required: {
@@ -38,7 +38,7 @@ export const inputServiceConfig = [
   },
   {
     label: "Duración (minutos)",
-    key: "duracion_minutos",
+    key: "durationMinutes",
     type: "number",
     validation: {
       required: {
@@ -53,7 +53,7 @@ export const inputServiceConfig = [
   },
   {
     label: "Activo",
-    key: "activo",
+    key: "active",
     type: "select",
     validation: {
       required: {
@@ -61,11 +61,11 @@ export const inputServiceConfig = [
         message: "Debe seleccionar una opción",
       },
     },
-    options: ["Si", "No"],
+    options: ["Sí", "No"],
   },
   {
     label: "Tipo",
-    key: "tipo_servicio",
+    key: "serviceType",
     type: "select",
     validation: {
       required: {

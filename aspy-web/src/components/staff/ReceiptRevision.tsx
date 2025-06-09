@@ -1,29 +1,27 @@
-import { useState } from "react";
-import { ReceiptRevisionData } from "@/types/ReceiptRevisionData";
+import { Payment } from "@/types/Payment";
+import { FileData } from "@/types/FileData";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid2";
 import Button from "@mui/material/Button";
-import UploadButton from "@components/buttons/UploadButton";
-import FileItem from "@components/FileItem";
 
-import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 
-function ReceiptRevision(props: { pagoData: ReceiptRevisionData }) {
-  const [archivoSeleccionado, setArchivoSeleccionado] = useState<{
-    file: File;
-    name: string;
-    lastModified: string;
-  } | null>(null);
+interface ReceiptRevisionProps {
+  receiptData: Payment;
+}
 
-  const handleFileSelected = (fileData: {
-    file: File;
-    name: string;
-    lastModified: string;
-  }) => {
-    setArchivoSeleccionado(fileData);
+function ReceiptRevision({ receiptData }: ReceiptRevisionProps) {
+  const handleDownload = (file: FileData) => {
+    const link = document.createElement("a");
+    link.href =
+      typeof file.file === "string"
+        ? file.file
+        : URL.createObjectURL(file.file);
+    link.download = file.name;
+    link.click();
   };
+
   return (
     <Box mt={2} width={"100%"}>
       <Grid container spacing={1}>
@@ -32,7 +30,7 @@ function ReceiptRevision(props: { pagoData: ReceiptRevisionData }) {
             Paciente
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {props.pagoData.paciente}
+            {receiptData.person}
           </Typography>
         </Grid>
 
@@ -41,7 +39,7 @@ function ReceiptRevision(props: { pagoData: ReceiptRevisionData }) {
             Representante
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {props.pagoData.representante}
+            {receiptData.person}
           </Typography>
         </Grid>
 
@@ -50,7 +48,7 @@ function ReceiptRevision(props: { pagoData: ReceiptRevisionData }) {
             Cédula del paciente
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {props.pagoData.cedula_paciente}
+            {receiptData.person}
           </Typography>
         </Grid>
 
@@ -72,7 +70,7 @@ function ReceiptRevision(props: { pagoData: ReceiptRevisionData }) {
             >
               <Button
                 onClick={() => {
-                  console.log("descargar");
+                  handleDownload(receiptData.file);
                 }}
                 variant="text"
                 className="boton-editar"
@@ -80,43 +78,7 @@ function ReceiptRevision(props: { pagoData: ReceiptRevisionData }) {
                 <FileDownloadIcon className="icono" />
               </Button>
             </Grid>
-            <Grid
-              size={6}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Button
-                onClick={() => {
-                  console.log("borrar");
-                }}
-                variant="text"
-                className="boton-editar"
-              >
-                <DeleteForeverRoundedIcon className="icono" />
-              </Button>
-            </Grid>
           </Grid>
-          <div className="m-4">
-            <h1 className="font-kumbh text-primaryAspy font-semibold text-base">
-              Subir factura
-            </h1>
-            <h2 className="font-kumbh text-secondaryAspy text-sm">
-              Solo se acepta PDF, documento de respaldo de pago efectivo
-            </h2>
-            <UploadButton
-              onFileSelected={handleFileSelected}
-              accept="application/pdf"
-              label="Subir documento"
-            />
-            {archivoSeleccionado && (
-              <FileItem
-                name={archivoSeleccionado.name}
-                file={archivoSeleccionado.file}
-                lastModified={archivoSeleccionado.lastModified}
-              />
-            )}
-          </div>
         </Grid>
       </Grid>
     </Box>

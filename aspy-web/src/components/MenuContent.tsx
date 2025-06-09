@@ -14,7 +14,6 @@ import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import HelpRoundedIcon from "@mui/icons-material/HelpRounded";
 import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
-import ContactMailRoundedIcon from "@mui/icons-material/ContactMailRounded";
 import AssignmentIndRoundedIcon from "@mui/icons-material/AssignmentIndRounded";
 import SwitchAccountRoundedIcon from "@mui/icons-material/SwitchAccountRounded";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
@@ -31,7 +30,6 @@ type ListItem = {
 const adminListItems = [
   { text: "Vista General", route: "/", icon: <HomeRoundedIcon /> },
   { text: "Usuarios", route: "/usuarios", icon: <GroupRoundedIcon /> },
-  { text: "Roles", route: "/roles", icon: <ContactMailRoundedIcon /> },
   { text: "Servicios ", route: "/servicios", icon: <AssignmentRoundedIcon /> },
   { text: "Citas ", route: "/citas", icon: <CalendarMonthRoundedIcon /> },
 ];
@@ -49,7 +47,7 @@ const staffListItems = [
     icon: <AssignmentIndRoundedIcon />,
   },
   { text: "Citas", route: "/citas", icon: <CalendarMonthRoundedIcon /> },
-  { text: "Facturas", route: "/facturas", icon: <ReceiptLongRoundedIcon /> },
+  { text: "Recibos", route: "/recibos", icon: <ReceiptLongRoundedIcon /> },
   { text: "Pagos", route: "/pagos ", icon: <PaymentRoundedIcon /> },
   { text: "Servicios ", route: "/servicios", icon: <AssignmentRoundedIcon /> },
 ];
@@ -77,8 +75,8 @@ const secondaryListItems = [
     route: "/preferencias",
     icon: <SettingsRoundedIcon />,
   },
-  { text: "Sobre ASPY", route: "/sobre", icon: <InfoRoundedIcon /> },
-  { text: "Ayuda y Soporte", route: "/ayuda", icon: <HelpRoundedIcon /> },
+  { text: "Sobre ASPY", route: "/sobreAspy", icon: <InfoRoundedIcon /> },
+  { text: "Contactos", route: "/contacto", icon: <HelpRoundedIcon /> },
 ];
 
 export default function MenuContent() {

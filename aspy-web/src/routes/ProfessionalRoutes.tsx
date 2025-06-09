@@ -1,3 +1,4 @@
+import { SharedRoutes } from "./SharedRoutes";
 import ControlPanel from "@professional/ControlPanel";
 import Profile from "@components/Profile";
 import Appointments from "@professional/Appointments";
@@ -16,4 +17,5 @@ export const ProfessionalRoutes = [
   { path: "/pacientes/:id/nuevoReporte", element: <NewReport /> },
   { path: "/pacientes/:id/:citaId", element: <Detail /> },
   { path: "/pagos", element: <PaymentsList /> },
+  ...SharedRoutes,
 ];

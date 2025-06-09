@@ -9,8 +9,8 @@ export const columnsUsersAdmin: GridColDef[] = [
     resizable: false,
   },
   {
-    field: "rol",
-    headerName: "rol",
+    field: "role",
+    headerName: "Rol",
     disableColumnMenu: true,
     flex: 2,
     resizable: false,
@@ -47,28 +47,28 @@ export const columnsServiceAdmin: GridColDef[] = [
     resizable: false,
   },
   {
-    field: "nombre",
+    field: "name",
     headerName: "Nombre",
     flex: 2,
     disableColumnMenu: true,
     resizable: false,
   },
   {
-    field: "descripcion",
+    field: "description",
     headerName: "Descripción",
     flex: 3,
     disableColumnMenu: true,
     resizable: false,
   },
   {
-    field: "tipo_servicio",
+    field: "serviceType",
     headerName: "Tipo",
     flex: 3,
     disableColumnMenu: true,
     resizable: false,
   },
   {
-    field: "activo",
+    field: "active",
     headerName: "Activo",
     flex: 2,
     disableColumnMenu: true,
@@ -76,7 +76,7 @@ export const columnsServiceAdmin: GridColDef[] = [
     renderCell: (params) => (params.value ? "Sí" : "No"),
   },
   {
-    field: "actualizado_en",
+    field: "updated_on",
     headerName: "Últ. Act.",
     flex: 2,
     disableColumnMenu: true,
@@ -116,9 +116,9 @@ export const columnsUsers: GridColDef[] = [
   },
 ];
 
-export const columnsInvoice: GridColDef[] = [
+export const columnsReceipt: GridColDef[] = [
   {
-    field: "number",
+    field: "id",
     headerName: "ID Factura",
     disableColumnMenu: true,
     flex: 2,
@@ -140,6 +140,30 @@ export const columnsInvoice: GridColDef[] = [
   },
 ];
 
+export const columnsPayment: GridColDef[] = [
+  {
+    field: "id",
+    headerName: "ID Factura",
+    disableColumnMenu: true,
+    flex: 2,
+    resizable: false,
+  },
+  {
+    field: "person",
+    headerName: "Cliente",
+    disableColumnMenu: true,
+    flex: 3,
+    resizable: false,
+  },
+  {
+    field: "creation_date",
+    headerName: "Fecha de Emisión",
+    disableColumnMenu: true,
+    flex: 3,
+    resizable: false,
+  },
+];
+
 export const columnsServices: GridColDef[] = [
   {
     field: "id",
@@ -149,21 +173,21 @@ export const columnsServices: GridColDef[] = [
     resizable: false,
   },
   {
-    field: "nombre",
+    field: "name",
     headerName: "Nombre",
     flex: 2,
     disableColumnMenu: true,
     resizable: false,
   },
   {
-    field: "descripcion",
+    field: "description",
     headerName: "Descripción",
     flex: 3,
     disableColumnMenu: true,
     resizable: false,
   },
   {
-    field: "tipo_servicio",
+    field: "serviceType",
     headerName: "Tipo",
     flex: 3,
     disableColumnMenu: true,

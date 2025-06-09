@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "@mui/material";
 import { GridRowSelectionModel } from "@mui/x-data-grid";
-import { Invoice } from "@/types/Invoice";
+import { Receipt } from "@/types/Receipt";
 import { GridColDef } from "@mui/x-data-grid";
 import { handleDownloadInvoice } from "@utils/utils";
-import { columnsInvoice } from "@utils/columns";
-import { facturas } from "@data/Facturas";
+import { columnsReceipt } from "@utils/columns";
+import { receiptList } from "@data/Recibos";
 import Button from "@mui/material/Button";
 import InvoiceView from "@components/InvoiceView";
 import Table from "@components/Table";
-import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
 import Typography from "@mui/material/Typography";
+import SimpleHeader from "@components/SimpleHeader";
 
 import DownloadRoundedIcon from "@mui/icons-material/DownloadRounded";
 
@@ -47,28 +47,28 @@ const columnaExtra: GridColDef[] = [
   },
 ];
 
-export default function InvoiceList() {
+export default function ReceiptList() {
   const [rowSelection, setRowSelection] = useState<GridRowSelectionModel>([]);
 
   const theme = useTheme().palette.mode;
   const themeClass = theme === "dark" ? "dark-theme" : "light-theme";
 
   //Usuario seleccionado
-  const [invoice, setInvoice] = useState<Invoice | null>(null);
+  const [receipt, setReceipt] = useState<Receipt | null>(null);
 
-  const newColumns: GridColDef[] = [...columnsInvoice, ...columnaExtra];
+  const newColumns: GridColDef[] = [...columnsReceipt, ...columnaExtra];
 
   //Mostrar el usuario
   useEffect(() => {
     if (rowSelection.length > 0) {
-      const selectedInvoice = facturas.find(
+      const selectedInvoice = receiptList.find(
         (item) => item.id === rowSelection[0]
       );
       if (selectedInvoice) {
-        setInvoice(selectedInvoice);
+        setReceipt(selectedInvoice);
       }
     } else {
-      setInvoice(null);
+      setReceipt(null);
     }
   }, [rowSelection]);
 
@@ -76,26 +76,33 @@ export default function InvoiceList() {
     <Box className="box-panel-control" sx={{ padding: 2 }}>
       <Grid container spacing={1}>
         <Grid size={12} className="grid-p-patients-tittle">
-          <Grid container spacing={0}>
-            <Grid size={9} marginBottom={"4px"}>
-              <Typography variant="h3">Comprobantes de Pago</Typography>
-            </Grid>
-          </Grid>
-          <Divider className="divider-paciente-historial"></Divider>
+          <SimpleHeader text={"Comprobantes de Pago"} />
         </Grid>
         <Grid size={8} className={themeClass + " grid-tabla"}>
-          <Table<Invoice>
+          <Table<Receipt>
             columns={newColumns}
-            rows={facturas}
+            rows={receiptList}
             rowSelectionModel={rowSelection}
             onRowSelectionChange={(newSelection) =>
               setRowSelection(newSelection)
             }
           />
         </Grid>
-        {invoice && (
+        {receipt && (
           <Grid size={4} className={themeClass}>
-            <InvoiceView info={invoice} />
+            <InvoiceView
+              id={receipt.id}
+              date={receipt.issueDate}
+              client={receipt.clientName}
+              service={receipt.serviceName}
+              address={receipt.address}
+              price={receipt.servicePrice}
+              discount={receipt.discount_percentage}
+              total={receipt.total}
+              paymentMethod={receipt.paymentMethod}
+              contactEmail={receipt.contactEmail}
+              contactPhone={receipt.contactPhone}
+            />
           </Grid>
         )}
       </Grid>

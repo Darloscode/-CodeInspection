@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { GridColDef, GridRowSelectionModel } from "@mui/x-data-grid";
 import { useTheme } from "@mui/material";
-import { servicios } from "@data/Servicios";
-import { Servicio } from "@/types/Service";
+import { servicesList } from "@data/Servicios";
+import { Service } from "@/types/Service";
 import { columnsServiceAdmin } from "@utils/columns";
 import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
+import SimpleHeader from "@components/SimpleHeader";
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
@@ -41,7 +41,7 @@ export default function ServicesList() {
 
   const columnsExtra: GridColDef[] = [
     {
-      field: "costo",
+      field: "price",
       headerName: "Costo",
       flex: 2,
       disableColumnMenu: true,
@@ -51,7 +51,7 @@ export default function ServicesList() {
       },
     },
     {
-      field: "duracion_minutos",
+      field: "durationMinutes",
       headerName: "Duración",
       flex: 2,
       disableColumnMenu: true,
@@ -89,12 +89,7 @@ export default function ServicesList() {
     <Box className="box-panel-control" sx={{ padding: 2 }}>
       <Grid container spacing={1}>
         <Grid size={12} className="grid-p-patients-tittle">
-          <Grid container spacing={0}>
-            <Grid size={9} marginBottom={"4px"}>
-              <Typography variant="h3">Lista de Servicios</Typography>
-            </Grid>
-          </Grid>
-          <Divider className="divider-paciente-historial"></Divider>
+          <SimpleHeader text={"Lista de Servicios"} />
         </Grid>
 
         <Grid size={12}>
@@ -109,7 +104,7 @@ export default function ServicesList() {
                 </Grid>
                 <Grid size={12}>
                   <Typography variant="body1" className="typo-number-boton">
-                    {servicios.length}
+                    {servicesList.length}
                   </Typography>
                 </Grid>
               </Grid>
@@ -132,9 +127,9 @@ export default function ServicesList() {
         </Grid>
 
         <Grid size={12} className={themeClass + " grid-tabla"}>
-          <Table<Servicio>
+          <Table<Service>
             columns={newColumns}
-            rows={servicios}
+            rows={servicesList}
             rowSelectionModel={rowSelection}
             onRowSelectionChange={(newSelection) =>
               setRowSelection(newSelection)

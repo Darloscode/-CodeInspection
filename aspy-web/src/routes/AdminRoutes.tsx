@@ -1,3 +1,4 @@
+import { SharedRoutes } from "./SharedRoutes";
 import ControlPanel from "@admin/ControlPanel";
 import Profile from "@components/Profile";
 import UsersList from "@/components/admin/UsersList";
@@ -18,4 +19,5 @@ export const AdminRoutes = [
   { path: "/nuevo-servicio", element: <CreateService /> },
   { path: "/nuevo-usuario", element: <CreateUser role="" /> },
   { path: "/citas", element: <Appointment /> },
+  ...SharedRoutes,
 ];

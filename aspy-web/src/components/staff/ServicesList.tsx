@@ -1,17 +1,16 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTheme } from "@mui/material";
-import { servicios } from "@data/Servicios";
+import { servicesList } from "@data/Servicios";
 import { columnsServices } from "@utils/columns";
 import { GridColDef, GridRowSelectionModel } from "@mui/x-data-grid";
 import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 import Table from "@components/Table";
+import Header from "@components/Header";
 
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 export default function Services() {
   const rowSelection: GridRowSelectionModel = [];
@@ -36,7 +35,7 @@ export default function Services() {
 
   const columnasExtra: GridColDef[] = [
     {
-      field: "costo",
+      field: "price",
       headerName: "Costo",
       flex: 2,
       disableColumnMenu: true,
@@ -46,7 +45,7 @@ export default function Services() {
       },
     },
     {
-      field: "duracion_minutos",
+      field: "durationMinutes",
       headerName: "Duración",
       flex: 2,
       disableColumnMenu: true,
@@ -57,7 +56,7 @@ export default function Services() {
     },
 
     {
-      field: "activo",
+      field: "active",
       headerName: "Activo",
       flex: 2,
       disableColumnMenu: true,
@@ -65,7 +64,7 @@ export default function Services() {
       renderCell: (params) => (params.value ? "Sí" : "No"),
     },
     {
-      field: "actualizado_en",
+      field: "updated_on",
       headerName: "Últ. Act.",
       flex: 2,
       disableColumnMenu: true,
@@ -100,28 +99,18 @@ export default function Services() {
     <Box className="box-panel-control" sx={{ padding: 2 }}>
       <Grid container spacing={1}>
         <Grid size={12} className="grid-p-patients-tittle">
-          <Grid container spacing={0}>
-            <Grid size={9}>
-              <Typography variant="h3">Servicios</Typography>
-            </Grid>
-            <Grid size={3} display="flex" justifyContent="flex-end">
-              <Button
-                onClick={handleCreate}
-                variant="outlined"
-                startIcon={<AddRoundedIcon fontSize="large" />}
-                className="guardar"
-              >
-                Agregar Servicio
-              </Button>
-            </Grid>
-          </Grid>
-          <Divider className="divider-paciente-historial"></Divider>
+          <Header
+            textHeader={"Servicios"}
+            isCreate={true}
+            textIcon={"Agregar Servicio"}
+            handle={handleCreate}
+          />
         </Grid>
 
         <Grid size={12} className={themeClass + " grid-tabla"}>
           <Table
             columns={newColumns}
-            rows={servicios}
+            rows={servicesList}
             rowSelectionModel={rowSelection}
             onRowSelectionChange={() => {}}
           />
