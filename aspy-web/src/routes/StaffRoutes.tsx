@@ -1,8 +1,9 @@
+import { SharedRoutes } from "./SharedRoutes";
 import ControlPanel from "@staff/ControlPanel";
 import Profile from "@components/Profile";
 import ProffesionalList from "@staff/ProffesionalList";
 import ClientList from "@staff/ClientList";
-import InvoiceList from "@staff/InvoiceList";
+import ReceiptList from "@staff/ReceiptList";
 import Appointments from "@staff/Appointments";
 import PaymentsList from "@components/staff/PaymentsList";
 import Services from "@components/staff/ServicesList";
@@ -19,9 +20,9 @@ export const StaffRoutes = [
   { path: "/perfil", element: <Profile /> },
   { path: "/profesionales", element: <ProffesionalList /> },
   { path: "/pacientes", element: <ClientList /> },
-  { path: "/facturas", element: <InvoiceList /> },
-  { path: "/citas", element: <Appointments /> },
+  { path: "/recibos", element: <ReceiptList /> },
   { path: "/pagos", element: <PaymentsList /> },
+  { path: "/citas", element: <Appointments /> },
   { path: "/servicios", element: <Services /> },
   { path: "/agendar-cita", element: <AppointmentView /> },
   { path: "/crear-paciente", element: <CreateUser role="Paciente" /> },
@@ -32,4 +33,5 @@ export const StaffRoutes = [
   { path: "/profesionales/:id", element: <EditUser /> },
   { path: "/servicios/:id", element: <EditService /> },
   { path: "/pago", element: <CheckoutView /> },
+  ...SharedRoutes,
 ];

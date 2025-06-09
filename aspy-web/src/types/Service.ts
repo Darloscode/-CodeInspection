@@ -1,17 +1,13 @@
-type TipoServicio =
-  | ""
-  | "Consulta Médica"
-  | "Terapia Psicológica"
-  | "Terapia de Lenguaje";
-
-export interface Servicio {
+export interface Service {
   id: number;
+  idProfessinoal: number;
+  nameProfesional: string;
   name: string;
   description: string;
   price: number;
   durationMinutes: number;
-  serviceType: TipoServicio;
+  serviceType: string;
   active: boolean;
-  ccreatingIn: string;
+  creatingIn: string;
   updated_on: string;
 }

@@ -27,6 +27,8 @@ const routeTitles: { [key: string]: string } = {
   "/login": "Iniciar Sesión",
   "/register": "Registrarse",
   "/pago": "Pago",
+  "/sobreAspy": "Mas información",
+  "/contacto": "Contacto",
   "/404": "Página no encontrada",
 };
 

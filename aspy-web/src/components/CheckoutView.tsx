@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import PaymentForm from "@/components/PaymentForm";
-import Review from "@/components/staff/Review";
+import Review from "@components/Review";
 import Steps from "@components/Steps";
 import Divider from "@mui/material/Divider";
 

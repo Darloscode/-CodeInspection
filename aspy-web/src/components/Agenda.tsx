@@ -1,9 +1,9 @@
 import { Scheduler } from "@aldabil/react-scheduler";
 import { es } from "date-fns/locale";
-import { Cita } from "@/types/Cita";
+import { Appointment } from "@/types/Appointment";
 /* Ver documentacion en https://github.com/aldabil21/react-scheduler  */
 
-export default function Agenda({ citas }: { citas: Cita[] }) {
+export default function Agenda({ citas }: { citas: Appointment[] }) {
   const events = citas.map((cita) => ({
     event_id: cita.id,
     title: `Paciente: ${cita.patient.firstName} ${cita.patient.lastName} | Profesional: ${cita.professional.firstName} ${cita.professional.lastName}`,

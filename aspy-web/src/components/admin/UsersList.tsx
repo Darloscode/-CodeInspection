@@ -8,7 +8,7 @@ import { pacientes } from "@data/Pacientes";
 import { ButtonAdmin } from "@/types/ButtonAdmin";
 import { columnsUsersAdmin } from "@utils/columns";
 import { usuarios } from "@data/Usuarios";
-import Divider from "@mui/material/Divider";
+import SimpleHeader from "@components/SimpleHeader";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
 import Typography from "@mui/material/Typography";
@@ -89,12 +89,7 @@ export default function UsersList() {
     <Box className="box-panel-control" sx={{ padding: 2 }}>
       <Grid container spacing={1}>
         <Grid size={12} className="grid-p-patients-tittle">
-          <Grid container spacing={0}>
-            <Grid size={9} marginBottom={"4px"}>
-              <Typography variant="h3">Usuarios</Typography>
-            </Grid>
-          </Grid>
-          <Divider className="divider-paciente-historial"></Divider>
+          <SimpleHeader text={"Usuarios"} />
         </Grid>
 
         <Grid size={12}>

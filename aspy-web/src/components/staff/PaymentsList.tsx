@@ -1,35 +1,38 @@
-import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTheme } from "@mui/material";
 import { GridRowSelectionModel } from "@mui/x-data-grid";
-import { Invoice } from "@/types/Invoice";
+import { Payment } from "@/types/Payment";
 import { GridColDef } from "@mui/x-data-grid";
-import { columnsInvoice } from "@utils/columns";
-import { facturas } from "@data/Facturas";
+import { columnsPayment } from "@utils/columns";
+import { paymentList } from "@data/Pagos";
 import Button from "@mui/material/Button";
-import InvoiceView from "@components/InvoiceView";
 import Table from "@components/Table";
-import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
 import Typography from "@mui/material/Typography";
+import SimpleHeader from "@components/SimpleHeader";
 
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import AccessTimeFilledRoundedIcon from "@mui/icons-material/AccessTimeFilledRounded";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 
 export default function PaymentsList() {
-  const [rowSelection, setRowSelection] = useState<GridRowSelectionModel>([]);
+  const rowSelection: GridRowSelectionModel = [];
 
   const theme = useTheme().palette.mode;
   const themeClass = theme === "dark" ? "dark-theme" : "light-theme";
 
-  //Factura seleccionada
-  const [invoice, setInvoice] = useState<Invoice | null>(null);
+  //Ruta para aprobar
+  const navigate = useNavigate();
+  const location = useLocation();
+  const handleApprove = (id: number) => {
+    const newPath = `${location.pathname}/${id}`;
+    navigate(newPath);
+  };
 
   const columnasExtra: GridColDef[] = [
     {
-      field: "total",
+      field: "total_amount",
       headerName: "Total",
       disableColumnMenu: true,
       flex: 1,
@@ -49,9 +52,9 @@ export default function PaymentsList() {
       sortable: false,
       align: "center",
       headerAlign: "center",
-      renderCell: () => (
+      renderCell: (params) => (
         <Button
-          onClick={() => handleApprove()}
+          onClick={() => handleApprove(params.row.id)}
           variant="text"
           color="primary"
           className="boton-editar"
@@ -62,7 +65,7 @@ export default function PaymentsList() {
     },
     {
       field: "status",
-      headerName: "Estado de pago",
+      headerName: "Estado de aprobación",
       disableColumnMenu: true,
       flex: 2,
       resizable: false,
@@ -78,58 +81,22 @@ export default function PaymentsList() {
     },
   ];
 
-  const newColumns: GridColDef[] = [...columnsInvoice, ...columnasExtra];
-
-  //Mostrar la factura
-  useEffect(() => {
-    if (rowSelection.length > 0) {
-      const selectedInvoice = facturas.find(
-        (item) => item.id === rowSelection[0]
-      );
-      if (selectedInvoice) {
-        setInvoice(selectedInvoice);
-      }
-    } else {
-      setInvoice(null);
-    }
-  }, [rowSelection]);
-
-  //Ruta para aprobar
-  const navigate = useNavigate();
-  const location = useLocation();
-  const handleApprove = () => {
-    if (invoice) {
-      const newPath = `${location.pathname}/${invoice.id}`;
-      navigate(newPath);
-    }
-  };
+  const newColumns: GridColDef[] = [...columnsPayment, ...columnasExtra];
 
   return (
     <Box className="box-panel-control" sx={{ padding: 2 }}>
       <Grid container spacing={1}>
         <Grid size={12} className="grid-p-patients-tittle">
-          <Grid container spacing={0}>
-            <Grid size={9} marginBottom={"4px"}>
-              <Typography variant="h3">Pagos</Typography>
-            </Grid>
-          </Grid>
-          <Divider className="divider-paciente-historial"></Divider>
+          <SimpleHeader text={"Pagos"} />
         </Grid>
-        <Grid size={8} className={themeClass + " grid-tabla"}>
-          <Table<Invoice>
+        <Grid size={12} className={themeClass + " grid-tabla"}>
+          <Table<Payment>
             columns={newColumns}
-            rows={facturas}
+            rows={paymentList}
             rowSelectionModel={rowSelection}
-            onRowSelectionChange={(newSelection) =>
-              setRowSelection(newSelection)
-            }
+            onRowSelectionChange={() => {}}
           />
         </Grid>
-        {invoice && (
-          <Grid size={4} className={themeClass}>
-            <InvoiceView info={invoice} />
-          </Grid>
-        )}
       </Grid>
     </Box>
   );
