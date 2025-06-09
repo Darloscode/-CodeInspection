@@ -1,5 +1,5 @@
 import { useTheme } from "@mui/material";
-import { Cita } from "@/types/Cita";
+import { Appointment } from "@/types/Appointment";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Divider from "@mui/material/Divider";
@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid2";
 
 interface ShowAppointmentProps {
-  citas: Cita[];
+  citas: Appointment[];
 }
 
 export default function ShowAppointment({ citas }: ShowAppointmentProps) {

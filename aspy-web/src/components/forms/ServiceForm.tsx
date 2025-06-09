@@ -15,6 +15,8 @@ interface ServiceFormProps {
 type ServiceNew = {
   id: number;
   name: string;
+  idProfessinoal: number;
+  nameProfesional: string;
   description: string;
   price: number;
   durationMinutes: number;
