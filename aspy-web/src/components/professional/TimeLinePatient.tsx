@@ -2,7 +2,7 @@
 import { useTheme } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
 import { citas } from "@data/Citas";
-import { Cita } from "@/types/Cita";
+import { Appointment } from "@/types/Appointment";
 import TimelineItem, { timelineItemClasses } from "@mui/lab/TimelineItem";
 import Timeline from "@mui/lab/Timeline";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
@@ -21,7 +21,7 @@ export default function TimeLinePatients() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleMoreInfo = (cita: Cita) => {
+  const handleMoreInfo = (cita: Appointment) => {
     navigate(`${location.pathname}/${cita.id}`);
   };
 

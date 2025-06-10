@@ -64,7 +64,7 @@ export default function UserInput({
           type={type}
           variant="outlined"
           size="small"
-          className="w-full md:w-[230px]"
+          className="w-full md:w-[300px]"
           sx={{
             "& input::-webkit-outer-spin-button": {
               WebkitAppearance: "none",

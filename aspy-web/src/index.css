@@ -79,7 +79,7 @@ button:focus-visible {
 
 .grid-tabla {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
 }
 

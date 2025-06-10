@@ -13,7 +13,7 @@ export const profesionales: User[] = [
     identity: 778899001,
     phone: "0900112233",
     address: "Vía a la Costa",
-    province: "Azuay", // Campo province agregado
+    province: "Azuay",
   },
   {
     id: 17,
@@ -27,7 +27,7 @@ export const profesionales: User[] = [
     identity: 12123001,
     phone: "09003213",
     address: "Vía a la Costa",
-    province: "Guayaas", // Campo province agregado
+    province: "Guayaas",
   },
   {
     id: 18,

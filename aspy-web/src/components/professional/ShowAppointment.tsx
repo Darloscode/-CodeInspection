@@ -1,6 +1,6 @@
 import { useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { Cita } from "@/types/Cita";
+import { Appointment } from "@/types/Appointment";
 import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
@@ -15,8 +15,8 @@ import FormLabel from "@mui/material/FormLabel";
 import Button from "@mui/material/Button";
 
 interface ShowAppointmentProps {
-  citasSinMarcar: Cita[];
-  citasSinReporte: Cita[];
+  citasSinMarcar: Appointment[];
+  citasSinReporte: Appointment[];
 }
 
 export default function ShowAppointment({

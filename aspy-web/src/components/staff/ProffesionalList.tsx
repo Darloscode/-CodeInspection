@@ -3,17 +3,13 @@ import { GridRowSelectionModel } from "@mui/x-data-grid";
 import { useTheme } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
 import { User } from "@/types/User";
-import { usuarios } from "@data/Usuarios";
+import { profesionales } from "@data/Profesionales";
 import { columnsUsers } from "@utils/columns";
 import Table from "@components/Table";
-import Button from "@mui/material/Button";
 import ProfileView from "@components/ProfileView";
-import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
-import Typography from "@mui/material/Typography";
-
-import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import Header from "@components/Header";
 
 export default function ProffesionalList() {
   const [rowSelection, setRowSelection] = useState<GridRowSelectionModel>([]);
@@ -27,7 +23,9 @@ export default function ProffesionalList() {
   //Mostrar el usuario
   useEffect(() => {
     if (rowSelection.length > 0) {
-      const selectedUser = usuarios.find((item) => item.id === rowSelection[0]);
+      const selectedUser = profesionales.find(
+        (item) => item.id === rowSelection[0]
+      );
       if (selectedUser) {
         setUser(selectedUser);
       }
@@ -56,27 +54,17 @@ export default function ProffesionalList() {
     <Box className="box-panel-control" sx={{ padding: 2 }}>
       <Grid container spacing={1}>
         <Grid size={12} className="grid-p-patients-tittle">
-          <Grid container spacing={0}>
-            <Grid size={8}>
-              <Typography variant="h3">Profesionales</Typography>
-            </Grid>
-            <Grid size={4} display="flex" justifyContent="flex-end">
-              <Button
-                onClick={handleCreateProfessional}
-                variant="outlined"
-                startIcon={<AddRoundedIcon fontSize="large" />}
-                className="guardar"
-              >
-                Agregar Profesional
-              </Button>
-            </Grid>
-          </Grid>
-          <Divider className="divider-paciente-historial"></Divider>
+          <Header
+            textHeader={"Profesionales"}
+            isCreate={true}
+            textIcon={"Agregar Profesional"}
+            handle={handleCreateProfessional}
+          />
         </Grid>
         <Grid size={8} className={themeClass + " grid-tabla"}>
           <Table<User>
             columns={columnsUsers}
-            rows={usuarios}
+            rows={profesionales}
             rowSelectionModel={rowSelection}
             onRowSelectionChange={(newSelection) =>
               setRowSelection(newSelection)

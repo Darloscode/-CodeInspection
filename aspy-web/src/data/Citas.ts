@@ -1,7 +1,7 @@
-import { Cita } from "@/types/Cita";
+import { Appointment } from "@/types/Appointment";
 import { usuarios } from "@data/Usuarios";
 
-export const citas: Cita[] = [
+export const citas: Appointment[] = [
   {
     id: 1,
     date: "2025-03-15",
@@ -44,7 +44,7 @@ export const citas: Cita[] = [
   },
   {
     id: 5,
-    date: "2025-04-26",
+    date: "2025-03-26",
     startTime: "10:00",
     endTime: "10:30",
     professional: usuarios[15],
@@ -54,10 +54,10 @@ export const citas: Cita[] = [
   },
   {
     id: 6,
-    date: "2025-04-26",
+    date: "2025-03-26",
     startTime: "08:00",
     endTime: "10:30",
-    professional: usuarios[16],
+    professional: usuarios[17],
     patient: usuarios[1],
     assist: true,
     report: "Seguimiento de cita anterior.",

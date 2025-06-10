@@ -1,6 +1,7 @@
 import { User } from "@/types/User";
 
 export const usuarios: User[] = [
+  // Pacientes
   {
     id: 1,
     firstName: "Jhon",
@@ -13,7 +14,7 @@ export const usuarios: User[] = [
     identity: 123456789,
     phone: "0999273651",
     address: "Av. Quito y Los Ríos",
-    province: "Pichincha", // Campo province agregado
+    province: "Pichincha",
   },
   {
     id: 2,
@@ -27,7 +28,7 @@ export const usuarios: User[] = [
     identity: 987654321,
     phone: "0987654321",
     address: "Calle 10 y Bolívar",
-    province: "Guayas", // Campo province agregado
+    province: "Guayas",
   },
   {
     id: 3,
@@ -41,7 +42,7 @@ export const usuarios: User[] = [
     identity: 456789123,
     phone: "0912345678",
     address: "Av. Central 123",
-    province: "Azuay", // Campo province agregado
+    province: "Azuay",
   },
   {
     id: 4,
@@ -55,7 +56,7 @@ export const usuarios: User[] = [
     identity: 789123456,
     phone: "0999988776",
     address: "Calle 5 y Eloy Alfaro",
-    province: "El Oro", // Campo province agregado
+    province: "El Oro",
   },
   {
     id: 5,
@@ -69,7 +70,7 @@ export const usuarios: User[] = [
     identity: 321654987,
     phone: "0965432187",
     address: "Av. 9 de Octubre",
-    province: "Manabí", // Campo province agregado
+    province: "Manabí",
   },
   {
     id: 6,
@@ -83,7 +84,7 @@ export const usuarios: User[] = [
     identity: 654987321,
     phone: "0943210987",
     address: "Calle Amazonas",
-    province: "Loja", // Campo province agregado
+    province: "Loja",
   },
   {
     id: 7,
@@ -97,7 +98,7 @@ export const usuarios: User[] = [
     identity: 987321654,
     phone: "0981122334",
     address: "Calle Esmeraldas y Pichincha",
-    province: "Pichincha", // Campo province agregado
+    province: "Pichincha",
   },
   {
     id: 8,
@@ -111,7 +112,7 @@ export const usuarios: User[] = [
     identity: 123789456,
     phone: "0977665544",
     address: "Barrio Centenario",
-    province: "Guayas", // Campo province agregado
+    province: "Guayas",
   },
   {
     id: 9,
@@ -125,7 +126,7 @@ export const usuarios: User[] = [
     identity: 456123789,
     phone: "0934567890",
     address: "Vía a Daule",
-    province: "Guayas", // Campo province agregado
+    province: "Guayas",
   },
   {
     id: 10,
@@ -139,7 +140,7 @@ export const usuarios: User[] = [
     identity: 789456123,
     phone: "0922334455",
     address: "Urdesa Central",
-    province: "Azuay", // Campo province agregado
+    province: "Azuay",
   },
   {
     id: 11,
@@ -153,7 +154,7 @@ export const usuarios: User[] = [
     identity: 112233445,
     phone: "0911998877",
     address: "Sauces 6",
-    province: "Manabí", // Campo province agregado
+    province: "Manabí",
   },
   {
     id: 12,
@@ -167,7 +168,7 @@ export const usuarios: User[] = [
     identity: 998877665,
     phone: "0955778899",
     address: "La Alborada Etapa 2",
-    province: "Loja", // Campo province agregado
+    province: "Loja",
   },
   {
     id: 13,
@@ -181,7 +182,7 @@ export const usuarios: User[] = [
     identity: 556677889,
     phone: "0944885566",
     address: "Ceibos Norte",
-    province: "Pichincha", // Campo province agregado
+    province: "Pichincha",
   },
   {
     id: 14,
@@ -195,7 +196,7 @@ export const usuarios: User[] = [
     identity: 334455667,
     phone: "0933445566",
     address: "Av. Barcelona",
-    province: "El Oro", // Campo province agregado
+    province: "El Oro",
   },
   {
     id: 15,
@@ -209,21 +210,23 @@ export const usuarios: User[] = [
     identity: 778899001,
     phone: "0900112233",
     address: "Vía a la Costa",
-    province: "Guayas", // Campo province agregado
+    province: "Guayas",
   },
+
+  // Profesionales (sin duplicar nombres de pacientes)
   {
     id: 16,
-    firstName: "Oscar",
-    lastName: "Mendoza",
+    firstName: "Andrés",
+    lastName: "Cabrera",
     role: "Profesional",
     aboutme: "No disponible",
     age: 36,
     gender: "Masculino",
-    email: "omendoza@gmail.com",
+    email: "acabrera@gmail.com",
     identity: 778899001,
     phone: "0900112233",
     address: "Vía a la Costa",
-    province: "Azuay", // Campo province agregado
+    province: "Azuay",
   },
   {
     id: 17,
@@ -237,7 +240,7 @@ export const usuarios: User[] = [
     identity: 12123001,
     phone: "09003213",
     address: "Vía a la Costa",
-    province: "Guayaas", // Campo province agregado
+    province: "Guayaas",
   },
   {
     id: 18,

@@ -1,4 +1,3 @@
-import { Invoice } from "@/types/Invoice";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid2";
@@ -9,7 +8,33 @@ import TableRow from "@mui/material/TableRow";
 import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
 
-export default function InvoiceView({ info }: { info: Invoice }) {
+interface InvoiceViewProps {
+  id: number;
+  date: string;
+  client: string;
+  service: string;
+  address: string;
+  price: number;
+  discount: number;
+  total: number;
+  paymentMethod: string;
+  contactEmail: string;
+  contactPhone: string;
+}
+
+export default function InvoiceView({
+  id,
+  date,
+  client,
+  service,
+  address,
+  price,
+  discount,
+  total,
+  paymentMethod,
+  contactEmail,
+  contactPhone,
+}: InvoiceViewProps) {
   return (
     <Box
       maxWidth={500}
@@ -24,17 +49,17 @@ export default function InvoiceView({ info }: { info: Invoice }) {
         Invoice
       </Typography>
       <Typography variant="h4" fontWeight="bold" gutterBottom>
-        #{info.number || "N/A"}
+        #{id}
       </Typography>
 
       <Typography fontWeight="bold">Issue Date:</Typography>
-      <Typography gutterBottom>{info.issueDate || "N/A"}</Typography>
+      <Typography gutterBottom>{date}</Typography>
 
       <Typography fontWeight="bold">Client Name:</Typography>
-      <Typography gutterBottom>{info.clientName || "N/A"}</Typography>
+      <Typography gutterBottom>{client}</Typography>
 
       <Typography fontWeight="bold">Address:</Typography>
-      <Typography gutterBottom>{info.address || "N/A"}</Typography>
+      <Typography gutterBottom>{address}</Typography>
 
       <Box mt={4}>
         <TableContainer component={Paper} variant="outlined">
@@ -45,14 +70,12 @@ export default function InvoiceView({ info }: { info: Invoice }) {
                   colSpan={2}
                   sx={{ fontWeight: "bold", backgroundColor: "#f5f5f5" }}
                 >
-                  Services
+                  Service
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>{info.serviceName || "N/A"}</TableCell>
-                <TableCell align="right">
-                  ${info.servicePrice ? info.servicePrice.toFixed(2) : "0.00"}
-                </TableCell>
+                <TableCell>{service}</TableCell>
+                <TableCell align="right">${price.toFixed(2)}</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -67,20 +90,16 @@ export default function InvoiceView({ info }: { info: Invoice }) {
             <TableBody>
               <TableRow>
                 <TableCell>Subtotal</TableCell>
-                <TableCell align="right">
-                  ${info.subtotal ? info.subtotal.toFixed(2) : "0.00"}
-                </TableCell>
+                <TableCell align="right">${price.toFixed(2)}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Tax 12%</TableCell>
-                <TableCell align="right">
-                  ${info.tax ? info.tax.toFixed(2) : "0.00"}
-                </TableCell>
+                <TableCell>Descuento</TableCell>
+                <TableCell align="right">${discount}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell sx={{ fontWeight: "bold" }}>Total</TableCell>
                 <TableCell align="right" sx={{ fontWeight: "bold" }}>
-                  ${info.total ? info.total.toFixed(2) : "0.00"}
+                  ${total.toFixed(2)}
                 </TableCell>
               </TableRow>
             </TableBody>
@@ -91,12 +110,12 @@ export default function InvoiceView({ info }: { info: Invoice }) {
       <Grid container mt={4} spacing={2}>
         <Grid size={6}>
           <Typography fontWeight="bold">Payment Method:</Typography>
-          <Typography>{info.paymentMethod || "N/A"}</Typography>
+          <Typography>{paymentMethod}</Typography>
         </Grid>
         <Grid size={6}>
           <Typography fontWeight="bold">Contact Info:</Typography>
-          <Typography>{info.contactEmail || "N/A"}</Typography>
-          <Typography>{info.contactPhone || "N/A"}</Typography>
+          <Typography>{contactEmail || "N/A"}</Typography>
+          <Typography>{contactPhone || "N/A"}</Typography>
         </Grid>
       </Grid>
     </Box>

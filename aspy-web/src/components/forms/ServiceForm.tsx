@@ -1,11 +1,9 @@
 import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { servicios } from "@data/Servicios";
+import { servicesList } from "@data/Servicios";
 import { inputServiceConfig } from "@/config/serviceFormConfig";
-import { Servicio } from "@/types/Service";
+import { Service } from "@/types/Service";
 import UserInput from "@forms/UserInput";
-import CancelButton from "@buttons/CancelButton";
 import SaveButton from "@buttons/SaveButton";
 import CreationButton from "@buttons/CreationButton";
 
@@ -14,6 +12,20 @@ interface ServiceFormProps {
   serviceId?: number;
 }
 
+type ServiceNew = {
+  id: number;
+  name: string;
+  idProfessinoal: number;
+  nameProfesional: string;
+  description: string;
+  price: number;
+  durationMinutes: number;
+  serviceType: string;
+  active: string;
+  creatingIn: string;
+  updated_on: string;
+};
+
 export default function ServiceForm({
   isEditMode,
   serviceId,
@@ -21,13 +33,7 @@ export default function ServiceForm({
   //const [serviceData, setServiceData] = useState<ServiceData | null>(null);
 
   //Estas dos lineas son solo para pruebas
-  const serviceData = servicios.find((u) => u.id === serviceId);
-
-  // Esto te lleva a la página anterior
-  const navigate = useNavigate();
-  const handleBack = () => {
-    navigate(-1);
-  };
+  const serviceData = servicesList.find((u) => u.id === serviceId);
 
   /*
   useEffect(() => {
@@ -44,7 +50,7 @@ export default function ServiceForm({
   }, [props.isEditMode, props.serviceId]);
   */
 
-  const methods = useForm<Servicio>();
+  const methods = useForm<ServiceNew>();
 
   useEffect(() => {
     if (isEditMode && serviceData) {
@@ -53,7 +59,7 @@ export default function ServiceForm({
         description: serviceData.description,
         price: serviceData.price,
         durationMinutes: serviceData.durationMinutes,
-        active: serviceData.active,
+        active: serviceData.active ? "Sí" : "No",
         serviceType: serviceData.serviceType,
       });
     } else {
@@ -62,7 +68,7 @@ export default function ServiceForm({
         description: "",
         price: 0,
         durationMinutes: 0,
-        active: false,
+        active: "",
         serviceType: "",
       });
     }
@@ -81,6 +87,11 @@ export default function ServiceForm({
 
   // TODO in a diff file
   const onClickSave = methods.handleSubmit((data) => {
+    const transformedData: Service = {
+      ...data,
+      active: data.active === "Sí",
+    };
+    console.log(transformedData);
     alert(data);
     console.log(data);
   });
@@ -103,7 +114,6 @@ export default function ServiceForm({
           </div>
         </div>
         <div className="gap-10 mt-4 flex flex-row items-center justify-center">
-          <CancelButton onClick={handleBack} />
           {!isEditMode && (
             <CreationButton onClick={onClickCreate} text="Crear" />
           )}
