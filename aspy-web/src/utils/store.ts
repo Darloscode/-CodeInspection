@@ -92,6 +92,14 @@ export const getAuthenticatedUserEmail = (): string => {
   return user.email; // Devuelve el email del usuario autenticado
 };
 
+export const getAuthenticatedUserIdentity = (): number => {
+  const user = getAuthenticatedUser();
+  if (!user) {
+    throw new Error("No authenticated user found");
+  }
+  return user.identity; // Devuelve el email del usuario autenticado
+};
+
 // Función para establecer un usuario autenticado por rol
 export const setAuthenticatedUserByRole = (
   role: "admin" | "staff" | "professional" | "client"
