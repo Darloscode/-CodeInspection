@@ -5,7 +5,8 @@ import { Receipt } from "@/types/Receipt";
 import { GridColDef } from "@mui/x-data-grid";
 import { handleDownloadInvoice } from "@utils/utils";
 import { columnsReceipt } from "@utils/columns";
-import { receiptList } from "@data/Recibos";
+import { getAuthenticatedUserIdentity } from "@utils/store";
+import { getReceipts } from "@utils/utils";
 import Button from "@mui/material/Button";
 import InvoiceView from "@components/InvoiceView";
 import Table from "@components/Table";
@@ -48,6 +49,8 @@ const columnaExtra: GridColDef[] = [
 ];
 
 export default function ReceiptList() {
+  const receiptList: Receipt[] = getReceipts(getAuthenticatedUserIdentity());
+
   const [rowSelection, setRowSelection] = useState<GridRowSelectionModel>([]);
 
   const theme = useTheme().palette.mode;

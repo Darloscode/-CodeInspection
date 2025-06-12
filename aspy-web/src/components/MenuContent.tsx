@@ -65,8 +65,12 @@ const professionalListItems = [
 
 const clientListItems = [
   { text: "Vista General", route: "/", icon: <HomeRoundedIcon /> },
-  { text: "Citas", route: "/citas", icon: <CalendarMonthRoundedIcon /> },
-  { text: "Facturas", route: "/facturas", icon: <ReceiptLongRoundedIcon /> },
+  {
+    text: "Nueva cita",
+    route: "/agendar-cita",
+    icon: <CalendarMonthRoundedIcon />,
+  },
+  { text: "Recibos", route: "/recibos", icon: <ReceiptLongRoundedIcon /> },
 ];
 
 const secondaryListItems = [
