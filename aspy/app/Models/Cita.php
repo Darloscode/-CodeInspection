@@ -12,7 +12,7 @@ class Cita extends Model
      * @var string
      */
     protected $table = 'Cita';
-    public $timestamps = true;
+    public $timestamps = false;
     protected $fillable = ['idCita', 'cedulaPaciente', 'profesional', 'servicio', 'tipoConsulta', 'fecha', 'horaInicio', 'horaFin'];
     protected $primaryKey = 'idCita';
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Phone;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PhoneController extends Controller
 {
@@ -25,7 +26,7 @@ class PhoneController extends Controller
             'number' => 'required|string',
             'name' => 'nullable|string',
             'relationship' => 'required|string',
-            'created_by' => 'sometimes|string',
+            
         ]);
 
         return Phone::create($validated);
@@ -38,9 +39,12 @@ class PhoneController extends Controller
             'type' => 'string',
             'number' => 'string',
             'name' => 'string',
-            'relationship' => 'string',
-            'modified_by' => 'sometimes|string',
+            'relationship' => 'string'
         ]);
+        
+        $validated['modification_date'] = Carbon::now();
+        $validated['modified_by'] = 'system';
+
         $phone->update($validated);
         return $phone;
     }

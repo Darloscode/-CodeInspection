@@ -11,6 +11,7 @@ class UserAccountStatus extends Model
 
     protected $table = 'user_account_status';
     protected $primaryKey = 'status_id';
+    
     protected $fillable = [
         'name',
     ];

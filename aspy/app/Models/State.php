@@ -7,6 +7,7 @@ class State extends Model
 {
     protected $table = 'state';
     protected $primaryKey = 'state_id';
+    public $timestamps = false;
     protected $fillable = [
         'name',
         'country_id',

@@ -4,9 +4,9 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import AppointmentCreation from "@components/AppointmentCreation";
 
 import ReplyRoundedIcon from "@mui/icons-material/ReplyRounded";
-import AppointmentCreation from "@components/AppointmentCreation";
 
 export default function AppointmentView() {
   const navigate = useNavigate();

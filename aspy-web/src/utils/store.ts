@@ -1,5 +1,5 @@
 import { createStore } from "redux";
-import { UserAccount } from "@types/UserAccount";
+import { UserAccount } from "@/types/UserAccount";
 import { sampleUsers } from "@assets/sampleUsers";
 
 // Definir el estado inicial y el tipo de estado
@@ -29,7 +29,7 @@ const initialState: State = {
 // Definir las acciones posibles
 interface Action {
   type: string;
-  payload?: any;
+  payload: UserAccount;
 }
 
 // Acción para establecer el usuario
@@ -90,6 +90,14 @@ export const getAuthenticatedUserEmail = (): string => {
     throw new Error("No authenticated user found");
   }
   return user.email; // Devuelve el email del usuario autenticado
+};
+
+export const getAuthenticatedUserIdentity = (): number => {
+  const user = getAuthenticatedUser();
+  if (!user) {
+    throw new Error("No authenticated user found");
+  }
+  return user.identity; // Devuelve el email del usuario autenticado
 };
 
 // Función para establecer un usuario autenticado por rol

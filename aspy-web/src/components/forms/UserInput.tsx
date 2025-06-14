@@ -1,61 +1,39 @@
-import TextField from "@mui/material/TextField";
 import { useFormContext } from "react-hook-form";
-import InputError from "./InputError";
 import { AnimatePresence } from "framer-motion";
-import { findInputError } from "../../utils/findInputError";
-import { isFormInvalid } from "../../utils/isFormInvalid";
-import { useState } from "react";
-import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import Checkbox from "@mui/material/Checkbox";
-import ListItemText from "@mui/material/ListItemText";
+import { findInputError } from "@utils/findInputError";
+import { isFormInvalid } from "@utils/isFormInvalid";
+import TextField from "@mui/material/TextField";
+import InputError from "@forms/InputError";
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
-function UserInput(props: {
+interface UserInputProps {
   label: string;
-  key: string;
   type: string;
   id: string;
   validation: object;
-  options?: string[]; // <-- para el select
-  default?: string;
-  defaultList?: string[];
-}) {
+  options?: string[];
+  role?: string;
+}
+
+export default function UserInput({
+  label,
+  type,
+  id,
+  validation,
+  options,
+  role,
+}: UserInputProps) {
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
-  const inputError = findInputError(errors, props.id);
+  const inputError = findInputError(errors, id);
   const isInvalid = isFormInvalid(inputError);
 
-  const [personName, setPersonName] = useState<string[]>(
-    props.defaultList || []
-  );
-
-  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-  };
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex flex-row gap-2">
-        <h6 className="grow">{props.label}</h6>
+    <div className="flex flex-col gap-2 w-full">
+      <div className="flex flex-row gap-2 w-full">
+        <h6 className="grow">{label}</h6>
         <AnimatePresence mode="wait" initial={false}>
           {isInvalid && (
             <InputError
@@ -65,76 +43,28 @@ function UserInput(props: {
           )}
         </AnimatePresence>
       </div>
-      {/*
-      <TextField
-        select={props.type === "select"}
-        required
-        id={props.id}
-        type={props.type !== "select" ? props.type : undefined}
-        variant="outlined"
-        size="small"
-        className="w-full md:w-[350px]"
-        sx={{
-          "& input::-webkit-outer-spin-button": {
-            WebkitAppearance: "none",
-            margin: 0,
-          },
-          "& input::-webkit-inner-spin-button": {
-            WebkitAppearance: "none",
-            margin: 0,
-          },
-          // Ocultar flechas en Firefox
-          "& input[type=number]": {
-            MozAppearance: "textfield",
-          },
-        }}
-        {...register(props.id, props.validation)}
-      />
-    </div>
-    */}
-      {props.type === "select" ? (
-        <Select
-          {...register(props.id, props.validation)}
-          className="w-full md:w-[350px]"
-          variant="outlined"
-          id={props.id}
-          defaultValue={props.default || ""}
-          disabled={props.label !== "Activo" && !!props.default}
+      {type === "select" ? (
+        <select
+          id={id}
+          {...register(id, validation)}
+          className="border border-gray-300 rounded-md p-2 w-full"
+          disabled={!!role}
         >
-          <MenuItem value="">Seleccione una opción</MenuItem>
-          {props.options?.map((option) => (
-            <MenuItem key={option} value={option}>
+          <option value="">Seleccione una opción</option>
+          {options?.map((option) => (
+            <option key={option} value={option}>
               {option}
-            </MenuItem>
+            </option>
           ))}
-        </Select>
-      ) : props.type === "multiselect" ? (
-        <Select
-          labelId="demo-multiple-checkbox-label"
-          {...register(props.id, props.validation)}
-          id={props.id}
-          multiple
-          className="w-full md:w-[350px]"
-          value={personName}
-          onChange={handleChange}
-          renderValue={(selected) => selected.join(", ")}
-          MenuProps={MenuProps}
-        >
-          {props.options?.map((name) => (
-            <MenuItem key={name} value={name}>
-              <Checkbox checked={personName.includes(name)} />
-              <ListItemText primary={name} />
-            </MenuItem>
-          ))}
-        </Select>
+        </select>
       ) : (
         <TextField
           required
-          id={props.id}
-          type={props.type}
+          id={id}
+          type={type}
           variant="outlined"
           size="small"
-          className="w-full md:w-[350px]"
+          className="w-full md:w-[300px]"
           sx={{
             "& input::-webkit-outer-spin-button": {
               WebkitAppearance: "none",
@@ -148,11 +78,9 @@ function UserInput(props: {
               MozAppearance: "textfield",
             },
           }}
-          {...register(props.id, props.validation)}
+          {...register(id, validation)}
         />
       )}
     </div>
   );
 }
-
-export default UserInput;

@@ -10,6 +10,7 @@ class Appointment extends Model
     use HasFactory;
     protected $table = 'appointment';
     protected $primaryKey = 'appointment_id';
+    public $timestamps = false;
 
     protected $fillable = [
         'payment_id',

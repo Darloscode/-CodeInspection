@@ -1,13 +1,27 @@
-import { ReceiptRevisionData } from "@/types/ReceiptRevisionData";
+import { Payment } from "@/types/Payment";
+import { FileData } from "@/types/FileData";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid2";
 import Button from "@mui/material/Button";
 
-import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 
-function ReceiptRevision(props: { pagoData: ReceiptRevisionData }) {
+interface ReceiptRevisionProps {
+  receiptData: Payment;
+}
+
+function ReceiptRevision({ receiptData }: ReceiptRevisionProps) {
+  const handleDownload = (file: FileData) => {
+    const link = document.createElement("a");
+    link.href =
+      typeof file.file === "string"
+        ? file.file
+        : URL.createObjectURL(file.file);
+    link.download = file.name;
+    link.click();
+  };
+
   return (
     <Box mt={2} width={"100%"}>
       <Grid container spacing={1}>
@@ -16,7 +30,7 @@ function ReceiptRevision(props: { pagoData: ReceiptRevisionData }) {
             Paciente
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {props.pagoData.paciente}
+            {receiptData.person}
           </Typography>
         </Grid>
 
@@ -25,7 +39,7 @@ function ReceiptRevision(props: { pagoData: ReceiptRevisionData }) {
             Representante
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {props.pagoData.representante}
+            {receiptData.person}
           </Typography>
         </Grid>
 
@@ -34,7 +48,7 @@ function ReceiptRevision(props: { pagoData: ReceiptRevisionData }) {
             Cédula del paciente
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {props.pagoData.cedula_paciente}
+            {receiptData.person}
           </Typography>
         </Grid>
 
@@ -56,28 +70,12 @@ function ReceiptRevision(props: { pagoData: ReceiptRevisionData }) {
             >
               <Button
                 onClick={() => {
-                  console.log("descargar");
+                  handleDownload(receiptData.file);
                 }}
                 variant="text"
                 className="boton-editar"
               >
                 <FileDownloadIcon className="icono" />
-              </Button>
-            </Grid>
-            <Grid
-              size={6}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Button
-                onClick={() => {
-                  console.log("borrar");
-                }}
-                variant="text"
-                className="boton-editar"
-              >
-                <DeleteForeverRoundedIcon className="icono" />
               </Button>
             </Grid>
           </Grid>

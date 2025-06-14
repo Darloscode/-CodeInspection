@@ -19,11 +19,11 @@ const drawerWidth = 240;
 const Drawer = styled(MuiDrawer)({
   width: drawerWidth,
   flexShrink: 0,
-  boxSizing: 'border-box',
+  boxSizing: "border-box",
   mt: 10,
   [`& .${drawerClasses.paper}`]: {
     width: drawerWidth,
-    boxSizing: 'border-box',
+    boxSizing: "border-box",
   },
 });
 
@@ -32,16 +32,16 @@ export default function SideMenu() {
     <Drawer
       variant="permanent"
       sx={{
-        display: { xs: 'none', md: 'block' },
+        display: { xs: "none", md: "block" },
         [`& .${drawerClasses.paper}`]: {
-          backgroundColor: 'background.paper',
+          backgroundColor: "background.paper",
         },
       }}
     >
       <Box
         sx={{
-          display: 'flex',
-          mt: 'calc(var(--template-frame-height, 0px) + 4px)',
+          display: "flex",
+          mt: "calc(var(--template-frame-height, 0px) + 4px)",
           p: 1.5,
         }}
       >
@@ -50,31 +50,30 @@ export default function SideMenu() {
       <Divider />
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-        <ThemedLogo></ThemedLogo>     
+        <ThemedLogo></ThemedLogo>
       </Box>
       <Box
         sx={{
-          overflow: 'auto',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
+          overflow: "auto",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-{        <MenuContent />
-}        
+        {<MenuContent />}
       </Box>
       <Stack
         direction="row"
         sx={{
           p: 2,
           gap: 1,
-          alignItems: 'center',
-          borderTop: '1px solid',
-          borderColor: 'divider',
+          alignItems: "center",
+          borderTop: "1px solid",
+          borderColor: "divider",
         }}
       >
         <Avatar
@@ -83,22 +82,21 @@ export default function SideMenu() {
           src="/static/images/avatar/7.jpg"
           sx={{ width: 36, height: 36 }}
         />
-        <Box sx={{ mr: 'auto' }}>
-          <Typography variant="body2" sx={{ fontWeight: 500, lineHeight: '16px' }}>
+        <Box sx={{ mr: "auto" }}>
+          <Typography
+            variant="body2"
+            sx={{ fontWeight: 500, lineHeight: "16px" }}
+          >
             {getAuthenticatedUserName()}
           </Typography>
-          <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-          {getAuthenticatedUserEmail()}
+          <Typography variant="caption" sx={{ color: "text.secondary" }}>
+            {getAuthenticatedUserEmail()}
           </Typography>
         </Box>
-        
+
         <OptionsMenu />
         <ColorModeToggle />
-        
-
       </Stack>
-      
-      
     </Drawer>
   );
 }

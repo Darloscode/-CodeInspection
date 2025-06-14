@@ -7,6 +7,7 @@ class Occupation extends Model
 {
     protected $table = 'occupation';
     protected $primaryKey = 'occupation_id';
+    public $timestamps = false;
     protected $fillable = ['name'];
 
     public function people()

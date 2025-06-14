@@ -38,7 +38,7 @@ export const inputServiceConfig = [
   },
   {
     label: "Duración (minutos)",
-    key: "duracion",
+    key: "durationMinutes",
     type: "number",
     validation: {
       required: {
@@ -53,7 +53,7 @@ export const inputServiceConfig = [
   },
   {
     label: "Activo",
-    key: "activo",
+    key: "active",
     type: "select",
     validation: {
       required: {
@@ -61,11 +61,11 @@ export const inputServiceConfig = [
         message: "Debe seleccionar una opción",
       },
     },
-    options: ["Si", "No"],
+    options: ["Sí", "No"],
   },
   {
     label: "Tipo",
-    key: "tipo",
+    key: "serviceType",
     type: "select",
     validation: {
       required: {

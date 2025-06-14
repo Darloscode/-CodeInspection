@@ -11,6 +11,7 @@ class Role extends Model
 
     protected $table = 'role';
     protected $primaryKey = 'role_id';
+    public $timestamps = false;
     protected $fillable = [
         'name',
         'created_by',

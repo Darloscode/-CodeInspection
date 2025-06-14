@@ -7,6 +7,7 @@ class MedicalProfile extends Model
 {
     protected $table = 'medical_profile';
     protected $primaryKey = 'medical_profile_id';
+    public $timestamps = false;
     protected $fillable = [
         'person_id',
         'diagnose',

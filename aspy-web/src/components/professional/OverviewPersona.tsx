@@ -34,7 +34,7 @@ export default function Overview_persona({
         >
           <Avatar
             alt="Foto de perfil"
-            src={selectedData.image}
+            src={selectedData.photo}
             sx={{ width: 150, height: 150 }}
           />
         </Grid>
@@ -45,7 +45,7 @@ export default function Overview_persona({
         </Grid>
         <Grid size={12}>
           <Typography variant="body1" className="class_titulo">
-            {selectedData.rol}
+            {selectedData.role}
           </Typography>
         </Grid>
         <Grid

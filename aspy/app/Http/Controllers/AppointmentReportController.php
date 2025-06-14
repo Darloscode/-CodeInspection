@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AppointmentReport;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AppointmentReportController extends Controller
 {
@@ -23,7 +24,7 @@ class AppointmentReportController extends Controller
             'appointment_id' => 'required|integer|unique:appointment_reports,appointment_id',
             'comments' => 'required|string',
             'sign' => 'required|string',
-            'created_by' => 'sometimes|string',
+            
         ]);
 
         return AppointmentReport::create($validated);
@@ -34,9 +35,12 @@ class AppointmentReportController extends Controller
         $report = AppointmentReport::findOrFail($id);
         $validated = $request->validate([
             'comments' => 'string',
-            'sign' => 'string',
-            'modified_by' => 'sometimes|string',
+            'sign' => 'string'
         ]);
+        
+        $validated['modification_date'] = Carbon::now();
+        $validated['modified_by'] = 'system';
+
         $report->update($validated);
         return $report;
     }

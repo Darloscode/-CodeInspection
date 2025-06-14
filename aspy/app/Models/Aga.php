@@ -7,6 +7,8 @@ class Aga extends Model
 {   
     protected $table = 'aga';
     protected $primaryKey = 'aga_id';
+    public $timestamps = false;
+
     protected $fillable = ['name'];
 
     public function addresses()

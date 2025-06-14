@@ -1,25 +1,39 @@
-import { inputServiceConfig } from "@/config/serviceFormConfig";
-//import { ServiceData } from "@/types/ServiceDataCreation";
-//import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import UserInput from "./UserInput";
-import CancelButton from "../buttons/CancelButton";
-import { servicios } from "../../data/Servicios";
-import SaveButton from "../buttons/SaveButton";
-import CreationButton from "../buttons/CreationButton";
+import { servicesList } from "@data/Servicios";
+import { inputServiceConfig } from "@/config/serviceFormConfig";
+import { Service } from "@/types/Service";
+import UserInput from "@forms/UserInput";
+import SaveButton from "@buttons/SaveButton";
+import CreationButton from "@buttons/CreationButton";
 
-function ServiceForm(props: { isEditMode?: boolean; serviceId?: number }) {
+interface ServiceFormProps {
+  isEditMode: boolean;
+  serviceId?: number;
+}
+
+type ServiceNew = {
+  id: number;
+  name: string;
+  idProfessinoal: number;
+  nameProfesional: string;
+  description: string;
+  price: number;
+  durationMinutes: number;
+  serviceType: string;
+  active: string;
+  creatingIn: string;
+  updated_on: string;
+};
+
+export default function ServiceForm({
+  isEditMode,
+  serviceId,
+}: ServiceFormProps) {
   //const [serviceData, setServiceData] = useState<ServiceData | null>(null);
 
   //Estas dos lineas son solo para pruebas
-  const serviceData = servicios.find((u) => u.id === props.serviceId);
-
-  // Esto te lleva a la página anterior
-  const navigate = useNavigate();
-  const handleBack = () => {
-    navigate(-1);
-  };
+  const serviceData = servicesList.find((u) => u.id === serviceId);
 
   /*
   useEffect(() => {
@@ -36,28 +50,29 @@ function ServiceForm(props: { isEditMode?: boolean; serviceId?: number }) {
   }, [props.isEditMode, props.serviceId]);
   */
 
-  const methods = useForm({
-    defaultValues: async () => {
-      if (props.isEditMode && serviceData) {
-        return {
-          name: serviceData.nombre,
-          description: serviceData.descripcion,
-          price: serviceData.costo,
-          duracion: serviceData.duracion_minutos,
-          activo: serviceData.activo ? "Si" : "No",
-          tipo: serviceData.tipo_servicio,
-        };
-      } else {
-        return {
-          name: "",
-          description: "",
-          price: "",
-          duracion: "",
-          activo: "",
-        };
-      }
-    },
-  });
+  const methods = useForm<ServiceNew>();
+
+  useEffect(() => {
+    if (isEditMode && serviceData) {
+      methods.reset({
+        name: serviceData.name,
+        description: serviceData.description,
+        price: serviceData.price,
+        durationMinutes: serviceData.durationMinutes,
+        active: serviceData.active ? "Sí" : "No",
+        serviceType: serviceData.serviceType,
+      });
+    } else {
+      methods.reset({
+        name: "",
+        description: "",
+        price: 0,
+        durationMinutes: 0,
+        active: "",
+        serviceType: "",
+      });
+    }
+  }, [isEditMode, serviceData, methods]);
 
   const list_inputs = inputServiceConfig.map((input) => (
     <UserInput
@@ -67,20 +82,16 @@ function ServiceForm(props: { isEditMode?: boolean; serviceId?: number }) {
       id={input.key}
       validation={input.validation}
       options={input.options}
-      default={
-        input.key === "activo"
-          ? serviceData?.activo
-            ? "Si"
-            : ""
-          : input.key === "tipo"
-            ? serviceData?.tipo_servicio
-            : ""
-      }
     />
   ));
 
   // TODO in a diff file
   const onClickSave = methods.handleSubmit((data) => {
+    const transformedData: Service = {
+      ...data,
+      active: data.active === "Sí",
+    };
+    console.log(transformedData);
     alert(data);
     console.log(data);
   });
@@ -103,17 +114,12 @@ function ServiceForm(props: { isEditMode?: boolean; serviceId?: number }) {
           </div>
         </div>
         <div className="gap-10 mt-4 flex flex-row items-center justify-center">
-          <CancelButton onClick={handleBack} />
-          {!props.isEditMode && (
+          {!isEditMode && (
             <CreationButton onClick={onClickCreate} text="Crear" />
           )}
-          {props.isEditMode && (
-            <SaveButton onClick={onClickSave} text="Guardar" />
-          )}
+          {isEditMode && <SaveButton onClick={onClickSave} text="Guardar" />}
         </div>
       </form>
     </FormProvider>
   );
 }
-
-export default ServiceForm;

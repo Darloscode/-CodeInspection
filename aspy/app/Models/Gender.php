@@ -8,6 +8,7 @@ class Gender extends Model
 
     protected $table = 'gender';
     protected $primaryKey = 'gender_id';
+    public $timestamps = false;
     protected $fillable = ['name'];
 
     public function people()

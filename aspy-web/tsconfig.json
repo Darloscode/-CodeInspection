@@ -23,7 +23,8 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "noEmit": true,
-    "types": ["jest", "node"] // ✅ Muy importante para que Jest y Node sean reconocidos
+    "types": ["jest", "node"], // ✅ Muy importante para que Jest y Node sean reconocidos
+    "typeRoots": ["./node_modules/@types", "./types"]
   },
   "include": ["src", "jest.setup.ts"]
 }

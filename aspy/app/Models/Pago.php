@@ -15,7 +15,7 @@ class Pago extends Model
         'comprobante'
     ]; 
 
-    public $timestamps = true;
+    public $timestamps = false;
     protected $primaryKey = 'citaid';
 
     public function cita()

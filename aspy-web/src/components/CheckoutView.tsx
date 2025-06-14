@@ -6,13 +6,13 @@ import Grid from "@mui/material/Grid2";
 import Typography from "@mui/material/Typography";
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
-import PaymentForm from "@components/PaymentForm";
-import Review from "@components/staff/Review";
+import PaymentForm from "@/components/PaymentForm";
+import Review from "@components/Review";
 import Steps from "@components/Steps";
 import Divider from "@mui/material/Divider";
 
 import ReplyRoundedIcon from "@mui/icons-material/ReplyRounded";
-import Successo from "./Successo";
+import Success from "@components/Success";
 
 const steps = ["Detalles de Pago", "Revisar cita"];
 
@@ -23,13 +23,10 @@ export default function CheckoutView() {
   const [isPaymentValid, setIsPaymentValid] = useState(false);
 
   const [open, setOpen] = useState(false);
-  console.log(activeStep);
 
   const handleOpen = () => {
     setActiveStep(activeStep + 1);
-    setOpen(true); // esto muestra el cuadro
-
-    console.log("Finalizando");
+    setOpen(true);
   };
 
   const handleClose = () => {
@@ -104,10 +101,15 @@ export default function CheckoutView() {
             }}
           >
             {activeStep === steps.length ? (
-              <Successo
+              <Success
                 open={open}
                 handleClose={handleClose}
-                card={paymentType === "creditCard"}
+                isRegister={false}
+                message={
+                  paymentType === "creditCard"
+                    ? "Cita agendada con éxito"
+                    : "Cita registrada con éxito"
+                }
               />
             ) : (
               /*

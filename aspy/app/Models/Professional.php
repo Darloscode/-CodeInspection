@@ -11,6 +11,7 @@ class Professional extends Model
 
     protected $table = 'professional';
     protected $primaryKey = 'person_id';
+    public $timestamps = false;
     protected $fillable = [
         'person_id',
         'specialty',

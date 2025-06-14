@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "@mui/material";
 import { GridRowSelectionModel } from "@mui/x-data-grid";
-import { Invoice } from "@/types/Invoice";
+import { Payment } from "@/types/Payment";
 import { GridColDef } from "@mui/x-data-grid";
-import { columnsInvoice } from "@utils/columns";
-import { facturas } from "@data/Facturas";
+import { columnsPayment } from "@utils/columns";
+import { paymentList } from "@data/Pagos";
 import InvoiceView from "@components/InvoiceView";
 import Table from "@components/Table";
 import Divider from "@mui/material/Divider";
@@ -22,7 +22,7 @@ export default function PaymentsList() {
   const themeClass = theme === "dark" ? "dark-theme" : "light-theme";
 
   //Factura seleccionada
-  const [invoice, setInvoice] = useState<Invoice | null>(null);
+  const [payment, setPayment] = useState<Payment | null>(null);
 
   const columnasExtra: GridColDef[] = [
     {
@@ -55,19 +55,19 @@ export default function PaymentsList() {
     },
   ];
 
-  const newColumns: GridColDef[] = [...columnsInvoice, ...columnasExtra];
+  const newColumns: GridColDef[] = [...columnsPayment, ...columnasExtra];
 
   //Mostrar la factura
   useEffect(() => {
     if (rowSelection.length > 0) {
-      const selectedInvoice = facturas.find(
+      const selectedInvoice = paymentList.find(
         (item) => item.id === rowSelection[0]
       );
       if (selectedInvoice) {
-        setInvoice(selectedInvoice);
+        setPayment(selectedInvoice);
       }
     } else {
-      setInvoice(null);
+      setPayment(null);
     }
   }, [rowSelection]);
 
@@ -83,18 +83,30 @@ export default function PaymentsList() {
           <Divider className="divider-paciente-historial"></Divider>
         </Grid>
         <Grid size={8} className={themeClass + " grid-tabla"}>
-          <Table<Invoice>
+          <Table<Payment>
             columns={newColumns}
-            rows={facturas}
+            rows={paymentList}
             rowSelectionModel={rowSelection}
             onRowSelectionChange={(newSelection) =>
               setRowSelection(newSelection)
             }
           />
         </Grid>
-        {invoice && (
+        {payment && (
           <Grid size={4} className={themeClass}>
-            <InvoiceView info={invoice} />
+            <InvoiceView
+              id={payment.id}
+              date={payment.creation_date}
+              client={payment.person}
+              service={payment.service}
+              address={payment.address}
+              price={payment.service_price}
+              discount={payment.discount_percentage}
+              total={payment.total_amount}
+              paymentMethod={payment.paymentMethod}
+              contactEmail={payment.contactEmail}
+              contactPhone={payment.contactPhone}
+            />
           </Grid>
         )}
       </Grid>

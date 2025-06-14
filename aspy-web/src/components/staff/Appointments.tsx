@@ -1,17 +1,13 @@
 import { useState } from "react";
 import { useTheme } from "@mui/material";
-import { getCitasProfesional } from "@utils/utils";
 import { useNavigate } from "react-router-dom";
-import { Cita } from "@/types/Cita";
-import Divider from "@mui/material/Divider";
+import { getCitasProfesional } from "@utils/utils";
+import { Appointment } from "@/types/Appointment";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
-import Typography from "@mui/material/Typography";
 import Agenda from "@components/Agenda";
-import SelectProfessional from "@/components/SelectProfessional";
-import Button from "@mui/material/Button";
-
-import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import SelectProfessional from "@components/SelectProfessional";
+import Header from "@components/Header";
 
 export default function Appointments() {
   const theme = useTheme();
@@ -26,7 +22,7 @@ export default function Appointments() {
     setSelected(id);
   };
 
-  const citasProfesional: Cita[] = getCitasProfesional(selectedId!);
+  const citasProfesional: Appointment[] = getCitasProfesional(selectedId!);
 
   const handleCreateAppointment = () => {
     const newPath = `/agendar-cita`;
@@ -37,22 +33,12 @@ export default function Appointments() {
     <Box className="box-panel-control" sx={{ padding: 2 }}>
       <Grid container spacing={1}>
         <Grid size={12} className="grid-p-patients-tittle">
-          <Grid container spacing={0}>
-            <Grid size={9}>
-              <Typography variant="h3">Citas</Typography>
-            </Grid>
-            <Grid size={3} display="flex" justifyContent="flex-end">
-              <Button
-                onClick={handleCreateAppointment}
-                variant="outlined"
-                startIcon={<AddRoundedIcon fontSize="large" />}
-                className="guardar"
-              >
-                Nueva Cita
-              </Button>
-            </Grid>
-          </Grid>
-          <Divider className="divider-paciente-historial"></Divider>
+          <Header
+            textHeader={"Citas"}
+            isCreate={true}
+            textIcon={"Nueva Cita"}
+            handle={handleCreateAppointment}
+          />
         </Grid>
         <Grid size={9} className={themeClass}>
           <Agenda citas={citasProfesional} />

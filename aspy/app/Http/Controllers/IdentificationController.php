@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Identification;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class IdentificationController extends Controller
 {
@@ -24,7 +25,7 @@ class IdentificationController extends Controller
             'type' => 'required|string',
             'number' => 'required|string|unique:identification,number',
             'due_date' => 'nullable|date',
-            'created_by' => 'sometimes|string',
+            
         ]);
 
         return Identification::create($validated);
@@ -36,9 +37,12 @@ class IdentificationController extends Controller
         $validated = $request->validate([
             'type' => 'string',
             'number' => 'string|unique:identification,number,'.$id,
-            'due_date' => 'nullable|date',
-            'modified_by' => 'sometimes|string',
+            'due_date' => 'nullable|date'
         ]);
+        
+        $validated['modification_date'] = Carbon::now();
+        $validated['modified_by'] = 'system';
+
         $identification->update($validated);
         return $identification;
     }

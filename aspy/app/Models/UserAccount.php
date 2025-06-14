@@ -12,6 +12,7 @@ class UserAccount extends Authenticatable
 
     protected $table = 'user_account';
     protected $primaryKey = 'user_id';
+    public $timestamps = false;
 
     protected $fillable = [
         'role_id',

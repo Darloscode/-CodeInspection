@@ -11,6 +11,7 @@ class Receipt extends Model
 
     protected $table = 'receipt';
     protected $primaryKey = 'receipt_id';
+    public $timestamps = false;
     protected $fillable = [
         'payment_id',
         'status',

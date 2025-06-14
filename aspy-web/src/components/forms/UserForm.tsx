@@ -1,94 +1,73 @@
+import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import UserInput from "./UserInput";
-import CancelButton from "../buttons/CancelButton";
-//import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-//import { UserData } from "../../types/UserDataCreation";
-import { inputCreateUserConfig } from "../../config//userFormConfig";
-import { usuarios } from "../../data/Usuarios";
-import SaveButton from "../buttons/SaveButton";
-import CreationButton from "../buttons/CreationButton";
+import { inputCreateUserConfig } from "@/config/userFormConfig";
+import { usuarios } from "@data/Usuarios";
+import { User } from "@/types/User";
+import Button from "@mui/material/Button";
+import UserInput from "@forms/UserInput";
 
-function UserForm(props: {
+interface UserFormProps {
   isEditMode?: boolean;
   userId?: number;
   role?: string;
-}) {
-  //const [userData, setUserData] = useState<UserData | null>(null);
+  start: number;
+  end: number;
+  onNext: (data: Partial<User>) => void;
+  onBack: () => void;
+  onFinish: (data: Partial<User>) => void;
+  isLast?: boolean;
+}
 
-  //Estas dos lineas son solo para pruebas
-  const user = usuarios.find((u) => u.id === props.userId);
+export default function UserForm({
+  isEditMode,
+  userId,
+  role,
+  start,
+  end,
+  onNext,
+  onBack,
+  onFinish,
+  isLast,
+}: UserFormProps) {
+  const user = usuarios.find((u) => u.id === userId);
 
-  // Esto te lleva a la página anterior
-  const navigate = useNavigate();
-  const handleBack = () => {
-    navigate(-1);
-  };
+  const methods = useForm<User>(); // sin defaultValues por ahora
 
-  // TODO Fetch user data if in edit mode and userId is provided
-  // TODO separate fetch function to avoid duplication
-  /*
   useEffect(() => {
-    if (props.isEditMode && props.userId) {
-      const fetchData = async () => {
-        const response = await fetch(`/api-endpoint-not-yet/${props.userId}`);
-        const data = await response.json();
-        setUserData(data);
-      };
-      fetchData();
+    if (isEditMode && user) {
+      methods.reset({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        phone: user.phone,
+        address: user.address,
+        identity: user.identity,
+        role: user.role,
+        password: "",
+      });
+    } else {
+      methods.reset({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        address: "",
+        identity: 0,
+        role: role,
+        password: "",
+      });
     }
-  }, [props.isEditMode, props.userId]);*/
+  }, [isEditMode, user, methods, role]);
 
-  const methods = useForm({
-    defaultValues: async () => {
-      if (props.isEditMode && /*userData*/ user) {
-        return {
-          surname: user.lastName,
-          name: user.firstName,
-          email: user.email,
-          phone: user.phone,
-          address: user.address,
-          identification_number: user.identity,
-          provincia: user.provincia, // << AQUÍ
-          rol: user.rol,
-          password: "",
-          confirm_password: "",
-          /*
-          name: userData.name,
-          surname: userData.surname,
-          email: userData.email,
-          phone: userData.phone,
-          address: userData.address,
-          identification_number: userData.identification_number,
-          password: "", // Do not pre-fill password fields for security reasons
-          confirm_password: "",
-          */
-        };
-      } else {
-        return {
-          name: "",
-          surname: "",
-          email: "",
-          phone: "",
-          address: "",
-          identification_number: "",
-          password: "",
-          rol: "",
-          confirm_password: "",
-          provincia: "",
-        };
-      }
-    },
-  });
-
-  const list_inputs = inputCreateUserConfig.map((input) => (
+  const list_inputs = inputCreateUserConfig.slice(start, end).map((input) => (
     <UserInput
-      label={input.label}
       key={input.key}
+      label={input.label}
       type={input.type}
       id={input.key}
+      role={role}
       validation={
-        input.key === "confirm_password"
+        input.key === "confirmPassword"
           ? {
               ...input.validation,
               validate: (value: string) =>
@@ -98,27 +77,30 @@ function UserForm(props: {
           : input.validation
       }
       options={input.options}
-      default={user?.rol ?? props.role}
     />
   ));
 
-  // TODO in a diff file
-  const onClickSave = methods.handleSubmit((data) => {
-    alert(data);
-    console.log(data);
+  const onSubmit = methods.handleSubmit((data) => {
+    if (isLast) {
+      onFinish(data);
+    } else {
+      onNext(data);
+    }
   });
 
-  const onClickCreate = methods.handleSubmit((data) => {
-    alert(data);
-    console.log(data);
-  });
+  const getButtonLabel = () => {
+    if (isLast) {
+      return isEditMode ? "Guardar" : "Crear";
+    }
+    return "Siguiente";
+  };
 
   return (
     <FormProvider {...methods}>
       <form
-        className="flex flex-col w-full h-full p-6"
         onSubmit={(e) => e.preventDefault()}
         noValidate
+        className="flex flex-col w-full h-full p-6"
       >
         <div className="flex justify-center items-center">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -126,17 +108,25 @@ function UserForm(props: {
           </div>
         </div>
         <div className="gap-10 mt-4 flex flex-row items-center justify-center">
-          <CancelButton onClick={handleBack} />
-          {!props.isEditMode && (
-            <CreationButton onClick={onClickCreate} text="Crear" />
+          {start != 0 && (
+            <Button
+              variant="outlined"
+              onClick={onBack}
+              className="md:w-[250px]"
+            >
+              Anterior
+            </Button>
           )}
-          {props.isEditMode && (
-            <SaveButton onClick={onClickSave} text="Guardar" />
-          )}
+          <Button
+            type="submit"
+            variant="contained"
+            onClick={onSubmit}
+            className="md:w-[250px]"
+          >
+            {getButtonLabel()}
+          </Button>
         </div>
       </form>
     </FormProvider>
   );
 }
-
-export default UserForm;

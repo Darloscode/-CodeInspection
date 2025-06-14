@@ -1,38 +1,40 @@
 import { useParams } from "react-router-dom";
-import { getFactura } from "@utils/utils";
-import { getRecibo } from "@utils/utils";
-import { Invoice } from "@/types/Invoice";
-import { ReceiptRevisionData } from "@/types/ReceiptRevisionData";
-import Divider from "@mui/material/Divider";
+import { getPayment } from "@utils/utils";
+import { Payment } from "@/types/Payment";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
-import Typography from "@mui/material/Typography";
 import InvoiceView from "@components/InvoiceView";
 import ReceiptDetails from "@staff/ReceiptDetails";
+import SimpleHeader from "@components/SimpleHeader";
 
 export default function PaymentDetails() {
-  //Obtener Factura
   const { id } = useParams();
   const numericId = parseInt(id!);
-  const invoice: Invoice = getFactura(numericId);
-  const receipt: ReceiptRevisionData = getRecibo(numericId!);
+  const payment: Payment = getPayment(numericId);
 
   return (
     <Box className="box-panel-control" sx={{ padding: 2 }}>
       <Grid container spacing={1}>
         <Grid size={12} className="grid-p-patients-tittle">
-          <Grid container spacing={0}>
-            <Grid size={9} marginBottom={"4px"}>
-              <Typography variant="h3">Detalles del pago</Typography>
-            </Grid>
-          </Grid>
-          <Divider className="divider-paciente-historial"></Divider>
+          <SimpleHeader text={"Detalles del pago"} />
         </Grid>
         <Grid size={6}>
-          <ReceiptDetails pagoData={receipt} />
+          <ReceiptDetails receiptData={payment} />
         </Grid>
         <Grid size={6}>
-          <InvoiceView info={invoice} />
+          <InvoiceView
+            id={payment.id}
+            date={payment.creation_date}
+            client={payment.person}
+            service={payment.service}
+            address={payment.address}
+            price={payment.service_price}
+            discount={payment.discount_percentage}
+            total={payment.total_amount}
+            paymentMethod={payment.paymentMethod}
+            contactEmail={payment.contactEmail}
+            contactPhone={payment.contactPhone}
+          />
         </Grid>
       </Grid>
     </Box>

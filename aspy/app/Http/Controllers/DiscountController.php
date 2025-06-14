@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Discount;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class DiscountController extends Controller
 {
@@ -22,7 +23,7 @@ class DiscountController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|unique:discounts,name',
             'discount' => 'required|integer|min:0|max:100',
-            'created_by' => 'sometimes|string',
+            
         ]);
 
         return Discount::create($validated);
@@ -33,9 +34,12 @@ class DiscountController extends Controller
         $discount = Discount::findOrFail($id);
         $validated = $request->validate([
             'name' => 'string|unique:discounts,name,'.$id,
-            'discount' => 'integer|min:0|max:100',
-            'modified_by' => 'sometimes|string',
+            'discount' => 'integer|min:0|max:100'
         ]);
+        
+        $validated['modification_date'] = Carbon::now();
+        $validated['modified_by'] = 'system';
+
         $discount->update($validated);
         return $discount;
     }

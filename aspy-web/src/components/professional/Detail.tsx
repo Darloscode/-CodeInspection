@@ -127,7 +127,8 @@ export default function AppointmentDetail() {
               <Typography variant="body1" className="typo-report">
                 Comentario
               </Typography>
-              <Typography variant="body1">{cita?.comentario}</Typography>
+              <Typography variant="body1">{cita?.date}</Typography>
+              {/*cOLOCAR EL VISOR DE PDF */}
             </Grid>
           </Grid>
         </Grid>

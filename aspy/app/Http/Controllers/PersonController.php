@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Person;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PersonController extends Controller
 {
@@ -28,7 +29,7 @@ class PersonController extends Controller
             'occupation' => 'required|integer',
             'marital_status' => 'required|integer',
             'education' => 'required|integer',
-            'created_by' => 'sometimes|string',
+            
         ]);
 
         return Person::create($validated);
@@ -44,9 +45,12 @@ class PersonController extends Controller
             'gender' => 'integer',
             'occupation' => 'integer',
             'marital_status' => 'integer',
-            'education' => 'integer',
-            'modified_by' => 'sometimes|string',
+            'education' => 'integer'
         ]);
+        
+        $validated['modification_date'] = Carbon::now();
+        $validated['modified_by'] = 'system';
+
         $person->update($validated);
         return $person;
     }

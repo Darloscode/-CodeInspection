@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
@@ -28,7 +29,7 @@ class PaymentController extends Controller
             'discount_percentage' => 'nullable|integer|min:0|max:100',
             'total_amount' => 'required|numeric|min:0',
             'status' => 'required|integer',
-            'created_by' => 'sometimes|string',
+            
         ]);
 
         return Payment::create($validated);
@@ -38,9 +39,12 @@ class PaymentController extends Controller
     {
         $payment = Payment::findOrFail($id);
         $validated = $request->validate([
-            'status' => 'integer',
-            'modified_by' => 'sometimes|string',
+            'status' => 'integer'
         ]);
+        
+        $validated['modification_date'] = Carbon::now();
+        $validated['modified_by'] = 'system';
+
         $payment->update($validated);
         return $payment;
     }

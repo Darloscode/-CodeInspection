@@ -1,4 +1,3 @@
-import React from "react";
 import { useColorScheme } from "@mui/material/styles";
 // Define las imágenes para los modos light y dark
 import LightImage from "../assets/logo mediano.png";

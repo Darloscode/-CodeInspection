@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MedicalProfile;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class MedicalProfileController extends Controller
 {
@@ -22,7 +23,7 @@ class MedicalProfileController extends Controller
         $validated = $request->validate([
             'person_id' => 'required|integer|exists:client,person_id',
             'diagnose' => 'required|string|unique:medical_profile,diagnose',
-            'created_by' => 'sometimes|string',
+            
         ]);
 
         return MedicalProfile::create($validated);
@@ -32,9 +33,12 @@ class MedicalProfileController extends Controller
     {
         $profile = MedicalProfile::findOrFail($id);
         $validated = $request->validate([
-            'diagnose' => 'string|unique:medical_profile,diagnose,'.$id,
-            'modified_by' => 'sometimes|string',
+            'diagnose' => 'string|unique:medical_profile,diagnose,'.$id
         ]);
+        
+        $validated['modification_date'] = Carbon::now();
+        $validated['modified_by'] = 'system';
+
         $profile->update($validated);
         return $profile;
     }

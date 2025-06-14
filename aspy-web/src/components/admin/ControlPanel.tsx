@@ -9,7 +9,6 @@ import ButtonList from "@components/ButtonList";
 import WelcomePanel from "@components/WelcomePanel";
 
 import PostAddOutlinedIcon from "@mui/icons-material/PostAddOutlined";
-import QueueOutlinedIcon from "@mui/icons-material/QueueOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 
 export default function ControlPanel() {
@@ -20,11 +19,6 @@ export default function ControlPanel() {
     navigate(newPath);
   };
 
-  const handleCreateRole = () => {
-    const newPath = `/nuevo-rol`;
-    navigate(newPath);
-  };
-
   const handleCreateService = () => {
     const newPath = `/nuevo-servicio`;
     navigate(newPath);
@@ -32,18 +26,13 @@ export default function ControlPanel() {
 
   const botones: ButtonControl[] = [
     {
-      texto: "Agregar Usuario",
-      icono: <AccountCircleOutlinedIcon className="boton-panelcontrol" />,
+      text: "Agregar Usuario",
+      icon: <AccountCircleOutlinedIcon className="boton-panelcontrol" />,
       accion: handleCreateUser,
     },
     {
-      texto: "Agregar Rol",
-      icono: <QueueOutlinedIcon className="boton-panelcontrol" />,
-      accion: handleCreateRole,
-    },
-    {
-      texto: "Agregar Servicio",
-      icono: <PostAddOutlinedIcon className="boton-panelcontrol" />,
+      text: "Agregar Servicio",
+      icon: <PostAddOutlinedIcon className="boton-panelcontrol" />,
       accion: handleCreateService,
     },
   ];

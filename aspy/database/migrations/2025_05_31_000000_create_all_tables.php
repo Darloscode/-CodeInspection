@@ -40,7 +40,7 @@ class CreateAllTables extends Migration
         Schema::create('country', function (Blueprint $table) {
             $table->id('country_id');
             $table->string('name');
-            $table->string('phone_code', 10);
+            $table->string('phone_code', 4);
         });
 
         Schema::create('state', function (Blueprint $table) {

@@ -1,15 +1,19 @@
 import { usuarios } from "@data/Usuarios";
+import { servicesList } from "@data/Servicios";
 import type { User } from "@/types/User";
-import type { Cita } from "@/types/Cita";
+import type { Appointment } from "@/types/Appointment";
 import { citas } from "@data/Citas";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import autoTable from "jspdf-autotable";
 import logoBase64 from "@assets/logo mediano.png";
-import { Invoice } from "@/types/Invoice";
-import { ReceiptRevisionData } from "@/types/ReceiptRevisionData";
-import { recibos } from "@data/Recibos";
-import { facturas } from "@data/Facturas";
+import { Receipt } from "@/types/Receipt";
+import { receiptList } from "@data/Recibos";
+import { paymentList } from "@data/Pagos";
+import { Payment } from "@/types/Payment";
+import { ServiceOptions } from "@/types/ServiceOptions";
+import { ProfessionalOptions } from "@/types/ProfessionalOptions";
+import { AvailableDateTime } from "@/types/AvailableDateTime";
 
 type TendenciaDiaria = {
   promedioPorcentual: number;
@@ -59,17 +63,17 @@ export function TotalIngresosMensual(data: number[]): TotalIngresosMensual {
 }
 
 export function getProfesionales(): User[] {
-  return usuarios.filter((u: User) => u.rol === "Profesional");
+  return usuarios.filter((u: User) => u.role === "Profesional");
 }
 
-export function getCitasProfesional(id: number): Cita[] {
+export function getCitasProfesional(id: number): Appointment[] {
   if (!id) {
     return citas;
   }
-  return citas.filter((cita) => cita.doctor?.id === id);
+  return citas.filter((cita) => cita.professional?.id === id);
 }
 
-export function handleDownloadInvoice(invoice: Invoice) {
+export function handleDownloadInvoice(invoice: Receipt) {
   const doc = new jsPDF("p", "mm", "a4") as jsPDFWithAutoTable; // Vertical, milímetros, tamaño A4
 
   // Insertar logo
@@ -161,18 +165,53 @@ export function handleDownloadInvoice(invoice: Invoice) {
   doc.save(`Factura-${invoice.number}-${invoice.clientName}.pdf`);
 }
 
-export function getRecibo(id: number): ReceiptRevisionData {
-  const recibo = recibos.find((recibo) => recibo.idFactura === id);
-  if (!recibo) {
-    throw new Error(`Factura con ID ${id} no encontrada`);
+export function getReceipt(id: number): Receipt {
+  const receipt = receiptList.find((receipt) => receipt.payment_id === id);
+  if (!receipt) {
+    throw new Error(`Recibo con ID ${id} no encontrada`);
   }
-  return recibo;
+  return receipt;
 }
 
-export function getFactura(id: number): Invoice {
-  const factura = facturas.find((factura) => factura.id === id);
-  if (!factura) {
-    throw new Error(`Factura con ID ${id} no encontrada`);
+export function getPayment(id: number): Payment {
+  const payment = paymentList.find((payment) => payment.id === id);
+  if (!payment) {
+    throw new Error(`Pago con ID ${id} no encontrada`);
   }
-  return factura;
+  return payment;
+}
+
+export function getServicesAppointment(): ServiceOptions[] {
+  return servicesList.map((servicio) => ({
+    id: servicio.id,
+    name: servicio.name,
+    price: servicio.price,
+  }));
+}
+
+export function getProfessionalAppointment(
+  serviceId: number
+): ProfessionalOptions[] {
+  const service = servicesList.find((s) => s.id === serviceId);
+
+  if (!service) return [];
+
+  return [
+    {
+      id: service.idProfessinoal,
+      name: service.nameProfesional,
+    },
+  ];
+}
+
+export function getDates(): Promise<AvailableDateTime[]> {
+  return Promise.resolve([
+    { date: "2025-06-12", hours: ["10:00", "11:00"] },
+    { date: "2025-06-14", hours: ["09:00", "15:00"] },
+  ]);
+}
+
+export function getReceipts(id: number): Receipt[] {
+  console.log(id);
+  return receiptList;
 }

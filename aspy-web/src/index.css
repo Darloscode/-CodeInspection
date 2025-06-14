@@ -79,7 +79,7 @@ button:focus-visible {
 
 .grid-tabla {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
 }
 
@@ -695,4 +695,9 @@ p {
 .boton-change:active {
   outline: none;
   box-shadow: none;
+}
+
+/*Registro*/
+.card-register {
+  width: 60% !important;
 }
