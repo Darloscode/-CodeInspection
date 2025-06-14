@@ -11,7 +11,7 @@ import MenuContent from './MenuContent';
 import OptionsMenu from './OptionsMenu';
 import ColorModeToggle from '@shared-theme/ColorModeToggle';
 import ThemedLogo from '@shared-theme/ThemedLogo';
-import { getAuthenticatedUserName, getAuthenticatedUserEmail } from '@store';
+import { getAuthenticatedUserName, getAuthenticatedUserEmail } from '@/utils/store';
 
 
 const drawerWidth = 240;
