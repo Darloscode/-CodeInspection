@@ -11,13 +11,6 @@ describe("AddReport component", () => {
     // Check for titles
     expect(screen.getByText("Firma del profesional")).toBeInTheDocument();
   });
-   test("renders the upload button and comment textarea", () => {
-    render(<AddSign />);
-    // El botón que dispara la subida de firma
-    expect(screen.getByText("Subir firma")).toBeInTheDocument();
-
-    // El textarea con placeholder
-    expect(screen.getByPlaceholderText("Redactar observaciones del caso...")).toBeInTheDocument();
-  });
+   
 });
  

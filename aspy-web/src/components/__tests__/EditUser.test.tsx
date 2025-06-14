@@ -1,4 +1,6 @@
 import { render, screen } from "@testing-library/react";
+jest.mock("@assets/visto.png", () => "test-file-stub");
+jest.mock("@assets/cita.png", () => "test-file-stub");
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import EditRole from "../EditUser";
 

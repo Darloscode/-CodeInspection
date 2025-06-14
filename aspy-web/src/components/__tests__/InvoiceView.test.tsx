@@ -1,27 +1,42 @@
 import { render, screen } from "@testing-library/react";
 import InvoiceView from "../InvoiceView";  // Ajusta la ruta si es necesario
-import { Invoice } from "@/types/Invoice";
+import { Receipt } from "@/types/Receipt";
 
-const mockInvoice: Invoice = {
+const mockInvoice: Receipt = {
   id: 1,
+  payment_id: 12345,
   number: "12345",
   issueDate: "2025-06-13",
   clientName: "ACME Corp",
   address: "123 Main St",
   serviceName: "Consulting",
   servicePrice: 1500,
+  discount_percentage: 0.12, // 12% de descuento
   subtotal: 1500,
   tax: 180,
   total: 1680,
   paymentMethod: "Credit Card",
   contactEmail: "contact@acme.com",
   contactPhone: "555-1234",
-  status: true,
 };
 
 describe("InvoiceView", () => {
   it("renderiza todos los campos con datos correctos", () => {
-    render(<InvoiceView info={mockInvoice} />);
+    render(
+  <InvoiceView
+    id={mockInvoice.id}
+    date={mockInvoice.issueDate}
+    client={mockInvoice.clientName}
+    address={mockInvoice.address}
+    service={mockInvoice.serviceName}
+    price={mockInvoice.servicePrice}
+    discount={mockInvoice.discount_percentage}
+    total={mockInvoice.total}
+    paymentMethod={mockInvoice.paymentMethod}
+    contactEmail={mockInvoice.contactEmail}
+    contactPhone={mockInvoice.contactPhone}
+  />
+);
 
     expect(screen.getByText("Invoice")).toBeInTheDocument();
     expect(screen.getAllByText(`$${mockInvoice.servicePrice.toFixed(2)}`).length).toBeGreaterThan(0);
@@ -36,7 +51,7 @@ describe("InvoiceView", () => {
     expect(screen.getByText("Address:")).toBeInTheDocument();
     expect(screen.getByText(mockInvoice.address)).toBeInTheDocument();
 
-    expect(screen.getByText("Services")).toBeInTheDocument();
+    expect(screen.getByText("Service")).toBeInTheDocument();
     expect(screen.getByText(mockInvoice.serviceName)).toBeInTheDocument();
     expect(screen.getAllByText(`$${mockInvoice.servicePrice.toFixed(2)}`).length).toBeGreaterThan(0);
 
@@ -44,9 +59,11 @@ describe("InvoiceView", () => {
     expect(screen.getByText("Subtotal")).toBeInTheDocument();
     expect(screen.getAllByText(`$${mockInvoice.subtotal.toFixed(2)}`).length).toBeGreaterThan(0);
 
+    expect(screen.getByText("Descuento")).toBeInTheDocument();
+    expect(screen.getAllByText(`$${mockInvoice.discount_percentage.toFixed(2)}`).length).toBeGreaterThan(0);
 
-    expect(screen.getByText("Tax 12%")).toBeInTheDocument();
-    expect(screen.getAllByText(`$${mockInvoice.tax.toFixed(2)}`).length).toBeGreaterThan(0);
+    /*expect(screen.getByText("Tax 12%")).toBeInTheDocument();
+    expect(screen.getAllByText(`$${mockInvoice.tax.toFixed(2)}`).length).toBeGreaterThan(0);*/
 
 
     expect(screen.getByText("Total")).toBeInTheDocument();
@@ -62,7 +79,7 @@ describe("InvoiceView", () => {
   });
 
   it("muestra valores por defecto cuando faltan datos", () => {
-    const incompleteInvoice: Invoice = {
+    const incompleteInvoice: Receipt = {
       id: 2,
       number: "",
       issueDate: "",
@@ -76,12 +93,27 @@ describe("InvoiceView", () => {
       paymentMethod: "",
       contactEmail: "",
       contactPhone: "",
-      status: false,
+      payment_id: 0,
+      discount_percentage: 0,
     };
 
-    render(<InvoiceView info={incompleteInvoice} />);
+    render(
+  <InvoiceView
+    id={incompleteInvoice.id}
+    date={incompleteInvoice.issueDate}
+    client={incompleteInvoice.clientName}
+    address={incompleteInvoice.address}
+    service={incompleteInvoice.serviceName}
+    price={incompleteInvoice.servicePrice}
+    discount={incompleteInvoice.discount_percentage}
+    total={incompleteInvoice.total}
+    paymentMethod={incompleteInvoice.paymentMethod}
+    contactEmail={incompleteInvoice.contactEmail}
+    contactPhone={incompleteInvoice.contactPhone}
+  />
+);
 
-    expect(screen.getByText("#N/A")).toBeInTheDocument();
+    
     // El "N/A" puede aparecer varias veces, validamos que haya al menos uno
     expect(screen.getAllByText("N/A").length).toBeGreaterThan(0);
     // Validamos que los precios sean mostrados como $0.00

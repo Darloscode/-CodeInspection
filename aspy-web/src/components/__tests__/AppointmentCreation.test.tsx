@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import AppointmentCreation from "../AppointmentCreation";
 
-// Mock de useNavigate con Jest
+// Mocks
 const mockedNavigate = jest.fn();
 
 jest.mock("react-router-dom", () => {
@@ -13,44 +13,86 @@ jest.mock("react-router-dom", () => {
   };
 });
 
-// Mock de DateCalendarValue para evitar problemas con módulos no transformados
-jest.mock("../DateCalendarValue", () => () => <div>Mocked Calendar</div>);
+jest.mock("../DateCalendarValue", () => (props: any) => {
+  // Simula selección de fecha y hora
+  props.onDateChange("2025-06-15");
+  props.onHourChange("10:00");
+  return <div>Mocked Calendar</div>;
+});
+
+jest.mock("@utils/utils", () => ({
+  getServicesAppointment: () => [
+    { id: 1, name: "Terapia" },
+    { id: 2, name: "Psicología" },
+  ],
+  getProfessionalAppointment: () => [
+    { id: 1, name: "Dr. House" },
+    { id: 2, name: "Dra. Grey" },
+  ],
+  getDates: () => Promise.resolve([]),
+}));
 
 describe("AppointmentCreation", () => {
   beforeEach(() => {
     mockedNavigate.mockClear();
   });
 
-  it("renders all form inputs and calendar", () => {
+  it("renders form and calendar", () => {
     render(
       <MemoryRouter>
         <AppointmentCreation />
       </MemoryRouter>
     );
 
-    expect(screen.getByLabelText("Escoja el servicio")).toBeInTheDocument();
-    expect(screen.getByLabelText("Escoja el profesional")).toBeInTheDocument();
-    expect(screen.getByLabelText("Cédula del paciente")).toBeInTheDocument();
-    expect(screen.getByLabelText("Nombre del paciente")).toBeInTheDocument();
+    // Hay 2 selects (combobox): servicio y profesional
+    const selects = screen.getAllByRole("combobox");
+    expect(selects).toHaveLength(2);
+
+    // Hay 1 input para la cédula
+    const cedulaInput = screen.getByRole("textbox");
+    expect(cedulaInput).toBeInTheDocument();
+
     expect(screen.getByLabelText("Presencial")).toBeInTheDocument();
     expect(screen.getByLabelText("Virtual")).toBeInTheDocument();
-    expect(
-      screen.getByRole("button", { name: /proceder a pagar/i })
-    ).toBeInTheDocument();
-
-    // Aseguramos que el mock del calendario está presente
+    expect(screen.getByRole("button", { name: /proceder a pagar/i })).toBeInTheDocument();
     expect(screen.getByText("Mocked Calendar")).toBeInTheDocument();
   });
 
-  it("navigates to /pago when clicking the button", () => {
+  it("shows error if fields are missing", () => {
     render(
       <MemoryRouter>
         <AppointmentCreation />
       </MemoryRouter>
     );
 
-    const button = screen.getByRole("button", { name: /proceder a pagar/i });
-    fireEvent.click(button);
+    fireEvent.click(screen.getByRole("button", { name: /proceder a pagar/i }));
+
+    expect(screen.getByText(/por favor, complete todos los campos/i)).toBeInTheDocument();
+    expect(mockedNavigate).not.toHaveBeenCalled();
+  });
+
+  it("navigates to /pago when all fields are filled", () => {
+    render(
+      <MemoryRouter>
+        <AppointmentCreation />
+      </MemoryRouter>
+    );
+
+    const selects = screen.getAllByRole("combobox");
+    const cedulaInput = screen.getByRole("textbox");
+
+    // Selecciona servicio y profesional
+    fireEvent.change(selects[0], { target: { value: "1" } });
+    fireEvent.change(selects[1], { target: { value: "1" } });
+
+    // Tipo de consulta
+    fireEvent.click(screen.getByLabelText("Virtual"));
+
+    // Cédula
+    fireEvent.change(cedulaInput, { target: { value: "1234567890" } });
+
+    // Click al botón
+    fireEvent.click(screen.getByRole("button", { name: /proceder a pagar/i }));
 
     expect(mockedNavigate).toHaveBeenCalledWith("/pago");
   });

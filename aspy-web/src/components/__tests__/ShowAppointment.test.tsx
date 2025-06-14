@@ -1,26 +1,34 @@
 import { render, screen } from "@testing-library/react";
 import ShowAppointment from "@/components/ShowAppointment";
-import { Cita } from "@/types/Cita";
+import { Appointment } from "@/types/Appointment";
 import "@testing-library/jest-dom";
 
 describe("ShowAppointment component", () => {
-  const mockCitas: Cita[] = [
+  const mockCitas: Appointment[] = [
     {
       id: 1,
-      fecha: "2025-06-14",
-      horainicio: "10:00",
-      horafin: "11:00",
-      asistio: true,
-      comentario: "Paciente llegó puntual.",
-      paciente: {
-        id: 1,
-        firstName: "Juan",
-        lastName: "Pérez",
+      date: "2025-06-15",
+      startTime: "09:00",
+      endTime: "10:00",
+      assist: true,
+      report: "Paciente puntual",
+      patient: {
+        id: 101,
+        firstName: "Carlos",
+        lastName: "Salazar",
+        email: "carlos@example.com",
+        role: "paciente",
+        age: 30,
+        gender: "M",
       },
-      doctor: {
-        id: 2,
-        firstName: "Ana",
-        lastName: "Martínez",
+      professional: {
+        id: 201,
+        firstName: "Dayse",
+        lastName: "Valverde",
+        email: "dayse@example.com",
+        role: "doctor",
+        age: 35,
+        gender: "F",
       },
     },
   ];
@@ -29,50 +37,58 @@ describe("ShowAppointment component", () => {
     render(<ShowAppointment citas={mockCitas} />);
 
     // Verifica que el nombre del paciente esté en el documento
-    expect(screen.getByText("Paciente: Juan Pérez")).toBeInTheDocument();
+    expect(screen.getByText("Paciente: Carlos Salazar")).toBeInTheDocument();
 
     // Verifica que el nombre del doctor esté en el documento
-    expect(screen.getByText("Profesional: Ana Martínez")).toBeInTheDocument();
+    expect(screen.getByText("Profesional: Dayse Valverde")).toBeInTheDocument();
 
     // Verifica que la hora de inicio esté en el documento
-    expect(screen.getByText("10:00")).toBeInTheDocument();
+    expect(screen.getByText("09:00")).toBeInTheDocument();
 
     // Verifica que la fecha esté en el documento
-    expect(screen.getByText("2025-06-14")).toBeInTheDocument();
+    expect(screen.getByText("2025-06-15")).toBeInTheDocument();
   });
 
   test("renders multiple appointments", () => {
-    const multipleCitas: Cita[] = [
+    const multipleCitas: Appointment[] = [
       ...mockCitas,
       {
         id: 2,
-        fecha: "2025-06-15",
-        horainicio: "12:00",
-        horafin: "13:00",
-        asistio: false,
-        paciente: {
-          id: 3,
+        date: "2025-06-15",
+        startTime: "09:00",
+        endTime: "10:00",
+        assist: false,
+        patient: {
+          id: 101,
           firstName: "Laura",
           lastName: "Gómez",
+          email: "carlos@example.com",
+          role: "paciente",
+          age: 30,
+          gender: "M",
         },
-        doctor: {
-          id: 4,
+        professional: {
+          id: 201,
           firstName: "Carlos",
           lastName: "Salazar",
+          email: "dayse@example.com",
+          role: "doctor",
+          age: 35,
+          gender: "F",
         },
       },
     ];
 
     render(<ShowAppointment citas={multipleCitas} />);
 
-    expect(screen.getByText("Paciente: Juan Pérez")).toBeInTheDocument();
-    expect(screen.getByText("Profesional: Ana Martínez")).toBeInTheDocument();
-    expect(screen.getByText("10:00")).toBeInTheDocument();
-    expect(screen.getByText("2025-06-14")).toBeInTheDocument();
+    expect(screen.getByText("Paciente: Carlos Salazar")).toBeInTheDocument();
+    expect(screen.getByText("Profesional: Dayse Valverde")).toBeInTheDocument();
+    expect(screen.getAllByText("09:00").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("2025-06-15").length).toBeGreaterThan(0);
 
     expect(screen.getByText("Paciente: Laura Gómez")).toBeInTheDocument();
     expect(screen.getByText("Profesional: Carlos Salazar")).toBeInTheDocument();
-    expect(screen.getByText("12:00")).toBeInTheDocument();
-    expect(screen.getByText("2025-06-15")).toBeInTheDocument();
+    expect(screen.getAllByText("09:00").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("2025-06-15").length).toBeGreaterThan(0);
   });
 });

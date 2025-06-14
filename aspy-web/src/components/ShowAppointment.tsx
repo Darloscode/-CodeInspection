@@ -22,11 +22,10 @@ export default function ShowAppointment({ citas }: ShowAppointmentProps) {
         <Card key={index} className="card-citas">
           <CardContent className="card-content-citas">
             <Typography className="typography-citas" variant="body1">
-              Paciente: {cita.patient.firstName + cita.patient.lastName}
+              Paciente: {cita.patient.firstName +" "+ cita.patient.lastName}
             </Typography>
             <Typography className="typography-citas" variant="body1">
-              Profesional:{" "}
-              {cita.professional.firstName + cita.professional.lastName}
+              Profesional: {cita.professional.firstName +" "+ cita.professional.lastName}
             </Typography>
 
             <Divider className="divider-citas" />

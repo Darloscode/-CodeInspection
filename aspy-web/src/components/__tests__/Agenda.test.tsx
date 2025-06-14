@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import Agenda from "@/components/Agenda";
 import "@testing-library/jest-dom";
-import { Cita } from "@/types/Cita";
+import { Appointment } from "@/types/Appointment";
 
 // Mock específico solo para este test file
 jest.mock('@aldabil/react-scheduler', () => ({
@@ -20,27 +20,31 @@ jest.mock('@aldabil/react-scheduler', () => ({
 
 
 describe("Agenda component", () => {
-  const mockCitas: Cita[] = [
+  const mockCitas: Appointment[] = [
     {
       id: 1,
-      fecha: "2025-06-15",
-      horainicio: "09:00",
-      horafin: "10:00",
-      asistio: true,
-      comentario: "Paciente puntual",
-      paciente: {
+      date: "2025-06-15",
+      startTime: "09:00",
+      endTime: "10:00",
+      assist: true,
+      report: "Paciente puntual",
+      patient: {
         id: 101,
         firstName: "Carlos",
         lastName: "Salazar",
         email: "carlos@example.com",
-        rol: "paciente",
+        role: "paciente",
+        age: 30,
+        gender: "M",
       },
-      doctor: {
+      professional: {
         id: 201,
         firstName: "Dayse",
         lastName: "Valverde",
         email: "dayse@example.com",
-        rol: "doctor",
+        role: "doctor",
+        age: 35,
+        gender: "F",
       },
     },
   ];

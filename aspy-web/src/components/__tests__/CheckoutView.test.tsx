@@ -10,7 +10,7 @@ jest.mock("@components/PaymentForm", () => {
   };
 });
 
-jest.mock("@components/staff/Review", () => {
+jest.mock("@components/Review", () => {
   return () => <div>Review Component</div>;
 });
 
@@ -20,7 +20,7 @@ jest.mock("@components/Steps", () => {
   );
 });
 
-jest.mock("@components/Successo", () => {
+jest.mock("@components/Success", () => {
   return ({
     open: _open,
     handleClose: _handleClose,
