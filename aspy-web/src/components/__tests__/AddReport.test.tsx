@@ -11,4 +11,6 @@ describe("AddReport component", () => {
     // Check for titles
     expect(screen.getByText("Firma del profesional")).toBeInTheDocument();
   });
+   
 });
+ 
