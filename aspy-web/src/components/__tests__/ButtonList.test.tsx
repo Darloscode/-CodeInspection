@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import ButtonList from "../ButtonList";
 import { ButtonControl } from "@/types/ButtonControl";
-import React from "react";
+
 
 describe("ButtonList", () => {
   const mockAccion1 = jest.fn();

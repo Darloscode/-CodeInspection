@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import Agenda from "@/components/Agenda";
 import "@testing-library/jest-dom";
