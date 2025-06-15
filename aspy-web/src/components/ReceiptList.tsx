@@ -73,7 +73,7 @@ export default function ReceiptList() {
     } else {
       setReceipt(null);
     }
-  }, [rowSelection]);
+  }, [rowSelection, receiptList]);
 
   return (
     <Box className="box-panel-control" sx={{ padding: 2 }}>
