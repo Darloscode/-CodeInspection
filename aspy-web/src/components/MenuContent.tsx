@@ -88,13 +88,13 @@ export default function MenuContent() {
   const userRole = getAuthenticatedUserRole();
   let mainListItems: ListItem[];
 
-  if (userRole === "admin") {
+  if (userRole === "Admin") {
     mainListItems = adminListItems;
-  } else if (userRole === "staff") {
+  } else if (userRole === "Staff") {
     mainListItems = staffListItems;
-  } else if (userRole === "professional") {
+  } else if (userRole === "Professional") {
     mainListItems = professionalListItems;
-  } else if (userRole === "client") {
+  } else if (userRole === "Client") {
     mainListItems = clientListItems;
   } else {
     mainListItems = [];
