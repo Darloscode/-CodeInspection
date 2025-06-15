@@ -14,8 +14,8 @@ describe("ShowAppointment component", () => {
       report: "Paciente puntual",
       patient: {
         id: 101,
-        firstName: "Carlos",
-        lastName: "Salazar",
+        first_name: "Carlos",
+        last_name: "Salazar",
         email: "carlos@example.com",
         role: "paciente",
         age: 30,
@@ -23,8 +23,8 @@ describe("ShowAppointment component", () => {
       },
       professional: {
         id: 201,
-        firstName: "Dayse",
-        lastName: "Valverde",
+        first_name: "Dayse",
+        last_name: "Valverde",
         email: "dayse@example.com",
         role: "doctor",
         age: 35,
@@ -60,8 +60,8 @@ describe("ShowAppointment component", () => {
         assist: false,
         patient: {
           id: 101,
-          firstName: "Laura",
-          lastName: "Gómez",
+          first_name: "Laura",
+          last_name: "Gómez",
           email: "carlos@example.com",
           role: "paciente",
           age: 30,
@@ -69,8 +69,8 @@ describe("ShowAppointment component", () => {
         },
         professional: {
           id: 201,
-          firstName: "Carlos",
-          lastName: "Salazar",
+          first_name: "Carlos",
+          last_name: "Salazar",
           email: "dayse@example.com",
           role: "doctor",
           age: 35,

@@ -4,7 +4,7 @@ import "@testing-library/jest-dom";
 import { Appointment } from "@/types/Appointment";
 
 // Mock específico solo para este test file
-jest.mock('@aldabil/react-scheduler', () => ({
+jest.mock("@aldabil/react-scheduler", () => ({
   Scheduler: ({ events }: { events: any[] }) => (
     <div data-testid="scheduler-mock">
       {events.map((event, idx) => (
@@ -17,7 +17,6 @@ jest.mock('@aldabil/react-scheduler', () => ({
   ),
 }));
 
-
 describe("Agenda component", () => {
   const mockCitas: Appointment[] = [
     {
@@ -29,8 +28,8 @@ describe("Agenda component", () => {
       report: "Paciente puntual",
       patient: {
         id: 101,
-        firstName: "Carlos",
-        lastName: "Salazar",
+        first_name: "Carlos",
+        last_name: "Salazar",
         email: "carlos@example.com",
         role: "paciente",
         age: 30,
@@ -38,8 +37,8 @@ describe("Agenda component", () => {
       },
       professional: {
         id: 201,
-        firstName: "Dayse",
-        lastName: "Valverde",
+        first_name: "Dayse",
+        last_name: "Valverde",
         email: "dayse@example.com",
         role: "doctor",
         age: 35,
@@ -57,6 +56,8 @@ describe("Agenda component", () => {
     render(<Agenda citas={mockCitas} />);
     // Aquí pruebas que el texto que generas está en el DOM
     expect(screen.getByText(/Paciente: Carlos Salazar/i)).toBeInTheDocument();
-    expect(screen.getByText(/Profesional: Dayse Valverde/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Profesional: Dayse Valverde/i)
+    ).toBeInTheDocument();
   });
 });
