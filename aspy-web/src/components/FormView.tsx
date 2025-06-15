@@ -64,7 +64,7 @@ export default function FormView({
     } else {
       const newPerson: Person = {
         first_name: fullData.first_name || "",
-        middle_name: fullData.lastName || "",
+        middle_name: fullData.last_name || "",
         birthdate: new Date().toISOString().split("T")[0],
         gender: 1,
         occupation: 1,

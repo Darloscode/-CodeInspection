@@ -2,7 +2,7 @@ export interface User {
   id: number;
   identity?: number;
   first_name: string;
-  lastName: string;
+  last_name: string;
   middle_name?: string;
   role: string;
   photo?: string;
