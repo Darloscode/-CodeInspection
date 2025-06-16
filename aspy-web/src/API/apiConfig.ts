@@ -1,8 +1,10 @@
-let apiURL = "https://aspy-production.up.railway.app/api"; // URL por defecto para local
+// Define a constant for the default API URL
+const defaultApiURL = "https://aspy-production.up.railway.app/api";
 const domain = "aspy.ecuador";
 
-if (import.meta.env.VITE_APP_ENV === "production") {
-  apiURL = `https://api.${domain}`;
-}
+// Determine the correct API URL based on the environment
+const apiURL = import.meta.env.VITE_APP_ENV === "production"
+  ? `https://api.${domain}`
+  : defaultApiURL;
 
 export default apiURL;
