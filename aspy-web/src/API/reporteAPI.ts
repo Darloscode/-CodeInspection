@@ -14,7 +14,20 @@ const reporteAPI = {
     firma: string;
   }) => axios.post(`${apiURL}/reportes`, reporteData),
 
-  //TODO VER QUE TAN NECESARIO ES TODO LO SIGUIENTE
+  // Added updateReporte method (PUT request)
+  updateReporte: (id: string, reporteData: {
+    idPaciente: string;
+    idProfesional: string;
+    idCita: string;
+    fecha: string;
+    hora: string;
+    comentarios: string;
+    firma: string;
+  }) => axios.put(`${apiURL}/reportes/${id}`, reporteData),
+
+  // Added deleteReporte method (DELETE request)
+  deleteReporte: (id: string) => axios.delete(`${apiURL}/reportes/${id}`),
+
   getReportesByPaciente: (nombre: string) =>
     axios.get(`${apiURL}/reportes/paciente/${encodeURIComponent(nombre)}`),
 
