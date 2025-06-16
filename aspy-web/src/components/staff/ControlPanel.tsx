@@ -39,21 +39,25 @@ export default function ControlPanel() {
 
   const botones: ButtonControl[] = [
     {
+      id:"1",
       text: "Agregar Profesional",
       icon: <PersonAddAltRoundedIcon className="boton-panelcontrol" />,
       accion: handleCreateProfessional,
     },
     {
+      id:"2",
       text: "Agregar Paciente",
       icon: <PermContactCalendarRoundedIcon className="boton-panelcontrol" />,
       accion: handleCreatePatient,
     },
     {
+      id:"3",
       text: "Agregar Servicio",
       icon: <MedicalServicesRoundedIcon className="boton-panelcontrol" />,
       accion: handleCreateService,
     },
     {
+      id:"4",
       text: "Agendar Nueva Cita",
       icon: <EditCalendarRoundedIcon className="boton-panelcontrol" />,
       accion: handleCreateAppointment,

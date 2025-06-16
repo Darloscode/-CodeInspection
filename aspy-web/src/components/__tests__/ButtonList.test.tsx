@@ -8,8 +8,8 @@ describe("ButtonList", () => {
   const mockAccion2 = jest.fn();
 
   const botones: ButtonControl[] = [
-    { text: "Botón 1", accion: mockAccion1, icon: <span>Icon1</span> },
-    { text: "Botón 2", accion: mockAccion2, icon: <span>Icon2</span> },
+    { id:"1", text: "Botón 1", accion: mockAccion1, icon: <span>Icon1</span> },
+    { id:"2",text: "Botón 2", accion: mockAccion2, icon: <span>Icon2</span> },
   ];
 
   beforeEach(() => {
