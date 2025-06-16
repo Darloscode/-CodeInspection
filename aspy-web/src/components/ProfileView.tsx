@@ -26,13 +26,17 @@ function ProfileView({ user_info, onEdit, isRowPosition }: ProfileProps) {
             {user_info.role}
           </h2>
         </div>
-        <img
-          src={penToSquare}
+
+        {/* Wrap the edit icon in a button for accessibility */}
+        <button
           onClick={onEdit}
           className="fill-gray-200 size-8 cursor-pointer"
-          alt="Editar perfil"
-        />
+          aria-label="Editar perfil"
+        >
+          <img src={penToSquare} alt="Editar perfil" />
+        </button>
       </div>
+
       <div className="flex flex-col gap-16 items-center">
         <div className="flex flex-col gap-2">
           <h1 className="font-kumbh text-primaryAspy font-semibold text-base">
@@ -42,6 +46,7 @@ function ProfileView({ user_info, onEdit, isRowPosition }: ProfileProps) {
             Hola, soy {user_info.role} en Fundación ASPY :)
           </p>
         </div>
+
         <div className="flex flex-row gap-16">
           <div className="flex flex-col gap-2">
             <h2 className="font-kumbh text-primaryAspy font-semibold text-base">
