@@ -103,8 +103,8 @@ export default function MenuContent() {
   return (
     <Stack sx={{ flexGrow: 1, p: 1, justifyContent: "space-between" }}>
       <List dense>
-        {mainListItems.map((item, index) => (
-          <ListItem key={index} disablePadding sx={{ display: "block" }}>
+        {mainListItems.map((item) => (
+          <ListItem key={item.route} disablePadding sx={{ display: "block" }}>
             <ListItemButton
               onClick={() => navigate(item.route)}
               selected={
@@ -119,9 +119,10 @@ export default function MenuContent() {
           </ListItem>
         ))}
       </List>
+
       <List dense>
-        {secondaryListItems.map((item, index) => (
-          <ListItem key={index} disablePadding sx={{ display: "block" }}>
+        {secondaryListItems.map((item) => (
+          <ListItem key={item.route} disablePadding sx={{ display: "block" }}>
             <ListItemButton
               onClick={() => navigate(item.route)}
               selected={
