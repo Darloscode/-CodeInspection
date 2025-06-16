@@ -119,24 +119,6 @@ export default function MenuContent() {
           </ListItem>
         ))}
       </List>
-
-      <List dense>
-        {secondaryListItems.map((item) => (
-          <ListItem key={item.route} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              onClick={() => navigate(item.route)}
-              selected={
-                item.route === "/"
-                  ? window.location.pathname === item.route
-                  : window.location.pathname.startsWith(item.route)
-              }
-            >
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
     </Stack>
   );
 }
